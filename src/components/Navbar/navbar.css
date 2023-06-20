@@ -1,6 +1,6 @@
 nav {
   background-color: var(--nav-bg);
-  padding: 1rem 0 0rem 0;
+  padding-top: 1.5rem;
   font-size: var(--nav-text-lg);
   animation: nav 5s linear infinite forwards;
 }
@@ -8,10 +8,11 @@ nav {
 nav .logo {
   color: #fff;
   text-transform: uppercase;
+  font-size: 1.1rem;
 }
 
 nav .logo-container {
-  width: 159px;
+  width: 150px;
   height: fit-content;
   overflow: hidden;
 }
