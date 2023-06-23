@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AppProvider } from "@/contexts/context";
 
 const myFont = localFont({
   src: [
@@ -36,8 +37,11 @@ export default function RootLayout({
     <html lang="en">
       <body 
       className={myFont.className}
-      // className={inter.className}
-      >{children}</body>
+      >
+        <AppProvider>
+        {children}
+        </AppProvider>
+      </body>
     </html>
   );
 }

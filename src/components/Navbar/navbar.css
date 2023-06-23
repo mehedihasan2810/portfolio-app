@@ -3,6 +3,11 @@ nav {
   padding-top: 1.5rem;
   font-size: var(--nav-text-lg);
   animation: nav 5s linear infinite forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 nav .logo {

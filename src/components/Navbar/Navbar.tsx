@@ -1,10 +1,30 @@
+'use client'
 import Link from "next/link";
 import "./navbar.css";
-import { useEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { useGlobalContext } from "@/contexts/useGlobalContext";
 
 export default function Navbar() {
+  const navRef = useRef<HTMLDivElement>(null!);
+  const {setNavConbottom} = useGlobalContext()
+
+// useLayoutEffect(() => {
+ 
+     
+// function handleGetNavCoords() {
+//   const navCoords = navRef.current.getBoundingClientRect()
+//   setNavConbottom(navCoords.bottom)
+// }
+
+//   window.addEventListener('scroll', handleGetNavCoords)
+  
+//   return () => {
+//     window.removeEventListener('scroll', handleGetNavCoords)
+//   }
+// }, [])
+
   return (
-    <nav>
+    <nav ref={navRef}>
       <div className="center-container">
         <div className="logo-container">
           <div className="inner-container">
