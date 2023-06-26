@@ -10,11 +10,16 @@ const myFont = localFont({
       weight: "400",
       style: "normal",
     },
-    // {
-    //   path: "/../../../public/Poppins/Poppins-Bold.ttf",
-    //   weight: "600",
-    //   style: "normal",
-    // },
+    {
+      path: "/../../public/Poppins/Poppins-Bold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "/../../public/Poppins/Poppins-ExtraBold.ttf",
+      weight: "900",
+      style: "normal",
+    },
   ],
 });
 

@@ -1,0 +1,130 @@
+.projects-container{
+   
+    min-height: 100vh;
+    background: #00000018;
+    display: flow-root;
+    padding: 7.5rem 0;
+    background: #000000f0;
+}
+
+.projects-container h2{
+    text-align: center;
+    padding-top: 4rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.projects-container .project-grid{
+    width: calc(100vw - 10rem);
+    height: calc(100vh - 15rem);
+    margin: 0 auto;
+    /* border: 1px solid; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 0.5rem;
+
+    /* transform-origin: 80% center;  */
+
+     transform:
+    perspective(2000px)
+    rotateY(-5deg) 
+    translateX(-50px)
+    ;
+  transition:1s ease all;
+
+
+
+}
+
+
+
+.project-grid .item{
+    /* border: 1px solid blueviolet; */
+    border-radius:1rem ;
+    transition: all 300ms ease-in;
+}
+
+
+.project-grid .item:not(.item-3):hover{
+    transition: all 400ms ease-out;
+    transform:
+    perspective(1200px)
+    translateZ(-50px)
+    ;
+    /* transform:  scale(1.1); */
+    box-shadow: 0 0 1.5rem hsl(0 0% 100% / 0.8);
+}
+
+.project-grid .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.project-grid .item-1{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 3;
+}
+.project-grid .item-2{
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 3;
+}
+.project-grid .item-3{
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 2;
+    perspective: 600px;
+}
+
+.project-grid .flip-card{
+    position: relative;
+    width: 100%;
+  height: 100%;
+    transform-style: preserve-3d;
+    /* transform-origin: top center; */
+    transform-origin: bottom center;
+    transition: transform 800ms ease-out;
+}
+
+.project-grid .face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+}
+
+.project-grid .front-face{
+    background-color: red;
+
+}
+.project-grid .back-face{
+    background-color: blue;
+    transform: rotateX(180deg);
+}
+
+.project-grid .item-3:hover .flip-card{
+    transform: translateY(-100%) rotateX(180deg);
+    /* transform: translateY(100%) rotateX(-180deg); */
+    transition: transform 800ms ease-out;
+    border-radius: 1rem;
+}
+
+
+
+
+.project-grid .item-4{
+    grid-column: 3 / span 3;
+    grid-row: 3 / span 4;
+}
+.project-grid .item-5{
+    grid-column: 6 / span 2;
+    grid-row: 1 / span 3;
+}
+.project-grid .item-6{
+    grid-column: 6 / span 2;
+    grid-row: 4 / span 3;
+}

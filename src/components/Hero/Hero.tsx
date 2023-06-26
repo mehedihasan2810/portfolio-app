@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import localFont from "next/font/local";
 import Image from "next/image";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -12,6 +12,7 @@ import img3 from "../../../public/images/img3.jpg";
 import img4 from "../../../public/images/img4.jpg";
 import img5 from "../../../public/images/img5.jpg";
 import img6 from "../../../public/images/img6.jpg";
+import imgBgRemove from "../../../public/images/img4-removebg.png";
 const myFont = localFont({
   src: [
     {
@@ -19,46 +20,39 @@ const myFont = localFont({
       weight: "900",
       style: "normal",
     },
-    {
-      path: "/../../../public/Poppins/Poppins-Bold.ttf",
-      weight: "600",
-      style: "normal",
-    },
+    // {
+    //   path: "/../../../public/Poppins/Poppins-Bold.ttf",
+    //   weight: "600",
+    //   style: "normal",
+    // },
   ],
 });
 
 import "./hero.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
+import Navbar from "../Navbar/Navbar";
+
+const creativeLetters1 = ["A", "C", "R", "E"];
+const creativeLetters2 = ["A", "T", "I", "V", "E"];
+const developerLetters1 = ["D", "E", "V", "E"];
+const developerLetters2 = ["L","O", "P", "E", "R"];
 
 export default function Hero() {
-  const [windmilLeft, setWindmilLeft] = useState<number>(0);
-  const [windmilTop, setWindmilTop] = useState<number>(0);
   const { skillTop, navBottom } = useGlobalContext();
 
-  // console.log(skillTop)
-  const windmilRef = useRef<HTMLDivElement>(null!);
-  const windmilStickRef = useRef<HTMLSpanElement>(null!);
   const heroRef = useRef<HTMLDivElement>(null!);
-
-  // useLayoutEffect(() => {
-  //   //  console.log(windmilRef.current)
-  //   const windmilStick = windmilStickRef.current.getBoundingClientRect();
-  //   const left = (windmilStick.left + windmilStick.right) / 2;
-  //   setWindmilLeft(left)
-  //   setWindmilTop(windmilStick.top)
-  //   // windmilRef.current.style.left = `${center}px`;
-  //   // windmilRef.current.style.top = `${windmilStick.top}px`;
-  //   // console.log(windmilStick)
-  //   // console.log(center)
-  //   // console.log(windmilStick.top)
-
-  // }, [])
+  const developerLetterBgRef1 = useRef<HTMLSpanElement>(null!);
+  const developerLetterBgRef2 = useRef<HTMLSpanElement>(null!);
+  const creativeLetterBgRef1 = useRef<HTMLSpanElement>(null!);
+  const creativeLetterBgRef2 = useRef<HTMLSpanElement>(null!);
+  const webRef = useRef<HTMLDivElement>(null!);
+  const webAuthorRef = useRef<HTMLDivElement>(null!);
 
   useLayoutEffect(() => {
     const windowHeight = document.documentElement.clientHeight;
     const heroHeight = heroRef.current.clientTop;
-    console.dir(heroHeight)
-    console.log(navBottom)
+    console.dir(heroHeight);
+    console.log(navBottom);
 
     if (skillTop === null) {
       return;
@@ -78,145 +72,137 @@ export default function Hero() {
         return;
       }
 
-      console.log(parseInt(''+(1 - fixedPercentage) * 100))
+      console.log(parseInt("" + (1 - fixedPercentage) * 100));
 
       heroRef.current.style.opacity = `${fixedPercentage}`;
-      heroRef.current.style.transform = `perspective(2000px) rotateX(${parseInt(''+(1 - fixedPercentage) * 100)}deg) scale(${fixedPercentage})`;
+      heroRef.current.style.transform = `perspective(2000px) rotateX(${parseInt(
+        "" + (1 - fixedPercentage) * 100
+      )}deg) scale(${fixedPercentage})`;
     }
   }, [skillTop]);
 
-  useEffect(() => {
-    const itemsContainer = document.querySelector(".habit-item-con");
-
-    let intervalId: NodeJS.Timeout;
-    let countElements = 1;
-
-    if (itemsContainer !== null) {
-      const items = itemsContainer.querySelectorAll("span");
-      intervalId = setInterval(() => {
-        countElements++;
-
-        let currentItem = itemsContainer.querySelector(".active");
-        if (currentItem === null) return;
-        currentItem.classList.remove("active");
-
-        if (countElements > items.length) {
-          items[0].classList.add("active");
-          countElements = 1;
-        } else {
-          currentItem.nextElementSibling?.classList.add("active");
-        }
-      }, 2500);
+  const handleLetterPointerOver = (
+    event: React.PointerEvent<HTMLSpanElement>
+  ) => {
+    const letterElement = event.currentTarget;
+    const perentElementClassName = letterElement.parentElement?.className;
+    let letterBgElement;
+    if (perentElementClassName === "developer-first") {
+      letterBgElement = developerLetterBgRef1.current;
+    } else if (perentElementClassName === "developer-second") {
+      letterBgElement = developerLetterBgRef2.current;
+    } else if (perentElementClassName === "creative-first") {
+      letterBgElement = creativeLetterBgRef1.current;
+    } else {
+      letterBgElement = creativeLetterBgRef2.current;
     }
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+    letterBgElement.style.width = `${letterElement.offsetWidth}px`;
+    letterBgElement.style.left = `${letterElement.offsetLeft}px`;
+    letterBgElement.style.opacity = "1";
+  };
+
+  function handleLetterPointerOut(event: React.PointerEvent<HTMLSpanElement>) {
+    const bgElement = event.currentTarget;
+    const perentElementClassName = bgElement.parentElement?.className;
+    let letterBgElement;
+    if (perentElementClassName === "developer-first") {
+      letterBgElement = developerLetterBgRef1.current;
+    } else if (perentElementClassName === "developer-second") {
+      letterBgElement = developerLetterBgRef2.current;
+    } else if (perentElementClassName === "creative-first") {
+      letterBgElement = creativeLetterBgRef1.current;
+    } else {
+      letterBgElement = creativeLetterBgRef2.current;
+    }
+
+    letterBgElement.style.opacity = "0";
+  }
+
   return (
     <div ref={heroRef} className="hero-container">
-      <div className="center-container">
-        <div className="left">
-          <div className="author-title">
-            <span className={`${myFont.className} hi-there`}>
-              Hi there, I&#39;m
+
+
+      <Navbar/>
+
+      <div className="hero-title-container">
+        
+        <h1 className={myFont.className}>
+          <div ref={webRef} className="creative">
+            <span className="creative-first">
+              {creativeLetters1.map((letter, index) => (
+                <span
+                  key={index}
+                  onPointerOver={handleLetterPointerOver}
+                  onPointerOut={handleLetterPointerOut}
+                >
+                  {letter}
+                </span>
+              ))}
+
+              <span
+                ref={creativeLetterBgRef1}
+                className="creative-letter-bg-1"
+              ></span>
             </span>
 
-            {/* <div ref={windmilRef} className="windmil-container">
-        <div className="leaf leaf-1"></div>
-        <div className="leaf leaf-2"></div>
-        <div className="leaf leaf-3"></div>
-        <div className="leaf leaf-4"></div>
-        <div className="leaf leaf-5"></div>
-        <div className="leaf leaf-6"></div>
-        <div className="leaf leaf-7"></div>
-        <div className="center-bullet"></div>
-      </div> */}
+            <span className="creative-second">
+              {creativeLetters2.map((letter, index) => (
+                <span
+                  key={index}
+                  onPointerOver={handleLetterPointerOver}
+                  onPointerOut={handleLetterPointerOut}
+                >
+                  {letter}
+                </span>
+              ))}
 
-            <h1 className={`${myFont.className} main-title`}>Mehedi Hasan.</h1>
-            {/* <div className="windmil-stick-container">
-              d
-
-
-
-      <div ref={windmilRef} className="windmil-container">
-        <div className="leaf leaf-1"></div>
-        <div className="leaf leaf-2"></div>
-        <div className="leaf leaf-3"></div>
-        <div className="leaf leaf-4"></div>
-        <div className="leaf leaf-5"></div>
-        <div className="leaf leaf-6"></div>
-        <div className="leaf leaf-7"></div>
-        <div className="center-bullet"></div>
-      </div>
-
-
-
-
-              <span ref={windmilStickRef} className="windmil-stick"></span>   
-              </div> 
-              {' '} */}
-
-            <div className="habit-con-right">
-              <div className="habit-con">
-                <span>A </span>
-                <div className="habit-item-con">
-                  <span className="active"> Full Stack Web Developer.</span>
-                  <span>Javascript Enthusiast.</span>
-                  {/* <span className="non-active">Traveler</span> */}
-                </div>
-              </div>
-            </div>
+              <span
+                ref={creativeLetterBgRef2}
+                className="creative-letter-bg-2"
+              ></span>
+            </span>
           </div>
+        </h1>
 
-          <p className="author-desc">
-            And a guy who always likes to explore new technologies, can easily
-            cope with the new technology, environment, team, and prioritizes
-            user experience most. Currently working with languages like
-            javascript, typescript and main frontend tech reactjs, nextjs, and
-            backend tech nodejs, expressjs, mongoose, and mongodb.
-          </p>
+        <h1 className={myFont.className}>
+          <div className="developer">
+            <span className="developer-first">
+              {developerLetters1.map((letter, index) => (
+                <span
+                  key={index}
+                  onPointerOver={handleLetterPointerOver}
+                  onPointerOut={handleLetterPointerOut}
+                >
+                  {letter}
+                </span>
+              ))}
 
-          <div className="socials">
-            <button>
-              <GitHubIcon /> <span>GitHub</span>
-            </button>
-            <button>
-              <LinkedInIcon /> <span>LinkedIn</span>
-            </button>
-            <button>
-              <EmailIcon /> <span>Email</span>
-            </button>
-            <button>
-              <ArticleIcon /> <span>Resume</span>
-            </button>
+              <span
+                ref={developerLetterBgRef1}
+                className="developer-letter-bg-1"
+              ></span>
+            </span>
+
+            <span className="developer-second">
+              {developerLetters2.map((letter, index) => (
+                <span
+                  key={index}
+                  onPointerOver={handleLetterPointerOver}
+                  onPointerOut={handleLetterPointerOut}
+                >
+                  {letter}
+                </span>
+              ))}
+
+              <span
+                ref={developerLetterBgRef2}
+                className="developer-letter-bg-2"
+              ></span>
+            </span>
           </div>
-        </div>
-
-        <div className="right">
-          <div className="scene">
-            <div className="cube">
-              <div className="cube__face cube__face--front">
-                <Image src={img3} alt="" width={400} height={400} />
-              </div>
-              <div className="cube__face cube__face--back">
-                <Image src={img1} alt="" width={400} height={400} />
-              </div>
-              <div className="cube__face cube__face--right">
-                <Image src={img5} alt="" width={400} height={400} />
-              </div>
-              <div className="cube__face cube__face--left">
-                <Image src={img6} alt="" width={400} height={400} />
-              </div>
-              <div className="cube__face cube__face--top">
-                <Image src={img2} alt="" width={400} height={400} />
-              </div>
-              <div className="cube__face cube__face--bottom">
-                <Image src={img4} alt="" width={400} height={400} />
-              </div>
-            </div>
-          </div>
-        </div>
+        </h1>
+        <p className="based-in">based in Bangladesh</p>
       </div>
     </div>
   );

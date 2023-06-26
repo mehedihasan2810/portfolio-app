@@ -1,0 +1,221 @@
+.about-container {
+  height: calc(100vh);
+  position: relative;
+  background: #0d0d0d;
+}
+
+.about-info-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.about-info-center {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.about-info-center > :nth-child(1) {
+  color: #b7ab98;
+  align-self: flex-start;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.about-info-center > :nth-child(2) {
+  color: #b7ab98;
+  /* font-size: 1.2rem; */
+  font-size: 3.5rem;
+  font-weight: 900;
+  /* max-width: 50ch; */
+  letter-spacing: 0.2rem;
+}
+
+.about-social {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.about-social button {
+  font: inherit;
+  font-size: 1.2rem;
+  color: #b7ab98;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  background: #b7ab9819;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+
+  transform: perspective(800px) rotateY(25deg) rotateX(10deg);
+  filter: blur(1px);
+  opacity: 0.8;
+  transition: 0.6s ease all;
+}
+
+.about-social button:hover {
+  transform: perspective(800px) rotateY(-2deg) translateY(-5px) rotateX(2deg);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.about-social a:first-child {
+  position: relative;
+  padding: 0.6rem 1rem 0.6rem 1.5rem;
+}
+.about-social a:last-child {
+  position: relative;
+  padding: 0.6rem 1.3rem 0.6rem 1rem;
+}
+.about-social button::before,
+.about-social a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 0%;
+  width: 100%;
+
+  transition: all 300ms ease-in;
+}
+
+.about-social button:hover::before,
+.about-social a:hover::before {
+  height: 100%;
+  background: #eb5a39ab;
+}
+
+
+
+.about-social > :nth-child(1) {
+  /* width: 121px; */
+  /* height: 50px; */
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.download-show {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  /* padding: 0.6rem 1.5rem; */
+  border-radius: 4px;
+  background: #b7ab9819;
+  transform:
+    /* translateY(50px)  */ scale(0.5);
+  opacity: 0;
+  display: flex;
+  /* gap: 0.3rem; */
+  transition: all 300ms ease-in;
+}
+
+.about-social > :nth-child(1):hover .download-show {
+  transform: translateY(50px) scale(1);
+  opacity: 1;
+}
+
+.cube-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.scene {
+  width: 400px;
+  height: 400px;
+
+  perspective: 700px;
+}
+
+.cube {
+  width: 400px;
+  height: 400px;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-200px);
+  animation: spinCube 30s infinite linear;
+}
+
+@keyframes spinCube {
+  0% {
+    transform: translateZ(-200px) rotateX(0deg) rotateY(0deg);
+  }
+  14.29% {
+    transform: translateZ(-200px) rotateY(90deg);
+  }
+  28.58% {
+    transform: translateZ(-200px) rotateY(180deg);
+  }
+  42.87% {
+    transform: translateZ(-200px) rotateY(270deg);
+  }
+  57.16% {
+    transform: translateZ(-200px) rotateX(90deg);
+  }
+  71.45% {
+    transform: translateZ(-200px) rotateX(180deg);
+  }
+  85.74% {
+    transform: translateZ(-200px) rotateX(270deg);
+  }
+  100% {
+    transform: translateZ(-200px) rotateX(360deg);
+  }
+}
+
+.cube img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.cube__face {
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+}
+
+.cube__face--front {
+  transform: rotateY(0deg) translateZ(220px);
+}
+.cube__face--right {
+  transform: rotateY(90deg) translateZ(220px);
+}
+.cube__face--back {
+  transform: rotateY(180deg) translateZ(220px);
+}
+.cube__face--left {
+  transform: rotateY(-90deg) translateZ(220px);
+}
+.cube__face--top {
+  transform: rotateX(90deg) translateZ(220px);
+}
+.cube__face--bottom {
+  transform: rotateX(-90deg) translateZ(220px);
+}
+
+.cube.is-backface-hidden .cube__face {
+  backface-visibility: hidden;
+}

@@ -1,0 +1,39 @@
+footer {
+  height: calc(100vh);
+  /* background-color: #27374d; */
+  /* clip-path: polygon(100% 100%, 0% 100% , 0.00% 21.84%, 20.00% 2.37%, 40.00% 14.40%, 60.00% 14.40%, 80.00% 2.37%, 100.00% 21.84%); */
+  display: grid;
+  place-items: center;
+}
+
+footer h1{
+  font-size: 16rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  border: 1px solid;
+  perspective: 300px;
+  width: fit-content;
+}
+
+footer span{
+transform-style: preserve-3d;
+display: inline-block;
+/* border: 1px solid red; */
+}
+
+footer .first{
+  transform: 
+  /* perspective(600px)  */
+  rotateY(8deg);
+}
+footer .middle{
+  transform: 
+  /* perspective(600px) */
+   translateZ(-60px);
+}
+
+footer .last{
+  transform: 
+  /* perspective(600px) */
+   rotateY(-8deg);
+}
