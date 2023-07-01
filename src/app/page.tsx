@@ -17,11 +17,31 @@ import { useGlobalContext } from "@/contexts/useGlobalContext";
 export default function Home() {
 const smoothWrapRef = useRef<HTMLDivElement>(null!)
 const cursorElementRef = useRef<HTMLDivElement>(null!)
-const {clientX, clientY} = useGlobalContext()
+const {clientX, clientY, isCursorHide} = useGlobalContext()
   
+useLayoutEffect(() => {
+  
+//   console.clear()
+// console.log(isCursorHide)
 
+//   if(!isCursorHide){
+//     cursorElementRef.current.style.width = '0px';
+//     cursorElementRef.current.style.height = '0px';
+//   }else{
+//     cursorElementRef.current.style.width = '20px';
+//     cursorElementRef.current.style.height = '20px';
+//   }
+
+
+
+
+
+
+
+}, [isCursorHide])
   
   useLayoutEffect(() => {
+
 
 
 

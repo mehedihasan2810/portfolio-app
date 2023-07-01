@@ -1,13 +1,12 @@
 "use client";
 import { createContext, useEffect, useState, useLayoutEffect } from "react";
 export type ProviderStates = {
-  setSkillConTop: (top: number) => void;
-  skillTop: number | null;
-  setNavConbottom: (top: number) => void;
-  navBottom: number | null;
+  showCursorElement: () => void;
+  hideCursorElement: () => void;
   documentScrollTop: number;
   clientX: number;
   clientY: number;
+  isCursorHide: boolean;
 };
 const AppContext = createContext<ProviderStates | null>(null);
 
@@ -17,13 +16,15 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [documentScrollTop, setDocumentScrollTop] = useState<number>(0);
   const [clientX, setClientX] = useState<number>(0);
   const [clientY, setClientY] = useState<number>(0);
+  const [isCursorHide, setIsCursorHide] = useState<boolean>(false);
 
-  function setSkillConTop(top: number) {
-    setSkillTop(top);
-  }
-  function setNavConbottom(bottom: number) {
-    setNavbottom(bottom);
-  }
+ function showCursorElement() {
+  setIsCursorHide(true)
+ }
+ function hideCursorElement() {
+  setIsCursorHide(false)
+ }
+  
 
   useLayoutEffect(() => {
     function handlePointerMove(event: PointerEvent) {
@@ -53,10 +54,9 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AppContext.Provider
       value={{
-        setSkillConTop,
-        skillTop,
-        setNavConbottom,
-        navBottom,
+        showCursorElement,
+        hideCursorElement,
+        isCursorHide,
         documentScrollTop,
         clientX,
         clientY,

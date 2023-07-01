@@ -22,10 +22,10 @@ export default function hoverOverlay(
   const elementHeight = element.offsetHeight;
 
   if (
-    clientX > elementX - 50 &&
-    clientX < elementX + elementWidth + 50 &&
-    clientY > elementY - 50 &&
-    clientY < elementY + 50 + elementHeight
+    clientX >= elementX - 50 &&
+    clientX <= elementX + elementWidth + 50 &&
+    clientY >= elementY - 50 &&
+    clientY <= elementY + 50 + elementHeight
   ) {
     const circleX = clientX - elementX;
     const circleY = clientY - elementY;
@@ -44,10 +44,10 @@ export default function hoverOverlay(
    
 
     if (
-      clientX > elementX &&
-      clientX < elementX + elementWidth &&
-      clientY > elementY &&
-      clientY < elementY + elementHeight
+      clientX >= elementX &&
+      clientX <= elementX + elementWidth &&
+      clientY >= elementY &&
+      clientY <= elementY + elementHeight
     ) {
      
       // cursorElement.style.opacity = '0'

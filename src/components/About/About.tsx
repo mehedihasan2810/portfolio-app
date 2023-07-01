@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import img1 from "../../../public/images/img1.jpg";
 import img2 from "../../../public/images/img2.jpg";
@@ -10,11 +10,16 @@ import img6 from "../../../public/images/img6.jpg";
 
 import "./about.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
+import isCursorOnElement from "@/utils/isCursorOnElement";
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null!);
-  const { documentScrollTop } = useGlobalContext();
+  const aboutInfoRef = useRef<HTMLDivElement>(null!);
+  const aboutLi1Ref = useRef<HTMLLIElement>(null!);
+  const aboutLi2Ref = useRef<HTMLLIElement>(null!);
+  const aboutLi3Ref = useRef<HTMLLIElement>(null!);
+  const { documentScrollTop, hideCursorElement, showCursorElement, clientX, clientY } = useGlobalContext();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -38,12 +43,31 @@ export default function About() {
     }
   }, [documentScrollTop]);
 
+
+
+  useLayoutEffect(() => {
+    const cursorElement = document.querySelector('.cursor-element') as HTMLDivElement;
+    if(
+      isCursorOnElement(clientX, clientY, aboutInfoRef.current) || isCursorOnElement(clientX, clientY, aboutLi1Ref.current) || isCursorOnElement(clientX, clientY, aboutLi2Ref.current) || 
+      isCursorOnElement(clientX, clientY, aboutLi3Ref.current)){
+        cursorElement.style.width = '0px';
+    cursorElement.style.height = '0px';
+    }else{
+      cursorElement.style.width = '20px';
+          cursorElement.style.height = '20px';
+    }
+         
+  }, [clientX, clientY, aboutInfoRef, aboutLi1Ref, aboutLi2Ref, aboutLi3Ref])
+
+
+  // function handleHideCursor
+
   return (
     <div ref={aboutRef} className="about-container">
       <div className="about-info-wrapper">
         <div className="about-info-center">
           <p>About</p>
-          <div className="about-info">
+          <div ref={aboutInfoRef} className="about-info">
             <span>Hi there! My name is Mehedi Hasan. A </span>
             <span>MERN based creative web developer who </span>
             <span>knows how to make websites that not</span>{" "}
@@ -52,29 +76,29 @@ export default function About() {
           </div>
 
           <ul className="about-socials">
-            <li>
-              <a href="" className="social-link">
+            <li ref={aboutLi1Ref}>
+              <a href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link" target="blank" className="social-link">
                 Resume
               </a>
               <div className="mask resume-mask">
-                <a href="">Download</a>
-                <a href="">show</a>
+                <a href="\md_mehedi_hasan_resume.pdf" download >Download</a>
+                <a href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link" target="blank">show</a>
               </div>
             </li>
-            <li>
-              <a href="" className="social-link">
+            <li ref={aboutLi2Ref}>
+              <a href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="blank" className="social-link">
                 LinkedIn
               </a>
-              <a href="" className="mask">
+              <a href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="blank" className="mask">
                 A Professional me
               </a>
             </li>
 
-            <li>
-              <a href="" className="social-link">
+            <li ref={aboutLi3Ref}>
+              <a href="https://github.com/mehedihasan2810"  target="blank" className="social-link">
                 GitHub
               </a>
-              <a href="" className="mask">
+              <a href="https://github.com/mehedihasan2810"  target="blank" className="mask">
                 All the ninja code that I wrote
               </a>
             </li>

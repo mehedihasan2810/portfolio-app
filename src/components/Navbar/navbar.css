@@ -81,7 +81,7 @@ nav li {
   font-weight: 500;
   color: #777777;
   /* min-width: 90px; */
-  /* padding: 0.4rem 0; */
+  /* padding: 0 2rem; */
   /* position: relative;
   overflow-y: hidden;
   height: 50%; */
@@ -90,6 +90,8 @@ nav li {
   display: inline-block;
 
 }
+
+
 
 
 .hero-layer-container li{

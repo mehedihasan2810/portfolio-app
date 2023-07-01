@@ -1,28 +1,16 @@
 .about-container {
   height: calc(100vh);
   position: relative;
-  background: #0d0d0d;
-  color: #fff;
+  background-color: #131313;
 
 
   transform-origin: 50% 90%;
   transition: all 200ms linear;
-  /* background-color: #eceff1; */
-  /* background-color: #0A2647; */
-  /* background-color: #131313; */
+ 
   overflow: hidden;
 }
 
-/* .cursor-pointer{
-  width: 20px;
-  height: 20px;
-  border-radius: 9999px;
-  position: fixed;
-  top: 100px;
-  left: 100px;
-  background: #f99a02;
-  transform: translate(-50%, -50%);
-} */
+
 
 .about-info-wrapper {
   position: absolute;
@@ -31,7 +19,7 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .about-info-center {
@@ -43,13 +31,11 @@
   justify-content: center;
   height: 100%;
   padding: 0 0.5rem;
-  /* position: relative;
-  z-index: 2; */
+ 
 }
 
 .about-info-center > :nth-child(1) {
-  /* color: #b7ab98; */
-  color: #fff;
+  color: #777777;
   align-self: flex-start;
   font-size: max(0.8rem, 1.3vw);
   font-weight: 400;
@@ -58,15 +44,12 @@
 }
 
 .about-info {
-  /* color: #b7ab98; */
-  color: #fff;
-  /* font-size: 3rem; */
-  /* font-size: 2.6vw; */
+  color: #777777;
+ 
   font-size: max(1rem, 2.6vw);
   font-weight: 900;
   letter-spacing: 0.2rem;
   width: 100%;
-  /* height: fit-content; */
   position: relative;
 }
 
@@ -104,14 +87,15 @@
   width: max(200px, 25vw);
 }
 
-.about-socials li a {
+.about-socials li > a {
   display: inline-block;
   font-size: 1.5vw;
-  font-size: max(0.8rem, 1.5vw);
+  font-size: max(0.8rem, 1.4vw);
   width: 100%;
   height: 100%;
   padding: 0.2rem 0.8rem 0.2rem 0;
   width: 100%;
+  color: #777777;
 }
 
 .about-socials li {
@@ -126,9 +110,9 @@
   top: 50%;
   left: 0%;
   transform: translate(-140%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: red;
+  width: 18px;
+  height: 18px;
+  background-color: #EB5939;
   clip-path: polygon(
     0% 15%,
     15% 15%,
@@ -148,7 +132,8 @@
 .about-socials .mask {
   width: 100%;
   height: 100%;
-  background: gold;
+  background: #EB5939;
+  color: #000;
   position: absolute;
   top: 0;
   left: 0;
@@ -160,13 +145,23 @@
 
 .about-socials li:hover .mask {
   clip-path: inset(0 0 0 0);
-  color: #0d0d0d;
 }
 
 .resume-mask {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.resume-mask a{
+  color: #000;
+  display: inline-block;
+  font-size: 1.5vw;
+  font-size: max(0.8rem, 1.4vw);
+  width: 100%;
+  height: 100%;
+  padding: 0.1rem 0.8rem 0.1rem 0;
+  width: 100%;
 }
 
 .resume-mask a:first-child {
