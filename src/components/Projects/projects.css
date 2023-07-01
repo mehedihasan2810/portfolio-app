@@ -1,130 +1,196 @@
-.projects-container{
-   
-    min-height: 100vh;
-    background: #00000018;
-    display: flow-root;
-    padding: 7.5rem 0;
-    background: #000000f0;
+.projects-container {
+  min-height: 100vh;
+  background: #00000018;
+  display: flow-root;
+  padding: 7.5rem 0;
+  background: #1c1d20;
+  transform-origin: 50% 90%;
+  transition: all 200ms linear;
 }
 
-.projects-container h2{
-    text-align: center;
-    padding-top: 4rem;
-    font-size: 3rem;
-    text-transform: uppercase;
+.img1-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transform: translate(-50%, -100%);
+  color: #fff;
+  font-size: 2rem;
 }
 
-.projects-container .project-grid{
-    width: calc(100vw - 10rem);
-    height: calc(100vh - 15rem);
-    margin: 0 auto;
-    /* border: 1px solid; */
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 1rem;
-    padding: 0.5rem;
-
-    /* transform-origin: 80% center;  */
-
-     transform:
-    perspective(2000px)
-    rotateY(-5deg) 
-    translateX(-50px)
-    ;
-  transition:1s ease all;
-
-
-
+.projects-container h2 {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
 }
 
+.projects-container .project-grid {
+  width: calc(100vw - 10rem);
+  height: calc(100vh - 15rem);
+  margin: 0 auto;
+  /* border: 1px solid; */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 1rem;
+  padding: 0.5rem;
 
+  /* transform-origin: 80% center;  */
 
-.project-grid .item{
-    /* border: 1px solid blueviolet; */
-    border-radius:1rem ;
-    transition: all 300ms ease-in;
+  transform: perspective(2000px) rotateY(-5deg) translateX(-50px);
+  transition: 1s ease all;
 }
 
-
-.project-grid .item:not(.item-3):hover{
-    transition: all 400ms ease-out;
-    transform:
-    perspective(1200px)
-    translateZ(-50px)
-    ;
-    /* transform:  scale(1.1); */
-    box-shadow: 0 0 1.5rem hsl(0 0% 100% / 0.8);
+.project-grid .item {
+  /* border: 1px solid blueviolet; */
+  border-radius: 1rem;
+  transition: all 300ms ease-in;
+  overflow: hidden;
+  position: relative;
 }
 
-.project-grid .item img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem;
-}
-
-.project-grid .item-1{
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 3;
-}
-.project-grid .item-2{
-    grid-column: 1 / span 2;
-    grid-row: 4 / span 3;
-}
-.project-grid .item-3{
-    grid-column: 3 / span 3;
-    grid-row: 1 / span 2;
-    perspective: 600px;
-}
-
-.project-grid .flip-card{
-    position: relative;
-    width: 100%;
+.project-info-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: 5; */
+  width: 100%;
   height: 100%;
-    transform-style: preserve-3d;
-    /* transform-origin: top center; */
-    transform-origin: bottom center;
-    transition: transform 800ms ease-out;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  
+  border-radius: 1rem;
+  transform: translateY(100%);
+  padding: 2rem 2rem;
+  display: flex;
+  align-items: flex-end;
+  transition: transform 300ms ease-out;
 }
 
-.project-grid .face{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    backface-visibility: hidden;
-    border-radius: 1rem;
+.project-info {
+  color: #fff;
 }
 
-.project-grid .front-face{
-    background-color: red;
-
-}
-.project-grid .back-face{
-    background-color: blue;
-    transform: rotateX(180deg);
+.project-info h6 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.project-grid .item-3:hover .flip-card{
-    transform: translateY(-100%) rotateX(180deg);
-    /* transform: translateY(100%) rotateX(-180deg); */
-    transition: transform 800ms ease-out;
-    border-radius: 1rem;
+.project-info a:nth-of-type(1) {
+  margin-right: 2px;
 }
 
-
-
-
-.project-grid .item-4{
-    grid-column: 3 / span 3;
-    grid-row: 3 / span 4;
+.project-info a {
+  padding: 0rem 1rem;
+  position: relative;
+  display: inline-block;
 }
-.project-grid .item-5{
-    grid-column: 6 / span 2;
-    grid-row: 1 / span 3;
+
+.project-info a::before {
+  content: "";
+  background-color: rgba(203, 23, 23, 0.9);
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.project-grid .item-6{
-    grid-column: 6 / span 2;
-    grid-row: 4 / span 3;
+
+.project-grid a:hover::before {
+  height: 100%;
+}
+
+.project-grid .item:not(.item-3):hover .project-info-wrapper {
+  transform: translateY(1%);
+}
+
+.project-grid .item:not(.item-3):hover {
+  transition: all 400ms ease-out;
+  transform-origin: top center;
+  transform: perspective(1200px) /* translateZ(-50px) */ rotateX(-4deg);
+  /* transform:  scale(1.1); */
+  /* box-shadow: 0 0 1.5rem hsl(0 0% 100% / 0.8); */
+}
+
+.project-grid .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: block;
+  /* filter: brightness(0.7); */
+}
+
+.project-grid .item-1 {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 3;
+}
+.project-grid .item-2 {
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 3;
+}
+.project-grid .item-3 {
+  grid-column: 3 / span 3;
+  grid-row: 1 / span 2;
+  perspective: 600px;
+}
+
+.project-grid .flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  transition: transform 800ms ease-out;
+}
+
+.project-grid .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  display: grid;
+place-items: center;
+}
+
+.project-grid .front-face {
+  background-color: red;
+}
+.project-grid .back-face {
+  background-color: blue;
+  transform: rotateX(180deg);
+}
+
+.project-grid .back-face span{
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    border: 1px solid;
+    border-radius: 9999px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.project-grid .item-3:hover .flip-card {
+  transform: translateY(-100%) rotateX(180deg);
+  transition: transform 800ms ease-out;
+  border-radius: 1rem;
+}
+
+.project-grid .item-4 {
+  grid-column: 3 / span 3;
+  grid-row: 3 / span 4;
+}
+.project-grid .item-5 {
+  grid-column: 6 / span 2;
+  grid-row: 1 / span 3;
+}
+.project-grid .item-6 {
+  grid-column: 6 / span 2;
+  grid-row: 4 / span 3;
 }

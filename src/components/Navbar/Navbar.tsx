@@ -27,36 +27,29 @@ export default function Navbar() {
     <nav ref={navRef}>
       <div className="center-container">
         <div className="logo-container">
-          <div className="inner-container">
-            <span className="logo">&copy; mehedi hasan</span>
-            <span className="logo">&copy; mehedi hasan</span>
-          </div>
+          <Link href='/'>
+          &copy; mehedi hasan
+          </Link>
+         
         </div>
 
         <ul>
-          <li>
-            <span>
-              <Link href="#">work</Link>
-              <Link className="line" href="#">
-                work
-              </Link>
-            </span>
+          <li className="list-item-1">
+          <Link href="#">about</Link>
+         
+           
           </li>
-          <li>
-            <span>
-              <Link href="#">about</Link>
-              <Link className="line" href="#">
-                about
-              </Link>
-            </span>
+          <li className="list-item-2">
+          <Link href="#">skill</Link>
           </li>
-          <li>
-            <span>
-              <Link href="#">contact</Link>
-              <Link className="line" href="#">
-                contact
-              </Link>
-            </span>
+          <li className="list-item-3">
+          <Link href="#">work</Link>
+           
+          </li>
+         
+          <li className="list-item-4">
+          <Link href="#">contact</Link>
+           
           </li>
         </ul>
       </div>

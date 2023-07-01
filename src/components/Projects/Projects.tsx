@@ -3,66 +3,104 @@ import Image from "next/image";
 import img1 from "../../../public/images/img1.avif";
 import React, { useRef, useEffect } from "react";
 import "./projects.css";
+import { useGlobalContext } from "@/contexts/useGlobalContext";
 function Projects() {
-  function handleProjectMouseMove(event: React.MouseEvent<HTMLDivElement>) {
-    // const projectCoords = event.currentTarget.getBoundingClientRect();
+  const projectsRef = useRef<HTMLDivElement>(null!);
+  const { documentScrollTop } = useGlobalContext();
 
-    // const center = (projectCoords.right + projectCoords.left) / 2;
+  useEffect(() => {
+    const windowHeight =
+      document.documentElement.clientHeight || document.body.clientHeight;
 
-    // if (event.clientX < center) {
-    //   event.currentTarget.style.transform = `
-    //     perspective(2000px)
-    //     rotateY(-2deg) 
-    //     translateX(-50px)
-    //     `;
-    // }else{
-    //   event.currentTarget.style.transform = `
-    //   perspective(2000px)
-    //   rotateY(2deg) 
-    //   translateX(50px)
-    //   `;
-    // }
-  }
+    if (documentScrollTop < windowHeight * 3) {
+      const percentage = (windowHeight * 3 - documentScrollTop) / windowHeight;
+      const fixedPercentage = +percentage.toFixed(2);
+
+      const rotateX =
+        parseInt("" + (1 - fixedPercentage) * 100) < 0
+          ? 0
+          : parseInt("" + (1 - fixedPercentage) * 100);
+      const scale = fixedPercentage >= 1 ? 1 : fixedPercentage;
+
+      console.log("rotate ", rotateX);
+      console.log("scale ", scale);
+
+      projectsRef.current.style.opacity = `${fixedPercentage}`;
+      projectsRef.current.style.transform = `perspective(2000px) rotateX(${
+        rotateX <= 9 ? 0 : rotateX
+      }deg) scale(${scale >= 0.9 ? 1 : scale})`;
+    }
+  }, [documentScrollTop]);
 
   return (
-    <section className="projects-container">
-      {/* <div className="center-container"> */}
-
-      <div onMouseMove={handleProjectMouseMove} className="project-grid">
+    <section ref={projectsRef} className="projects-container">
+      <div className="project-grid">
         <div className="item item-1">
-          <Image src={img1} alt="" />
+          <Image className="img1" src={img1} alt="" />
+
+          <div className="project-info-wrapper">
+            <div className="project-info">
+              <h6>Summer camp school</h6>
+              <a href="#">Demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
         </div>
         <div className="item item-2">
           {" "}
-          <Image src={img1} alt="" />
+          <Image className="img2" src={img1} alt="" />
+          <div className="project-info-wrapper">
+            <div className="project-info">
+              <h6>Summer camp school</h6>
+              <a href="#">Demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
         </div>
         <div className="item item-3">
-         <div className="flip-card">
-
-          <div className="face front-face">
-          <h2>Projects</h2>
+          <div className="flip-card">
+            <div className="face front-face">
+              <h2>Works</h2>
+            </div>
+            <div className="face back-face">
+              <span>More Work</span>
+            </div>
           </div>
-          <div className="face back-face">
-            <span>More Work</span>
-          </div>
-
-          </div>
-
         </div>
         <div className="item item-4">
           {" "}
-          <Image src={img1} alt="" />
+          <Image className="img3" src={img1} alt="" />
+          <div className="project-info-wrapper">
+            <div className="project-info">
+              <h6>Summer camp school</h6>
+              <a href="#">Demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
         </div>
         <div className="item item-5">
           {" "}
-          <Image src={img1} alt="" />
+          <Image className="img4" src={img1} alt="" />
+          <div className="project-info-wrapper">
+            <div className="project-info">
+              <h6>Summer camp school</h6>
+              <a href="#">Demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
         </div>
         <div className="item item-6">
           {" "}
-          <Image src={img1} alt="" />
+          <Image className="img5" src={img1} alt="" />
+          <div className="project-info-wrapper">
+            <div className="project-info">
+              <h6>Summer camp school</h6>
+              <a href="#">Demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
         </div>
       </div>
-      {/* </div> */}
     </section>
   );
 }

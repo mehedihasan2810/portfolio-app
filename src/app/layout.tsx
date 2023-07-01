@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Poppins, Bebas_Neue } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { AppProvider } from "@/contexts/context";
@@ -12,7 +12,7 @@ const myFont = localFont({
     },
     {
       path: "/../../public/Poppins/Poppins-Bold.ttf",
-      weight: "600",
+      weight: "700",
       style: "normal",
     },
     {
@@ -23,10 +23,7 @@ const myFont = localFont({
   ],
 });
 
-// const inter = Inter({
-//   subsets: ["latin"],
-//   display: "swap",
-// });
+
 
 export const metadata = {
   title: "Create Next App",
