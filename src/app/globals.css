@@ -129,6 +129,7 @@ body {
 }
 
 body{
+  background-color: #000;
 }
 
 
@@ -180,4 +181,13 @@ header{
 /* opacity: 0; */
   transform: translate3d(0, 0, 0);
   transition: transform 300ms cubic-bezier(0.02, 1.23, 0.79, 1.08);
+
+  display: none;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: #fff;
 }

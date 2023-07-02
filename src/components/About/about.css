@@ -5,7 +5,7 @@
 
 
   transform-origin: 50% 90%;
-  transition: all 200ms linear;
+  transition: transform 275ms linear, opacity 275ms linear;
  
   overflow: hidden;
 }

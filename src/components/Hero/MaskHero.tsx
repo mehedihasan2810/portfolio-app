@@ -142,8 +142,6 @@ export default function MaskHero() {
     const list4 = heroLayerContainer.querySelector('.list-item-4') as HTMLLIElement;
     // const navLists = heroLayerContainer.querySelectorAll('li') as NodeListOf<HTMLLIElement>;
 
-    console.log('liiiiii', list3.getBoundingClientRect().width)
-    console.log('liiiiii22', list3.offsetWidth)
 
     const heroFullElementBottom =
       heroFullElement.getBoundingClientRect().bottom;

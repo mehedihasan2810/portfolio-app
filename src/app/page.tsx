@@ -64,11 +64,12 @@ useLayoutEffect(() => {
 
   function tick() {
     requestAnimationFrame(tick)
-    // console.log('tick')
     scroller()
   }
-  requestAnimationFrame(tick)
-  // tick();
+  // requestAnimationFrame(tick)
+  tick();
+
+
   }, [smoothWrapRef])
 
 

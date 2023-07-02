@@ -17,6 +17,7 @@ export default function About() {
   const aboutLi1Ref = useRef<HTMLLIElement>(null!);
   const aboutLi2Ref = useRef<HTMLLIElement>(null!);
   const aboutLi3Ref = useRef<HTMLLIElement>(null!);
+  const cubeRef = useRef<HTMLDivElement>(null!);
   const { documentScrollTop, hideCursorElement, showCursorElement, clientX, clientY } = useGlobalContext();
 
   useLayoutEffect(() => {
@@ -33,13 +34,19 @@ export default function About() {
           : parseInt("" + (1 - fixedPercentage) * 100);
       const scale = fixedPercentage >= 1 ? 1 : fixedPercentage;
 
+      if(scale < 0.20){
+          cubeRef.current.style.animation = 'none';
+      }else{
+        cubeRef.current.style.animation = 'spinCube 30s infinite linear';
+      }
+
       console.log("rotate ", rotateX);
       console.log("scale ", scale);
 
       aboutRef.current.style.opacity = `${fixedPercentage}`;
       aboutRef.current.style.transform = `perspective(2000px) rotateX(${
-        rotateX <= 9 ? 0 : rotateX
-      }deg) scale(${scale >= 0.9 ? 1 : scale})`;
+        rotateX <= 9 ? 0 : rotateX > 75 ? 75 : rotateX
+      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.20 ? 0.20 : scale})`;
     }
   }, [documentScrollTop]);
 
@@ -107,7 +114,7 @@ export default function About() {
       </div>
       <div className="cube-wrapper">
         <div className="scene">
-          <div className="cube">
+          <div ref={cubeRef} className="cube">
             <div className="cube__face cube__face--front">
               <Image src={img3} alt="" width={400} height={400} />
             </div>
