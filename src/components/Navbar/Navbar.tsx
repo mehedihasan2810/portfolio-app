@@ -6,22 +6,8 @@ import { useGlobalContext } from "@/contexts/useGlobalContext";
 
 export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null!);
-  const {setNavConbottom} = useGlobalContext()
 
-// useLayoutEffect(() => {
- 
-     
-// function handleGetNavCoords() {
-//   const navCoords = navRef.current.getBoundingClientRect()
-//   setNavConbottom(navCoords.bottom)
-// }
 
-//   window.addEventListener('scroll', handleGetNavCoords)
-  
-//   return () => {
-//     window.removeEventListener('scroll', handleGetNavCoords)
-//   }
-// }, [])
 
   return (
     <nav ref={navRef}>

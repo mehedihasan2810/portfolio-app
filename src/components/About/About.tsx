@@ -11,16 +11,23 @@ import img6 from "../../../public/images/img6.jpg";
 import "./about.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
 import isCursorOnElement from "@/utils/isCursorOnElement";
+import useMatchMedia from "@/hooks/useMatchMedia";
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null!);
   const aboutInfoRef = useRef<HTMLDivElement>(null!);
   const aboutLi1Ref = useRef<HTMLLIElement>(null!);
   const aboutLi2Ref = useRef<HTMLLIElement>(null!);
   const aboutLi3Ref = useRef<HTMLLIElement>(null!);
+  const aboutSocialsRef = useRef<HTMLUListElement>(null!);
   const cubeRef = useRef<HTMLDivElement>(null!);
   const { documentScrollTop, hideCursorElement, showCursorElement, clientX, clientY } = useGlobalContext();
+  const isSmallDevice = useMatchMedia('(max-width: 992px)');
 
   useLayoutEffect(() => {
+    
+    if(isSmallDevice){
+      return;
+     }
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -51,7 +58,7 @@ export default function About() {
   }, [documentScrollTop]);
 
 
-
+//* toggle cursor element
   useLayoutEffect(() => {
     const cursorElement = document.querySelector('.cursor-element') as HTMLDivElement;
     if(
@@ -82,7 +89,7 @@ export default function About() {
             <span> provide exceptional user experiences. </span>
           </div>
 
-          <ul className="about-socials">
+          <ul ref={aboutSocialsRef} className="about-socials">
             <li ref={aboutLi1Ref}>
               <a href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link" target="blank" className="social-link">
                 Resume

@@ -123,8 +123,9 @@ useLayoutEffect(() => {
       <Hero />
     </header>
     <main>
-      {/* <Skills/> */}
+    
       <About/>
+        <Skills/>
       {/* <Work/> */}
       <Projects/>
     </main>

@@ -8,19 +8,56 @@ import imgLegalHouse from "../../../public/images/legal-house.png";
 import React, { useRef, useState, useLayoutEffect } from "react";
 import "./projects.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
+import isCursorOnElement from "@/utils/isCursorOnElement";
+import useMatchMedia from "@/hooks/useMatchMedia";
 function Projects() {
   const [currentScrolltop, setCurrentScrolltop] = useState<number>(0);
   const [IsCardFlipped, setIsCardFlipped] = useState<boolean>(false);
   const projectsRef = useRef<HTMLDivElement>(null!);
   const frameId = useRef<unknown>();
-  const { documentScrollTop } = useGlobalContext();
+  const { documentScrollTop, clientX, clientY } = useGlobalContext();
+
+  const isSmallDevice = useMatchMedia('(max-width: 992px)');
+
+
+
+
+
+
+
+  // useLayoutEffect(() => {
+  //   const cursorElement = document.querySelector('.cursor-element') as HTMLDivElement;
+  //   if(
+  //     isCursorOnElement(clientX, clientY, projectsRef.current)){
+  //       cursorElement.style.width = '0px';
+  //   cursorElement.style.height = '0px';
+  //   }else{
+  //     cursorElement.style.width = '20px';
+  //         cursorElement.style.height = '20px';
+  //   }
+         
+  // }, [clientX, clientY, projectsRef])
+
+
+
+
+
+
+
+
+
 
   useLayoutEffect(() => {
+
+    if(isSmallDevice){
+      return;
+     }
+
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
-    if (documentScrollTop < windowHeight * 3) {
-      const percentage = (windowHeight * 3 - documentScrollTop) / windowHeight;
+    if (documentScrollTop < windowHeight * 4) {
+      const percentage = (windowHeight * 4 - documentScrollTop) / windowHeight;
       const fixedPercentage = +percentage.toFixed(2);
 
       const rotateX =
@@ -162,7 +199,7 @@ function Projects() {
 
   return (
     <section ref={projectsRef} className="projects-container">
-      <div className="project-grid">
+      <div  className="project-grid">
         <div
           onPointerEnter={handleImageScrolltoBottom}
           onPointerLeave={handleImageScrollTobottomLeave}

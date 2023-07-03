@@ -7,6 +7,7 @@ import "./hero.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
 import Navbar from "../Navbar/Navbar";
 import MaskHero from "./MaskHero";
+import useMatchMedia from "@/hooks/useMatchMedia";
 
 const creativeLetters1 = ["A", "C", "R", "E"];
 const creativeLetters2 = ["A", "T", "I", "V", "E"];
@@ -15,6 +16,7 @@ const developerLetters2 = ["L", "O", "P", "E", "R"];
 
 export default function Hero() {
   const { documentScrollTop } = useGlobalContext();
+const isSmallDevice = useMatchMedia('(max-width: 992px)');
 
   const heroRef = useRef<HTMLDivElement>(null!);
   const developerLetterBgRef1 = useRef<HTMLSpanElement>(null!);
@@ -24,6 +26,12 @@ export default function Hero() {
   const webRef = useRef<HTMLDivElement>(null!);
 
   useLayoutEffect(() => {
+
+   if(isSmallDevice){
+    return;
+   }
+
+
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -51,7 +59,7 @@ export default function Hero() {
 
 
 
-  }, [documentScrollTop]);
+  }, [documentScrollTop, isSmallDevice]);
 
   return (
     <div ref={heroRef} className="hero-full-container">

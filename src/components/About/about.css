@@ -31,7 +31,6 @@
   justify-content: center;
   height: 100%;
   padding: 0 0.5rem;
- 
 }
 
 .about-info-center > :nth-child(1) {
@@ -46,7 +45,7 @@
 .about-info {
   color: #777777;
  
-  font-size: max(1rem, 2.6vw);
+  font-size: max(0.8rem, 2.6vw);
   font-weight: 900;
   letter-spacing: 0.2rem;
   width: 100%;
@@ -60,7 +59,7 @@
 
 .about-info > span::before {
   content: "";
-  width: 110vw;
+  width: 150vw;
   height: 0%;
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
@@ -257,4 +256,12 @@
 
 .cube.is-backface-hidden .cube__face {
   backface-visibility: hidden;
+}
+
+
+
+@media (max-width: 1024px){
+  .about-info-center{
+    max-width: 750px;
+  }
 }

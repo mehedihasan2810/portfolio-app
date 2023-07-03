@@ -1,5 +1,5 @@
-'use client'
-import {useEffect, useLayoutEffect, useRef} from 'react'
+"use client";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
 import jsIcon from "../../../public/icons/js.png";
@@ -26,7 +26,8 @@ import mongodbIcon from "../../../public/icons/mongodb.png";
 import mongooseIcon from "../../../public/icons/mongoosepng.png";
 import flower1Icon from "../../../public/icons/flower1.png";
 import "./skills.css";
-import { useGlobalContext } from '@/contexts/useGlobalContext';
+import { useGlobalContext } from "@/contexts/useGlobalContext";
+import useMatchMedia from "@/hooks/useMatchMedia";
 
 const myFont = localFont({
   src: [
@@ -44,29 +45,45 @@ const myFont = localFont({
 });
 
 export default function Skills() {
-
-  const skillsRef =  useRef<HTMLDivElement>(null!);
-  const {setSkillConTop, skillTop } = useGlobalContext();
-
-
+  const skillsRef = useRef<HTMLDivElement>(null!);
+  const { documentScrollTop } = useGlobalContext();
+  const isSmallDevice = useMatchMedia('(max-width: 992px)');
 
   useLayoutEffect(() => {
+    if(isSmallDevice){
+      return;
+     }
+    const windowHeight =
+      document.documentElement.clientHeight || document.body.clientHeight;
 
-    function handleWindowScroll() {
-      const windowHeight = document.documentElement.clientHeight;
-      const skillCoords = skillsRef.current.getBoundingClientRect()
-      setSkillConTop(skillCoords.top)
-      // console.log(windowHeight)
-      // console.dir(skillCoords)
+    if (documentScrollTop < windowHeight * 3) {
+      const percentage = (windowHeight * 3 - documentScrollTop) / windowHeight;
+      const fixedPercentage = +percentage.toFixed(2);
+
+      const rotateX =
+        parseInt("" + (1 - fixedPercentage) * 100) < 0
+          ? 0
+          : parseInt("" + (1 - fixedPercentage) * 100);
+      const scale = fixedPercentage >= 1 ? 1 : fixedPercentage;
+
+      
+
+      console.log("rotate ", rotateX);
+      console.log("scale ", scale);
+
+      skillsRef.current.style.opacity = `${fixedPercentage}`;
+      skillsRef.current.style.transform = `perspective(2000px) rotateX(${
+        rotateX <= 9 ? 0 : rotateX > 75 ? 75 : rotateX
+      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.20 ? 0.20 : scale})`;
     }
-    
-    window.addEventListener('scroll', handleWindowScroll)
-  
-    return () => {
-      window.removeEventListener('scroll', handleWindowScroll)
-    }
-  }, [])
-  
+  }, [documentScrollTop]);
+
+
+
+
+
+
+
 
 
   return (
@@ -75,34 +92,6 @@ export default function Skills() {
         <div className="skills-title-container">
           <h2 className={myFont.className}>Skills</h2>
         </div>
-
-
-
-
-
-
-
-
-      {/* <div className="windmil-container">
-        <div className="leaf leaf-1"></div>
-        <div className="leaf leaf-2"></div>
-        <div className="leaf leaf-3"></div>
-        <div className="leaf leaf-4"></div>
-        <div className="leaf leaf-5"></div>
-        <div className="leaf leaf-6"></div>
-        <div className="leaf leaf-7"></div>
-        <div className="center-bullet"></div>
-      </div> */}
-
-
-
-
-
-
-
-
-
-
 
         <div className="grid-container">
           <div className="first">
@@ -155,9 +144,7 @@ export default function Skills() {
               <span>
                 <Image src={daisyIcon} alt="" /> DaisyUI
               </span>
-              <span>
-                <Image src={flowbiteIcon} alt="" /> Flowbite
-              </span>
+              
               <span>
                 <Image src={htmlIcon} alt="" /> The Mighty Html
               </span>
