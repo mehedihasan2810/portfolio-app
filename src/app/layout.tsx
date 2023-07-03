@@ -34,9 +34,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link rel="icon" href="/icon.jpg" type="image/jpg" sizes="any" />
-      </head>
+      </head> */}
       <body className={myFont.className}>
         <AppProvider>{children}</AppProvider>
       </body>
