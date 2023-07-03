@@ -95,19 +95,7 @@ export default function Skills() {
                 <Image src="/icons/redux2.svg" width={20} height={20} alt="" />{" "}
                 Redux
               </span>
-              <span>
-                <Image
-                  src="/icons/react-query.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                />{" "}
-                React Query
-              </span>
-              <span>
-                <Image src="/icons/axios.svg" width={20} height={20} alt="" />{" "}
-                axios
-              </span>
+
               <span>
                 <Image src="/icons/css-3.png" width={20} height={20} alt="" />{" "}
                 CSS
