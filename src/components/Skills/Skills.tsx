@@ -24,7 +24,7 @@ import expressjsIcon from "../../../public/icons/expressjs.png";
 import nodejsIcon from "../../../public/icons/node.png";
 import mongodbIcon from "../../../public/icons/mongodb.png";
 import mongooseIcon from "../../../public/icons/mongoosepng.png";
-import flower1Icon from "../../../public/icons/flower1.png";
+
 import "./skills.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
 import useMatchMedia from "@/hooks/useMatchMedia";
@@ -47,12 +47,12 @@ const myFont = localFont({
 export default function Skills() {
   const skillsRef = useRef<HTMLDivElement>(null!);
   const { documentScrollTop } = useGlobalContext();
-  const isSmallDevice = useMatchMedia('(max-width: 992px)');
+  const isSmallDevice = useMatchMedia("(max-width: 992px)");
 
   useLayoutEffect(() => {
-    if(isSmallDevice){
+    if (isSmallDevice) {
       return;
-     }
+    }
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -66,25 +66,12 @@ export default function Skills() {
           : parseInt("" + (1 - fixedPercentage) * 100);
       const scale = fixedPercentage >= 1 ? 1 : fixedPercentage;
 
-      
-
-      console.log("rotate ", rotateX);
-      console.log("scale ", scale);
-
       skillsRef.current.style.opacity = `${fixedPercentage}`;
       skillsRef.current.style.transform = `perspective(2000px) rotateX(${
         rotateX <= 9 ? 0 : rotateX > 75 ? 75 : rotateX
-      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.20 ? 0.20 : scale})`;
+      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.2 ? 0.2 : scale})`;
     }
   }, [documentScrollTop]);
-
-
-
-
-
-
-
-
 
   return (
     <section ref={skillsRef} className="skills-container">
@@ -144,7 +131,7 @@ export default function Skills() {
               <span>
                 <Image src={daisyIcon} alt="" /> DaisyUI
               </span>
-              
+
               <span>
                 <Image src={htmlIcon} alt="" /> The Mighty Html
               </span>

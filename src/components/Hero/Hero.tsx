@@ -1,8 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
-
-
-
 import "./hero.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
 import Navbar from "../Navbar/Navbar";
@@ -16,7 +13,7 @@ const developerLetters2 = ["L", "O", "P", "E", "R"];
 
 export default function Hero() {
   const { documentScrollTop } = useGlobalContext();
-const isSmallDevice = useMatchMedia('(max-width: 992px)');
+  const isSmallDevice = useMatchMedia("(max-width: 992px)");
 
   const heroRef = useRef<HTMLDivElement>(null!);
   const developerLetterBgRef1 = useRef<HTMLSpanElement>(null!);
@@ -26,11 +23,9 @@ const isSmallDevice = useMatchMedia('(max-width: 992px)');
   const webRef = useRef<HTMLDivElement>(null!);
 
   useLayoutEffect(() => {
-
-   if(isSmallDevice){
-    return;
-   }
-
+    if (isSmallDevice) {
+      return;
+    }
 
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
@@ -38,27 +33,17 @@ const isSmallDevice = useMatchMedia('(max-width: 992px)');
     if (documentScrollTop < windowHeight) {
       const percentage = (windowHeight - documentScrollTop) / windowHeight;
       const fixedPercentage = +percentage.toFixed(2);
-      console.log(fixedPercentage);
       if (fixedPercentage < 0) {
         return;
       }
 
-      console.log(parseInt("" + (1 - fixedPercentage) * 100));
+      
 
       heroRef.current.style.opacity = `${fixedPercentage}`;
       heroRef.current.style.transform = `perspective(2000px) rotateX(${parseInt(
         "" + (1 - fixedPercentage) * 100
       )}deg) scale(${fixedPercentage})`;
     }
-
-
-
-
-    
-
-
-
-
   }, [documentScrollTop, isSmallDevice]);
 
   return (
@@ -67,8 +52,7 @@ const isSmallDevice = useMatchMedia('(max-width: 992px)');
         <Navbar />
 
         <div className="hero-title-container">
-          <h1 
-          >
+          <h1>
             <div ref={webRef} className="creative">
               <span className="creative-first">
                 {creativeLetters1.map((letter, index) => (
@@ -94,8 +78,7 @@ const isSmallDevice = useMatchMedia('(max-width: 992px)');
             </div>
           </h1>
 
-          <h1 
-          >
+          <h1>
             <div className="developer">
               <span className="developer-first">
                 {developerLetters1.map((letter, index) => (
@@ -120,7 +103,6 @@ const isSmallDevice = useMatchMedia('(max-width: 992px)');
               </span>
             </div>
           </h1>
-          {/* <p className="based-in">based in Bangladesh</p> */}
         </div>
       </div>
 

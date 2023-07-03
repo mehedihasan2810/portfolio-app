@@ -6,4 +6,3 @@ class Animate {
 }
 
 const animate = new Animate("foo");
-console.log(animate);

@@ -1,7 +1,6 @@
 .projects-container {
   height: 100vh;
   background: #00000018;
-  /* display: flow-root; */
   padding: 7.5rem 0;
   background-color: #131313;
   transform-origin: 50% 90%;
@@ -65,7 +64,6 @@
 .project-grid .item {
   border-radius: 1rem;
   transition: all 300ms ease-in;
-  /* overflow: hidden; */
   position: relative;
   perspective: 900px;
 }
@@ -100,13 +98,11 @@
 .project-grid .item-5:hover .project-cta {
   transform: translateY(-100%);
   opacity: 1;
-  /* z-index: 2; */
 }
 .project-grid .item-2:hover .project-cta,
 .project-grid .item-4:hover .project-cta,
 .project-grid .item-6:hover .project-cta {
   transform: translateY(100%);
-  /* z-index: 2; */
   opacity: 1;
 }
 
@@ -281,7 +277,6 @@
   .projects-container .project-grid .item {
     grid-column: unset;
     grid-row: unset;
-    /* height: 200px; */
   }
 
   .project-grid .item-1,

@@ -21,7 +21,7 @@ export default function Navbar() {
 
         <ul>
           <li className="list-item-1">
-          <Link href="#">about</Link>
+          <Link href="#about">about</Link>
          
            
           </li>

@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from "react";
 
- const useMatchMedia = (query: string) => {
+const useMatchMedia = (query: string) => {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
@@ -14,11 +14,11 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
     setMatches(mediaQuery.matches);
 
     // Attach event listener for future changes
-    mediaQuery.addEventListener('change', handleChange);
+    mediaQuery.addEventListener("change", handleChange);
 
     // Clean up the event listener when component unmounts
     return () => {
-      mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.removeEventListener("change", handleChange);
     };
   }, [query]);
 

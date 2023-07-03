@@ -4,8 +4,7 @@
   display: grid;
   place-items: center;
   background-color: #eceff1;
-  /* border-bottom-left-radius: 100% 0%; */
-  /* border-bottom-right-radius: 50%; */
+  
   transform-origin: 50% 90%;
   transition: transform 275ms linear, opacity 275ms linear;
   background-color: #131313;
@@ -18,10 +17,10 @@
   margin: 0 auto;
   margin-bottom: 4rem;
   clip-path: polygon(0 0, 100% 24%, 100% 95%, 0 85%);
+  -webkit-clip-path: polygon(0 0, 100% 24%, 100% 95%, 0 85%);
   background: #000000d5;
   color: #777777;
   position: relative;
-
 }
 
 .skills-title-container h2 {
@@ -101,19 +100,17 @@
 }
 
 @media (max-width: 1024px) {
-  .skills-title-container{
+  .skills-title-container {
     margin-bottom: 2rem;
   }
 }
 
-
 @media (max-width: 992px) {
-  .skills-container{
+  .skills-container {
     height: auto;
   }
 
-  
-    .skills-container .grid-container {
-        grid-template-columns: repeat(1, 1fr);
-      }
+  .skills-container .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

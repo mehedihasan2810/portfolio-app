@@ -54,9 +54,7 @@
 .carousel__cell:nth-child(9n+4) { background: hsla(120, 100%, 50%, 0.8); }
 .carousel__cell:nth-child(9n+5) { background: hsla(160, 100%, 50%, 0.8); }
 .carousel__cell:nth-child(9n+6) { background: hsla(200, 100%, 50%, 0.8); }
-/* .carousel__cell:nth-child(9n+7) { background: hsla(240, 100%, 50%, 0.8); }
-.carousel__cell:nth-child(9n+8) { background: hsla(280, 100%, 50%, 0.8); }
-.carousel__cell:nth-child(9n+0) { background: hsla(320, 100%, 50%, 0.8); } */
+
 
 .carousel__cell:nth-child(1) { transform: rotateY(  0deg) translateZ(590px); }
 .carousel__cell:nth-child(2) { transform: rotateY( 60deg) translateZ(590px); }
@@ -64,9 +62,7 @@
 .carousel__cell:nth-child(4) { transform: rotateY(180deg) translateZ(590px); }
 .carousel__cell:nth-child(5) { transform: rotateY(240deg) translateZ(590px); }
 .carousel__cell:nth-child(6) { transform: rotateY(300deg) translateZ(590px); }
-/* .carousel__cell:nth-child(7) { transform: rotateY(240deg) translateZ(288px); }
-.carousel__cell:nth-child(8) { transform: rotateY(280deg) translateZ(288px); }
-.carousel__cell:nth-child(9) { transform: rotateY(320deg) translateZ(288px); } */
+
 
 
 

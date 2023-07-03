@@ -47,8 +47,7 @@ export default function About() {
         cubeRef.current.style.animation = 'spinCube 30s infinite linear';
       }
 
-      console.log("rotate ", rotateX);
-      console.log("scale ", scale);
+   
 
       aboutRef.current.style.opacity = `${fixedPercentage}`;
       aboutRef.current.style.transform = `perspective(2000px) rotateX(${
@@ -74,10 +73,9 @@ export default function About() {
   }, [clientX, clientY, aboutInfoRef, aboutLi1Ref, aboutLi2Ref, aboutLi3Ref])
 
 
-  // function handleHideCursor
 
   return (
-    <div ref={aboutRef} className="about-container">
+    <section id="about" ref={aboutRef} className="about-container">
       <div className="about-info-wrapper">
         <div className="about-info-center">
           <p>About</p>
@@ -143,6 +141,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
