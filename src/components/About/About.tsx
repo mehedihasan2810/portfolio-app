@@ -1,12 +1,6 @@
 "use client";
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
-import img1 from "../../../public/images/img1.jpg";
-import img2 from "../../../public/images/img2.jpg";
-import img3 from "../../../public/images/img3.jpg";
-import img4 from "../../../public/images/img4.jpg";
-import img5 from "../../../public/images/img5.jpg";
-import img6 from "../../../public/images/img6.jpg";
 
 import "./about.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
@@ -20,14 +14,19 @@ export default function About() {
   const aboutLi3Ref = useRef<HTMLLIElement>(null!);
   const aboutSocialsRef = useRef<HTMLUListElement>(null!);
   const cubeRef = useRef<HTMLDivElement>(null!);
-  const { documentScrollTop, hideCursorElement, showCursorElement, clientX, clientY } = useGlobalContext();
-  const isSmallDevice = useMatchMedia('(max-width: 992px)');
+  const {
+    documentScrollTop,
+    hideCursorElement,
+    showCursorElement,
+    clientX,
+    clientY,
+  } = useGlobalContext();
+  const isSmallDevice = useMatchMedia("(max-width: 992px)");
 
   useLayoutEffect(() => {
-    
-    if(isSmallDevice){
+    if (isSmallDevice) {
       return;
-     }
+    }
     const windowHeight =
       document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -41,38 +40,37 @@ export default function About() {
           : parseInt("" + (1 - fixedPercentage) * 100);
       const scale = fixedPercentage >= 1 ? 1 : fixedPercentage;
 
-      if(scale < 0.20){
-          cubeRef.current.style.animation = 'none';
-      }else{
-        cubeRef.current.style.animation = 'spinCube 30s infinite linear';
+      if (scale < 0.2) {
+        cubeRef.current.style.animation = "none";
+      } else {
+        cubeRef.current.style.animation = "spinCube 30s infinite linear";
       }
-
-   
 
       aboutRef.current.style.opacity = `${fixedPercentage}`;
       aboutRef.current.style.transform = `perspective(2000px) rotateX(${
         rotateX <= 9 ? 0 : rotateX > 75 ? 75 : rotateX
-      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.20 ? 0.20 : scale})`;
+      }deg) scale(${scale >= 0.9 ? 1 : scale < 0.2 ? 0.2 : scale})`;
     }
   }, [documentScrollTop]);
 
-
-//* toggle cursor element
+  //* toggle cursor element
   useLayoutEffect(() => {
-    const cursorElement = document.querySelector('.cursor-element') as HTMLDivElement;
-    if(
-      isCursorOnElement(clientX, clientY, aboutInfoRef.current) || isCursorOnElement(clientX, clientY, aboutLi1Ref.current) || isCursorOnElement(clientX, clientY, aboutLi2Ref.current) || 
-      isCursorOnElement(clientX, clientY, aboutLi3Ref.current)){
-        cursorElement.style.width = '0px';
-    cursorElement.style.height = '0px';
-    }else{
-      cursorElement.style.width = '20px';
-          cursorElement.style.height = '20px';
+    const cursorElement = document.querySelector(
+      ".cursor-element"
+    ) as HTMLDivElement;
+    if (
+      isCursorOnElement(clientX, clientY, aboutInfoRef.current) ||
+      isCursorOnElement(clientX, clientY, aboutLi1Ref.current) ||
+      isCursorOnElement(clientX, clientY, aboutLi2Ref.current) ||
+      isCursorOnElement(clientX, clientY, aboutLi3Ref.current)
+    ) {
+      cursorElement.style.width = "0px";
+      cursorElement.style.height = "0px";
+    } else {
+      cursorElement.style.width = "20px";
+      cursorElement.style.height = "20px";
     }
-         
-  }, [clientX, clientY, aboutInfoRef, aboutLi1Ref, aboutLi2Ref, aboutLi3Ref])
-
-
+  }, [clientX, clientY, aboutInfoRef, aboutLi1Ref, aboutLi2Ref, aboutLi3Ref]);
 
   return (
     <section id="about" ref={aboutRef} className="about-container">
@@ -89,28 +87,55 @@ export default function About() {
 
           <ul ref={aboutSocialsRef} className="about-socials">
             <li ref={aboutLi1Ref}>
-              <a href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link" target="blank" className="social-link">
+              <a
+                href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link"
+                target="blank"
+                className="social-link"
+              >
                 Resume
               </a>
               <div className="mask resume-mask">
-                <a href="\md_mehedi_hasan_resume.pdf" download >Download</a>
-                <a href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link" target="blank">show</a>
+                <a href="\md_mehedi_hasan_resume.pdf" download>
+                  Download
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/168leLznsYCQLtoI_0FN_UjKozS6Wtkjq/view?usp=drive_link"
+                  target="blank"
+                >
+                  show
+                </a>
               </div>
             </li>
             <li ref={aboutLi2Ref}>
-              <a href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="blank" className="social-link">
+              <a
+                href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
+                target="blank"
+                className="social-link"
+              >
                 LinkedIn
               </a>
-              <a href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="blank" className="mask">
+              <a
+                href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
+                target="blank"
+                className="mask"
+              >
                 A Professional me
               </a>
             </li>
 
             <li ref={aboutLi3Ref}>
-              <a href="https://github.com/mehedihasan2810"  target="blank" className="social-link">
+              <a
+                href="https://github.com/mehedihasan2810"
+                target="blank"
+                className="social-link"
+              >
                 GitHub
               </a>
-              <a href="https://github.com/mehedihasan2810"  target="blank" className="mask">
+              <a
+                href="https://github.com/mehedihasan2810"
+                target="blank"
+                className="mask"
+              >
                 All the ninja code that I wrote
               </a>
             </li>
@@ -121,22 +146,22 @@ export default function About() {
         <div className="scene">
           <div ref={cubeRef} className="cube">
             <div className="cube__face cube__face--front">
-              <Image src={img3} alt="" width={400} height={400} />
+              <Image src="/images/img3.jpg" alt="" width={400} height={400} />
             </div>
             <div className="cube__face cube__face--back">
-              <Image src={img1} alt="" width={400} height={400} />
+              <Image src="/images/img1.jpg" alt="" width={400} height={400} />
             </div>
             <div className="cube__face cube__face--right">
-              <Image src={img5} alt="" width={400} height={400} />
+              <Image src="/images/img5.jpg" alt="" width={400} height={400} />
             </div>
             <div className="cube__face cube__face--left">
-              <Image src={img6} alt="" width={400} height={400} />
+              <Image src="/images/img6.jpg" alt="" width={400} height={400} />
             </div>
             <div className="cube__face cube__face--top">
-              <Image src={img2} alt="" width={400} height={400} />
+              <Image src="/images/img2.jpg" alt="" width={400} height={400} />
             </div>
             <div className="cube__face cube__face--bottom">
-              <Image src={img4} alt="" width={400} height={400} />
+              <Image src="/images/img4.jpg" alt="" width={400} height={400} />
             </div>
           </div>
         </div>

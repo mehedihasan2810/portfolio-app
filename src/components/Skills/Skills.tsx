@@ -1,29 +1,7 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
-import jsIcon from "../../../public/icons/js.png";
-import tsIcon from "../../../public/icons/typescript.png";
-import reactIcon from "../../../public/icons/react1.png";
-import nextjsIcon from "../../../public/icons/nextjs.png";
-import reduxIcon from "../../../public/icons/redux2.svg";
-import reactQueryIcon from "../../../public/icons/react-query.svg";
-import axiosIcon from "../../../public/icons/axios.svg";
-import bootstrapIcon from "../../../public/icons/bootstrap.png";
-import cssIcon from "../../../public/icons/css-3.png";
-import daisyIcon from "../../../public/icons/daisy.png";
-import tailwindIcon from "../../../public/icons/tailwind.png";
-import flowbiteIcon from "../../../public/icons/flowbite.svg";
-import htmlIcon from "../../../public/icons/html.svg";
-import muiIcon from "../../../public/icons/mui.png";
-import sassIcon from "../../../public/icons/sass.png";
-import reactTestingLibraryIcon from "../../../public/icons/react-testing-library.png";
-import jestIcon from "../../../public/icons/jest.png";
-import postmanIcon from "../../../public/icons/postman.svg";
-import expressjsIcon from "../../../public/icons/expressjs.png";
-import nodejsIcon from "../../../public/icons/node.png";
-import mongodbIcon from "../../../public/icons/mongodb.png";
-import mongooseIcon from "../../../public/icons/mongoosepng.png";
 
 import "./skills.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
@@ -87,10 +65,17 @@ export default function Skills() {
             <div className="first-2">
               <span>
                 {" "}
-                <Image src={jsIcon} alt="" /> JavaScript
+                <Image src="/icons/js.png" width={20} height={20} alt="" />{" "}
+                JavaScript
               </span>
               <span>
-                <Image src={tsIcon} alt="" /> TypeScript
+                <Image
+                  src="/icons/typescript.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                TypeScript
               </span>
             </div>
           </div>
@@ -99,41 +84,68 @@ export default function Skills() {
             <div className={`second-1 ${myFont.className}`}>FrontEnd</div>
             <div className="second-2">
               <span>
-                <Image src={reactIcon} alt="" /> ReactJS
+                <Image src="/icons/react1.png" width={20} height={20} alt="" />{" "}
+                ReactJS
               </span>
               <span>
-                <Image src={nextjsIcon} alt="" /> NextJS
+                <Image src="/icons/nextjs.png" width={20} height={20} alt="" />{" "}
+                NextJS
               </span>
               <span>
-                <Image src={reduxIcon} alt="" /> Redux
+                <Image src="/icons/redux2.svg" width={20} height={20} alt="" />{" "}
+                Redux
               </span>
               <span>
-                <Image src={reactQueryIcon} alt="" /> React Query
+                <Image
+                  src="/icons/react-query.svg"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                React Query
               </span>
               <span>
-                <Image src={axiosIcon} alt="" /> axios
+                <Image src="/icons/axios.svg" width={20} height={20} alt="" />{" "}
+                axios
               </span>
               <span>
-                <Image src={cssIcon} alt="" /> CSS
+                <Image src="/icons/css-3.png" width={20} height={20} alt="" />{" "}
+                CSS
               </span>
               <span>
-                <Image src={sassIcon} alt="" /> Sass
+                <Image src="/icons/sass.png" width={20} height={20} alt="" />{" "}
+                Sass
               </span>
               <span>
-                <Image src={tailwindIcon} alt="" /> TailwindCSS
+                <Image
+                  src="/icons/tailwind.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                TailwindCSS
               </span>
               <span>
-                <Image src={bootstrapIcon} alt="" /> Bootstrap
+                <Image
+                  src="/icons/bootstrap.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                Bootstrap
               </span>
               <span>
-                <Image src={muiIcon} alt="" /> MaterialUI
+                <Image src="/icons/mui.png" width={20} height={20} alt="" />{" "}
+                MaterialUI
               </span>
               <span>
-                <Image src={daisyIcon} alt="" /> DaisyUI
+                <Image src="/icons/daisy.png" width={20} height={20} alt="" />{" "}
+                DaisyUI
               </span>
 
               <span>
-                <Image src={htmlIcon} alt="" /> The Mighty Html
+                <Image src="/icons/html.svg" width={20} height={20} alt="" />{" "}
+                The Mighty Html
               </span>
             </div>
           </div>
@@ -142,16 +154,25 @@ export default function Skills() {
             <div className={`third-1 ${myFont.className}`}>Backend</div>
             <div className="third-2">
               <span>
-                <Image src={nodejsIcon} alt="" /> NodeJS
+                <Image src="/icons/node.png" width={20} height={20} alt="" />{" "}
+                NodeJS
               </span>
               <span>
-                <Image src={expressjsIcon} alt="" /> ExpressJS
+                <Image src="/icons/express.png" width={20} height={20} alt="" />{" "}
+                ExpressJS
               </span>
               <span>
-                <Image src={mongodbIcon} alt="" /> Mongodb
+                <Image src="/icons/mongodb.png" width={20} height={20} alt="" />{" "}
+                Mongodb
               </span>
               <span>
-                <Image src={mongooseIcon} alt="" /> Mongoose
+                <Image
+                  src="/icons/mongoosepng.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                Mongoose
               </span>
             </div>
           </div>
@@ -160,14 +181,21 @@ export default function Skills() {
             <div className={`fourth-1 ${myFont.className}`}>Unit Testing</div>
             <div className="fourth-2">
               <span>
-                <Image src={reactTestingLibraryIcon} alt="" /> React Testing
-                Library
+                <Image
+                  src="/icons/react-testing-library.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />{" "}
+                React Testing Library
               </span>
               <span>
-                <Image src={jestIcon} alt="" /> Jest
+                <Image src="/icons/jest.png" width={20} height={20} alt="" />{" "}
+                Jest
               </span>
               <span>
-                <Image src={postmanIcon} alt="" /> Postman
+                <Image src="/icons/postman.svg" width={20} height={20} alt="" />{" "}
+                Postman
               </span>
             </div>
           </div>

@@ -1,14 +1,8 @@
 "use client";
 import Image from "next/image";
-import imgFunCarFactory from "../../../public/images/fun-car-factory.png";
-import imgChefsKindom from "../../../public/images/chefs-kingdom.png";
-import imglearnInSummer from "../../../public/images/learn-in-summer.png";
-import imgYouJob from "../../../public/images/your-job.png";
-import imgLegalHouse from "../../../public/images/legal-house.png";
 import React, { useRef, useState, useLayoutEffect } from "react";
 import "./projects.css";
 import { useGlobalContext } from "@/contexts/useGlobalContext";
-import isCursorOnElement from "@/utils/isCursorOnElement";
 import useMatchMedia from "@/hooks/useMatchMedia";
 function Projects() {
   const [currentScrolltop, setCurrentScrolltop] = useState<number>(0);
@@ -130,7 +124,6 @@ function Projects() {
 
     function draw(progress: number) {
       frontFaceElement.scrollTop = currentScrolltop * (1 - progress);
-  
     }
 
     animate({
@@ -170,7 +163,13 @@ function Projects() {
         >
           <div className="flip-card">
             <div className="face front-face">
-              <Image className="img1" src={imgLegalHouse} alt="" />
+              <Image
+                className="img1"
+                src="/images/legal-house.png"
+                width={1500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="face back-face">
@@ -214,7 +213,13 @@ function Projects() {
         >
           <div className="flip-card">
             <div className="face front-face">
-              <Image className="img1" src={imglearnInSummer} alt="" />
+              <Image
+                className="img1"
+                src="/images/learn-in-summer.png"
+                width={1500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="face back-face">
@@ -278,7 +283,13 @@ function Projects() {
         >
           <div className="flip-card">
             <div className="face front-face">
-              <Image className="img1" src={imgFunCarFactory} alt="" />
+              <Image
+                className="img1"
+                src="/images/fun-car-factory.png"
+                width={1500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="face back-face">
@@ -325,7 +336,13 @@ function Projects() {
         >
           <div className="flip-card">
             <div className="face front-face">
-              <Image className="img1" src={imgYouJob} alt="" />
+              <Image
+                className="img1"
+                src="/images/your-job.png"
+                width={1500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="face back-face">
@@ -367,7 +384,13 @@ function Projects() {
         >
           <div className="flip-card">
             <div className="face front-face">
-              <Image className="img1" src={imgChefsKindom} alt="" />
+              <Image
+                className="img1"
+                src="/images/chefs-kingdom.png"
+                width={1500}
+                height={500}
+                alt=""
+              />
             </div>
 
             <div className="face back-face">

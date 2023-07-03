@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import "./footer.css";
-import footerImg from "../../../public/images/img4.jpg";
 
 export default function Footer() {
   const footerRef = useRef<HTMLDivElement>(null!);
@@ -11,7 +10,7 @@ export default function Footer() {
     <footer ref={footerRef}>
       <div className="footer-first">
         <div className="footer-img-wrapper">
-          <Image src={footerImg} alt="" />
+          <Image src="/images/img4.jpg" width={200} height={200} alt="" />
           <div className="footer-img-star"></div>
         </div>
 
