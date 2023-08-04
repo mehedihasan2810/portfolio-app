@@ -34,6 +34,7 @@ nav ul {
   display: flex;
   gap: 2rem;
   text-transform: uppercase;
+  
 }
 
 nav li {
