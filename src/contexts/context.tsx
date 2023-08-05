@@ -33,7 +33,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       setClientY(event.clientY);
     }
 
-    document.addEventListener("pointermove", handlePointerMove);
+    // document.addEventListener("pointermove", handlePointerMove);
 
     function handleScroll(event: Event) {
       event.stopPropagation();

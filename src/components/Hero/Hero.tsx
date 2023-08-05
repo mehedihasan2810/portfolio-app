@@ -7,6 +7,7 @@ import { useGlobalContext } from "@/contexts/useGlobalContext";
 import useMatchMedia from "@/hooks/useMatchMedia";
 import useHero from "./hooks/useHero";
 import Image from "next/image";
+import Link from "next/link";
 
 // const creativeLetters1 = ["A", "C", "R", "E"];
 // const creativeLetters2 = ["A", "T", "I", "V", "E"];
@@ -46,7 +47,13 @@ export default function Hero() {
     }
   }, [documentScrollTop, isSmallDevice]);
 
-  const { heroMaskRef, heroImgRef, heroMaskImgRef } = useHero();
+  const {
+    heroMaskRef,
+    heroImgRef,
+    heroMaskImgRef,
+    avatarsRef,
+    pushAvatarsRef,
+  } = useHero();
 
   return (
     <div ref={heroRef} className="hero-full-container">
@@ -66,20 +73,41 @@ export default function Hero() {
               <span> I'm Mehedi Hasan.</span>
             </h1>
             <p>
-              a web developer who is really passionate about creating websites
-              that not only have stunning visuals but also provide amazing user
-              experiences. I also like discovering new technologies.
+              A web developer who is passionate about creating websites that not
+              only have stunning visuals but also provide amazing user
+              experiences. I also like learning new technologies.
             </p>
 
             <div className="hero-social-btns-wrapper">
-              <button>LnkedIn</button>
-              <button>GitHub</button>
-              <button>Facebook</button>
-              <button>Resume</button>
+              <Link href="https://www.linkedin.com/in/md-mehedi-hasan2810" target="_blank">
+                <Image
+                  src="/social-icons/linkedin-black.svg"
+                  alt="linkedin logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link href="https://github.com/mehedihasan2810" target="_blank">
+                <Image
+                  src="/social-icons/github-black2.svg"
+                  alt="github logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link href="https://www.facebook.com/mehedihasan.miraj.79" target="_blank">
+                <Image
+                  src="/social-icons/facebook-black.svg"
+                  alt="facebook logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              {/* <Link href='#'>Resume</Link> */}
             </div>
 
             {/* todo */}
-            <div className="boring-avatars-1">
+            <div ref={pushAvatarsRef} className="boring-avatars-1">
               <svg
                 viewBox="0 0 36 36"
                 fill="none"
@@ -89,7 +117,7 @@ export default function Hero() {
                 height="80"
               >
                 <mask
-                  id=":r9:"
+                  id=":rh:"
                   maskUnits="userSpaceOnUse"
                   x="0"
                   y="0"
@@ -98,47 +126,47 @@ export default function Hero() {
                 >
                   <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
                 </mask>
-                <g mask="url(#:r9:)">
-                  <rect width="36" height="36" fill="#ff7d10"></rect>
+                <g mask="url(#:rh:)">
+                  <rect width="36" height="36" fill="#777"></rect>
                   <rect
                     x="0"
                     y="0"
                     width="36"
                     height="36"
-                    transform="translate(5 -1) rotate(155 18 18) scale(1.2)"
+                    transform="translate(7 1) rotate(133 18 18) scale(1.1)"
                     fill="#000"
                     rx="6"
                   ></rect>
-                  <g transform="translate(3 -4) rotate(-5 18 18)">
+                  <g transform="translate(3.5 -2) rotate(-3 18 18)">
                     <path
-                      d="M15 21c2 1 4 1 6 0"
-                      stroke="#FFFFFF"
+                      d="M15 20c2 1 4 1 6 0"
+                      stroke="#fff"
                       fill="none"
                       stroke-linecap="round"
                     ></path>
                     <rect
-                      x="14"
+                      x="11"
                       y="14"
                       width="1.5"
                       height="2"
                       rx="1"
                       stroke="none"
-                      fill="#FFFFFF"
+                      fill="#fff"
                     ></rect>
                     <rect
-                      x="20"
+                      x="23"
                       y="14"
                       width="1.5"
                       height="2"
                       rx="1"
                       stroke="none"
-                      fill="#FFFFFF"
+                      fill="#fff"
                     ></rect>
                   </g>
                 </g>
               </svg>
             </div>
-            <div className="boring-avatars-2">
+            <div ref={pushAvatarsRef} className="boring-avatars-2">
               <svg
                 viewBox="0 0 36 36"
                 fill="none"
@@ -192,20 +220,242 @@ export default function Hero() {
                 </g>
               </svg>
             </div>
-            <div className="boring-avatars-3">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r22:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r22:)"><rect width="36" height="36" fill="#777"></rect><rect x="0" y="0" width="36" height="36" transform="translate(-5 -5) rotate(89 18 18) scale(1.2)" fill="#000" rx="36"></rect><g transform="translate(-1 -1) rotate(-9 18 18)"><path d="M15 21c2 1 4 1 6 0" stroke="#777" fill="none" stroke-linecap="round"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#777"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#777"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-3">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r22:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r22:)">
+                  <rect width="36" height="36" fill="#777"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(-5 -5) rotate(89 18 18) scale(1.2)"
+                    fill="#000"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-1 -1) rotate(-9 18 18)">
+                    <path
+                      d="M15 21c2 1 4 1 6 0"
+                      stroke="#777"
+                      fill="none"
+                      stroke-linecap="round"
+                    ></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#777"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#777"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
-            <div className="boring-avatars-4">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r35:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r35:)"><rect width="36" height="36" fill="#777"></rect><rect x="0" y="0" width="36" height="36" transform="translate(3 5) rotate(341 18 18) scale(1.2)" fill="#000" rx="36"></rect><g transform="translate(-5 1) rotate(-1 18 18)"><path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path><rect x="13" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#FFFFFF"></rect><rect x="21" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#FFFFFF"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-4">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r35:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r35:)">
+                  <rect width="36" height="36" fill="#777"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(3 5) rotate(341 18 18) scale(1.2)"
+                    fill="#000"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-5 1) rotate(-1 18 18)">
+                    <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
+                    <rect
+                      x="13"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#FFFFFF"
+                    ></rect>
+                    <rect
+                      x="21"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#FFFFFF"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
-            <div className="boring-avatars-5">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r1r:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r1r:)"><rect width="36" height="36" fill="#777"></rect><rect x="0" y="0" width="36" height="36" transform="translate(-5 9) rotate(189 18 18) scale(1)" fill="#000" rx="36"></rect><g transform="translate(-5 4.5) rotate(9 18 18)"><path d="M13,19 a1,0.75 0 0,0 10,0" fill="#fff"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#fff"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#fff"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-5">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r1r:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r1r:)">
+                  <rect width="36" height="36" fill="#777"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(-5 9) rotate(189 18 18) scale(1)"
+                    fill="#000"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-5 4.5) rotate(9 18 18)">
+                    <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#fff"></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#fff"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#fff"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
-            <div className="boring-avatars-6">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r31:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r31:)"><rect width="36" height="36" fill="#777"></rect><rect x="0" y="0" width="36" height="36" transform="translate(9 -5) rotate(219 18 18) scale(1)" fill="#000" rx="6"></rect><g transform="translate(4.5 -3) rotate(-9 18 18)"><path d="M15 19c2 1 4 1 6 0" stroke="#fff" fill="none" stroke-linecap="round"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#fff"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#fff"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-6">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r31:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r31:)">
+                  <rect width="36" height="36" fill="#777"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(9 -5) rotate(219 18 18) scale(1)"
+                    fill="#000"
+                    rx="6"
+                  ></rect>
+                  <g transform="translate(4.5 -3) rotate(-9 18 18)">
+                    <path
+                      d="M15 19c2 1 4 1 6 0"
+                      stroke="#fff"
+                      fill="none"
+                      stroke-linecap="round"
+                    ></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#fff"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#fff"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
+          </div>
 
-
+          {/* bg gradient */}
+          <div className="gradient-top-right-wrapper">
+            <div className="gradient-1"></div>
+            <div className="gradient-2"></div>
+          </div>
+          <div className="gradient-bottom-left-wrapper">
+            <div className="gradient-1"></div>
+            <div className="gradient-2"></div>
           </div>
         </div>
 
@@ -224,20 +474,40 @@ export default function Hero() {
               <span> I'm Mehedi Hasan.</span>
             </h1>
             <p>
-              a web developer who is really passionate about creating websites
-              that not only have stunning visuals but also provide amazing user
-              experiences. I also like discovering new technologies.
+              A web developer who is passionate about creating websites that not
+              only have stunning visuals but also provide amazing user
+              experiences. I also like learning new technologies.
             </p>
 
             <div className="hero-mask-social-btns-wrapper">
-              <button>LnkedIn</button>
-              <button>GitHub</button>
-              <button>Facebook</button>
-              <button>Resume</button>
+              <Link href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="_blank">
+                <Image
+                  src="/social-icons/linkedin-color.svg"
+                  alt="linkedin logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link href="https://github.com/mehedihasan2810" target="_blank">
+                <Image
+                  src="/social-icons/github-color.svg"
+                  alt="github logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
+              <Link href="https://www.facebook.com/mehedihasan.miraj.79" target="_blank">
+                <Image
+                  src="/social-icons/facebook-color.svg"
+                  alt="facebook logo"
+                  width={40}
+                  height={40}
+                />
+              </Link>
             </div>
 
-{/* todo mask */}
-            <div className="boring-avatars-1">
+            {/* todo mask */}
+            <div ref={pushAvatarsRef} className="boring-avatars-1">
               <svg
                 viewBox="0 0 36 36"
                 fill="none"
@@ -297,7 +567,7 @@ export default function Hero() {
               </svg>
             </div>
 
-            <div className="boring-avatars-2">
+            <div ref={pushAvatarsRef} className="boring-avatars-2">
               <svg
                 viewBox="0 0 36 36"
                 fill="none"
@@ -352,23 +622,245 @@ export default function Hero() {
               </svg>
             </div>
 
-            <div className="boring-avatars-3">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r22:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r22:)"><rect width="36" height="36" fill="#ff005b"></rect><rect x="0" y="0" width="36" height="36" transform="translate(-5 -5) rotate(89 18 18) scale(1.2)" fill="#ffb238" rx="36"></rect><g transform="translate(-1 -1) rotate(-9 18 18)"><path d="M15 21c2 1 4 1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-3">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r22:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r22:)">
+                  <rect width="36" height="36" fill="#ff005b"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(-5 -5) rotate(89 18 18) scale(1.2)"
+                    fill="#ffb238"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-1 -1) rotate(-9 18 18)">
+                    <path
+                      d="M15 21c2 1 4 1 6 0"
+                      stroke="#000000"
+                      fill="none"
+                      stroke-linecap="round"
+                    ></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
 
-            <div className="boring-avatars-4">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r35:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r35:)"><rect width="36" height="36" fill="#ffb238"></rect><rect x="0" y="0" width="36" height="36" transform="translate(3 5) rotate(341 18 18) scale(1.2)" fill="#49007e" rx="36"></rect><g transform="translate(-5 1) rotate(-1 18 18)"><path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path><rect x="13" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#FFFFFF"></rect><rect x="21" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#FFFFFF"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-4">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r35:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r35:)">
+                  <rect width="36" height="36" fill="#ffb238"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(3 5) rotate(341 18 18) scale(1.2)"
+                    fill="#49007e"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-5 1) rotate(-1 18 18)">
+                    <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
+                    <rect
+                      x="13"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#FFFFFF"
+                    ></rect>
+                    <rect
+                      x="21"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#FFFFFF"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
 
-            <div className="boring-avatars-5">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r1r:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r1r:)"><rect width="36" height="36" fill="#ff005b"></rect><rect x="0" y="0" width="36" height="36" transform="translate(-5 9) rotate(189 18 18) scale(1)" fill="#ffb238" rx="36"></rect><g transform="translate(-5 4.5) rotate(9 18 18)"><path d="M13,19 a1,0.75 0 0,0 10,0" fill="#000000"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-5">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r1r:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r1r:)">
+                  <rect width="36" height="36" fill="#ff005b"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(-5 9) rotate(189 18 18) scale(1)"
+                    fill="#ffb238"
+                    rx="36"
+                  ></rect>
+                  <g transform="translate(-5 4.5) rotate(9 18 18)">
+                    <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#000000"></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
 
-            <div className="boring-avatars-6">
-            <svg viewBox="0 0 36 36" fill="none" role="img" xmlns="http://www.w3.org/2000/svg" width="80" height="80"><mask id=":r31:" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36"><rect width="36" height="36" rx="72" fill="#FFFFFF"></rect></mask><g mask="url(#:r31:)"><rect width="36" height="36" fill="#ff005b"></rect><rect x="0" y="0" width="36" height="36" transform="translate(9 -5) rotate(219 18 18) scale(1)" fill="#ffb238" rx="6"></rect><g transform="translate(4.5 -3) rotate(-9 18 18)"><path d="M15 19c2 1 4 1 6 0" stroke="#000000" fill="none" stroke-linecap="round"></path><rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect><rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="#000000"></rect></g></g></svg>
+            <div ref={pushAvatarsRef} className="boring-avatars-6">
+              <svg
+                viewBox="0 0 36 36"
+                fill="none"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+              >
+                <mask
+                  id=":r31:"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="36"
+                  height="36"
+                >
+                  <rect width="36" height="36" rx="72" fill="#FFFFFF"></rect>
+                </mask>
+                <g mask="url(#:r31:)">
+                  <rect width="36" height="36" fill="#ff005b"></rect>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="36"
+                    height="36"
+                    transform="translate(9 -5) rotate(219 18 18) scale(1)"
+                    fill="#ffb238"
+                    rx="6"
+                  ></rect>
+                  <g transform="translate(4.5 -3) rotate(-9 18 18)">
+                    <path
+                      d="M15 19c2 1 4 1 6 0"
+                      stroke="#000000"
+                      fill="none"
+                      stroke-linecap="round"
+                    ></path>
+                    <rect
+                      x="10"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                    <rect
+                      x="24"
+                      y="14"
+                      width="1.5"
+                      height="2"
+                      rx="1"
+                      stroke="none"
+                      fill="#000000"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
             </div>
+          </div>
 
-
+          {/* bg mask gradient */}
+          <div className="mask-gradient-top-right-wrapper">
+            <div className="gradient-1"></div>
+            <div className="gradient-2"></div>
+          </div>
+          <div className="mask-gradient-bottom-left-wrapper">
+            <div className="gradient-1"></div>
+            <div className="gradient-2"></div>
           </div>
         </div>
 
