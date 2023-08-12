@@ -142,6 +142,8 @@ export default function About() {
           </ul>
         </div>
       </div>
+
+      
       <div className="cube-wrapper">
         <div className="scene">
           <div ref={cubeRef} className="cube">

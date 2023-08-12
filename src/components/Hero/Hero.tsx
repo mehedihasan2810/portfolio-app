@@ -1,63 +1,22 @@
 "use client";
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import React from "react";
 import "./hero.css";
-import { useGlobalContext } from "@/contexts/useGlobalContext";
-// import Navbar from "../Navbar/Navbar";
-// import MaskHero from "./MaskHero";
-import useMatchMedia from "@/hooks/useMatchMedia";
+
 import useHero from "./hooks/useHero";
 import Image from "next/image";
 import Link from "next/link";
 
-// const creativeLetters1 = ["A", "C", "R", "E"];
-// const creativeLetters2 = ["A", "T", "I", "V", "E"];
-// const developerLetters1 = ["D", "E", "V", "E"];
-// const developerLetters2 = ["L", "O", "P", "E", "R"];
-
 export default function Hero() {
-  const { documentScrollTop } = useGlobalContext();
-  const isSmallDevice = useMatchMedia("(max-width: 992px)");
-
-  const heroRef = useRef<HTMLDivElement>(null!);
-  // const developerLetterBgRef1 = useRef<HTMLSpanElement>(null!);
-  // const developerLetterBgRef2 = useRef<HTMLSpanElement>(null!);
-  // const creativeLetterBgRef1 = useRef<HTMLSpanElement>(null!);
-  // const creativeLetterBgRef2 = useRef<HTMLSpanElement>(null!);
-  // const webRef = useRef<HTMLDivElement>(null!);
-
-  useLayoutEffect(() => {
-    if (isSmallDevice) {
-      return;
-    }
-
-    const windowHeight =
-      document.documentElement.clientHeight || document.body.clientHeight;
-
-    if (documentScrollTop < windowHeight) {
-      const percentage = (windowHeight - documentScrollTop) / windowHeight;
-      const fixedPercentage = +percentage.toFixed(2);
-      if (fixedPercentage < 0) {
-        return;
-      }
-
-      heroRef.current.style.opacity = `${fixedPercentage}`;
-      heroRef.current.style.transform = `perspective(2000px) rotateX(${parseInt(
-        "" + (1 - fixedPercentage) * 100
-      )}deg) scale(${fixedPercentage})`;
-    }
-  }, [documentScrollTop, isSmallDevice]);
-
   const {
     heroMaskRef,
     heroImgRef,
     heroMaskImgRef,
-    avatarsRef,
     pushAvatarsRef,
+    heroRef,
   } = useHero();
 
   return (
     <div ref={heroRef} className="hero-full-container">
-      {/* <Navbar /> */}
       <div className="hero-container">
         <div className="hero-author-info-container">
           <div className="hero-author-info-wrapper">
@@ -65,6 +24,7 @@ export default function Hero() {
               ref={heroImgRef}
               src="/images/hero-img.JPG"
               alt="author image"
+              priority={true}
               width={500}
               height={500}
             />
@@ -79,9 +39,12 @@ export default function Hero() {
             </p>
 
             <div className="hero-social-btns-wrapper">
-              <Link href="https://www.linkedin.com/in/md-mehedi-hasan2810" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
+                target="_blank"
+              >
                 <Image
-                  src="/social-icons/linkedin-black.svg"
+                  src="/social-icons/linkedin-color.svg"
                   alt="linkedin logo"
                   width={40}
                   height={40}
@@ -89,15 +52,18 @@ export default function Hero() {
               </Link>
               <Link href="https://github.com/mehedihasan2810" target="_blank">
                 <Image
-                  src="/social-icons/github-black2.svg"
+                  src="/social-icons/github-color.svg"
                   alt="github logo"
                   width={40}
                   height={40}
                 />
               </Link>
-              <Link href="https://www.facebook.com/mehedihasan.miraj.79" target="_blank">
+              <Link
+                href="https://www.facebook.com/mehedihasan.miraj.79"
+                target="_blank"
+              >
                 <Image
-                  src="/social-icons/facebook-black.svg"
+                  src="/social-icons/facebook-color.svg"
                   alt="facebook logo"
                   width={40}
                   height={40}
@@ -142,7 +108,7 @@ export default function Hero() {
                       d="M15 20c2 1 4 1 6 0"
                       stroke="#fff"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="11"
@@ -255,7 +221,7 @@ export default function Hero() {
                       d="M15 21c2 1 4 1 6 0"
                       stroke="#777"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="10"
@@ -422,7 +388,7 @@ export default function Hero() {
                       d="M15 19c2 1 4 1 6 0"
                       stroke="#fff"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="10"
@@ -480,7 +446,10 @@ export default function Hero() {
             </p>
 
             <div className="hero-mask-social-btns-wrapper">
-              <Link href="https://www.linkedin.com/in/md-mehedi-hasan2810/" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
+                target="_blank"
+              >
                 <Image
                   src="/social-icons/linkedin-color.svg"
                   alt="linkedin logo"
@@ -496,7 +465,10 @@ export default function Hero() {
                   height={40}
                 />
               </Link>
-              <Link href="https://www.facebook.com/mehedihasan.miraj.79" target="_blank">
+              <Link
+                href="https://www.facebook.com/mehedihasan.miraj.79"
+                target="_blank"
+              >
                 <Image
                   src="/social-icons/facebook-color.svg"
                   alt="facebook logo"
@@ -542,7 +514,7 @@ export default function Hero() {
                       d="M15 20c2 1 4 1 6 0"
                       stroke="#000000"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="11"
@@ -657,7 +629,7 @@ export default function Hero() {
                       d="M15 21c2 1 4 1 6 0"
                       stroke="#000000"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="10"
@@ -827,7 +799,7 @@ export default function Hero() {
                       d="M15 19c2 1 4 1 6 0"
                       stroke="#000000"
                       fill="none"
-                      stroke-linecap="round"
+                      strokeLinecap="round"
                     ></path>
                     <rect
                       x="10"

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 
+
 const useMatchMedia = (query: string) => {
   const [matches, setMatches] = useState(false);
 
@@ -8,11 +9,12 @@ const useMatchMedia = (query: string) => {
 
     const handleChange = (event: MediaQueryListEvent) => {
       setMatches(event.matches);
+      window.isMediumDevice = event.matches;
     };
 
     // Initial check
     setMatches(mediaQuery.matches);
-
+    window.isMediumDevice = mediaQuery.matches;
     // Attach event listener for future changes
     mediaQuery.addEventListener("change", handleChange);
 

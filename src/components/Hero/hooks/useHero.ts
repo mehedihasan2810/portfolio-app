@@ -1,61 +1,112 @@
+import { useGlobalContext } from "@/contexts/useGlobalContext";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+gsap.registerPlugin(ScrollTrigger);
+
+// let isAnimationOn = true;
+
+/* The `declare global` block is used to extend the global `Window` interface in TypeScript. In this
+case, it is adding two properties `mouseXpos` and `mouseYpos` to the `Window` interface, both of
+which are of type `number`. This allows the code to access and modify these properties on the
+`window` object. */
+declare global {
+  interface Window {
+    mouseXpos: number;
+    mouseYpos: number;
+  }
+}
 
 const useHero = () => {
   const heroMaskRef = useRef<HTMLDivElement>(null!);
   const heroImgRef = useRef<HTMLImageElement>(null!);
   const heroMaskImgRef = useRef<HTMLImageElement>(null!);
   const avatarsRef = useRef<HTMLDivElement[]>([]);
+  const heroRef = useRef<HTMLDivElement>(null!);
+
   const pushAvatarsRef = (el: HTMLHeadingElement) => {
     if (el && !avatarsRef.current.includes(el)) {
       avatarsRef.current.push(el);
     }
   };
 
+  const { isHeroAnimOn, toggleAnim } = useGlobalContext();
+
+  useEffect(() => {
+    window.mouseXpos = window.innerWidth / 2;
+    window.mouseYpos = window.innerHeight / 2;
+  }, []);
+
   useEffect(() => {
     const windowWidth = window.innerWidth;
+    const windowWidthWhole = 100 / windowWidth;
+    const windowHeight = window.innerHeight;
+    const windowHalfWidth = windowWidth / 2;
+    const windowHalfHeight = windowHeight / 2;
 
-    function handleMouseMove(event: any) {
-      const windowHalfWidth = windowWidth / 2;
-      const isLessHalf = event.clientX < windowWidth / 2;
+    function handleMouseMove(event: PointerEvent) {
+      event.stopPropagation();
 
-      const circleSize = isLessHalf
-        ? windowHalfWidth - event.clientX
-        : event.clientX - windowWidth / 2;
-      const circleSizePercent = Number.parseInt(
-        `${(circleSize / windowHalfWidth) * 100}`
-      );
+      console.clear();
+      window.mouseXpos = event.clientX;
+      window.mouseYpos = event.clientY;
+      console.log(window.mouseXpos);
 
-      const finalCircleSize = isLessHalf
-        ? circleSizePercent
-        : -circleSizePercent;
+      const { clientX } = event;
 
-      heroMaskRef.current.style.clipPath = `circle(${
-        100 + finalCircleSize / 3.3
-      }% at -28% 50%)`;
+      const xPercentage = Math.ceil(clientX * windowWidthWhole);
 
-      // heroImgRef.current.style.transform = `translateX(${
-      //   isLessHalf ? 15 : -15
-      // }px)`;
-      // heroMaskImgRef.current.style.transform = `translateX(${
-      //   isLessHalf ? 15 : -15
-      // }px)`;
+      heroMaskRef.current.style.clipPath = `inset(0 ${xPercentage}% 0 0 )`;
 
-      // move avatars on pointermove
-      const windowHalfHeight = window.innerHeight / 2;
-
-      const avatarX = (windowHalfWidth - event.clientX) / 70;
-      const avatarY = (windowHalfHeight - event.clientY) / 70;
-      console.log(avatarX);
+      const avatarX = (windowHalfWidth - event.clientX) / 60;
+      const avatarY = (windowHalfHeight - event.clientY) / 60;
 
       avatarsRef.current.forEach((el) => {
         const avatarsEl = el as HTMLDivElement;
-        avatarsEl.style.transform = `translate3d(${avatarX}px, ${avatarY}px, 0)`;
+        avatarsEl.style.transform = `translate(${avatarX}px, ${avatarY}px)`;
       });
+      // )
     }
 
-    document.addEventListener("pointermove", handleMouseMove);
+    if (isHeroAnimOn) {
+      heroRef.current.addEventListener("pointermove", handleMouseMove, false);
+    } else {
+      heroRef.current.removeEventListener(
+        "pointermove",
+        handleMouseMove,
+        false
+      );
+    }
 
-    return () => document.addEventListener("pointermove", handleMouseMove);
+    return () => {
+      heroRef.current.removeEventListener(
+        "pointermove",
+        handleMouseMove,
+        false
+      );
+    };
+  }, [isHeroAnimOn]);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      heroRef.current,
+      { rotateX: 0, scale: 1, opacity: 1 },
+      { rotateX: 60, scale: 0.1, opacity: 0.1 }
+    );
+
+    ScrollTrigger.create({
+      animation: tl,
+      trigger: heroRef.current,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+      onToggle: (self) => {
+        toggleAnim("hero", !self.isActive);
+        toggleAnim("star", self.isActive);
+      },
+    });
   }, []);
 
   return {
@@ -64,6 +115,7 @@ const useHero = () => {
     heroMaskImgRef,
     avatarsRef,
     pushAvatarsRef,
+    heroRef,
   };
 };
 
