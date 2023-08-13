@@ -1,14 +1,3 @@
-.works-top-parent-container {
-  /* width: 100vw;
-  height: 100vh;
-  transform-origin: 50% 90%;
-  will-change: transform, opacity;
-  opacity: 1;
-  overflow: hidden;
-  transform: perspective(2000px) rotateX(0) scale(1);
-  transform-origin: 50% 90%;
-  opacity: 1; */
-}
 .works-parent-container {
   width: 100vw;
   height: 100vh;
@@ -86,12 +75,13 @@
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1;
-  margin-block-end: 0.6rem;
 }
 
 .work-1-info-wrapper .about {
-  font-size: 1.3rem;
   font-weight: 500;
+}
+.work-1-info-wrapper h6,
+.work-1-info-wrapper .about {
   margin-block-end: 0.6rem;
 }
 
@@ -102,9 +92,13 @@
 }
 
 .techs-wrapper > div:first-child {
-  font-size: 1.3rem;
   font-weight: 500;
   margin-block-end: 1rem;
+}
+
+.techs-wrapper > div:first-child,
+.work-1-info-wrapper .about {
+  font-size: 1.3rem;
 }
 
 .techs {
@@ -199,6 +193,17 @@
   pointer-events: none;
 }
 
+.work-demo-link-wrapper {
+  display: none;
+  padding-block-start: 0.4rem;
+}
+
+.work-demo-link-wrapper > a {
+  font-size: 1.2rem;
+  text-decoration: underline;
+  color: #cad1d8;
+}
+
 @media (max-width: 1024px) {
   .works-info-wrapper,
   .works-mask-info-wrapper {
@@ -206,6 +211,17 @@
     padding: 3rem 6rem;
   }
 }
+
+@media (max-width: 992px) {
+  .work-moving-link {
+    display: none;
+  }
+
+  .work-demo-link-wrapper {
+    display: block;
+  }
+}
+
 @media (max-width: 768px) {
   .works-info-wrapper,
   .works-mask-info-wrapper {
@@ -219,16 +235,42 @@
     height: 100%;
     position: relative;
   }
+}
 
-  /* .works-mask-info-wrapper {
-    --x: 0px;
-    --y: 0px;
-    --size: 0px;
-    mask-size: var(--size);
-    -webkit-mask-size: var(--size);
-    mask-position: calc(var(--x) - var(--size) / 2)
-      calc(var(--y) - var(--size) / 2);
-    -webkit-mask-position: calc(var(--x) - var(--size) / 2)
-      calc(var(--y) - var(--size) / 2);
-  } */
+@media (max-width: 576px) {
+  .work-1-info-wrapper > * + * {
+    margin-block-start: 0.6rem;
+  }
+
+  .work-1-info-wrapper h6 {
+    font-size: 1.4rem;
+  }
+
+  .work-1-info-wrapper p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .work-1-info-wrapper h6,
+  .work-1-info-wrapper .about {
+    margin-block-end: 0.4rem;
+  }
+
+  .techs {
+    font-size: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .techs > div {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .techs-wrapper > div:first-child,
+  .work-1-info-wrapper .about {
+    font-size: 1.2rem;
+  }
+
+  .techs-wrapper > div:first-child {
+    margin-block-end: 0.8rem;
+  }
 }

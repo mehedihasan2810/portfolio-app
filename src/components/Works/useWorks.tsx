@@ -2,13 +2,9 @@ import { useGlobalContext } from "@/contexts/useGlobalContext";
 import useMatchMedia from "@/hooks/useMatchMedia";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
-declare global {
-  interface Window {
-    isMediumDevice: boolean;
-  }
-}
+
 const useWorks = () => {
   const workParentConRef = useRef<HTMLDivElement>(null!);
   const workTopParentConRef = useRef<HTMLDivElement>(null!);
@@ -18,28 +14,9 @@ const useWorks = () => {
   const workMovingLinkRef = useRef<HTMLAnchorElement>(null!);
   const { isWorksAnimOn, toggleAnim } = useGlobalContext();
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-    const handleChange = (event: MediaQueryListEvent) => {
-      window.isMediumDevice = event.matches;
-    };
-
-    // Initial check
-    window.isMediumDevice = mediaQuery.matches;
-    // Attach event listener for future changes
-    mediaQuery.addEventListener("change", handleChange);
-
-    // Clean up the event listener when component unmounts
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
-  }, []);
+  const isTouchDevices = useMatchMedia("(max-width: 992px)");
 
   useEffect(() => {
-    console.log(window.isMediumDevice);
-    let maskImgSize = window.isMediumDevice ? 400 : 450;
-
     gsap.set(workMovingLinkRef.current, {
       xPercent: -50,
       yPercent: -57,
@@ -88,11 +65,15 @@ const useWorks = () => {
         workMovingLinkRef.current.style.opacity = `0`;
       }
 
-      workMaskInfoRef.current.style.setProperty("--size", `${maskImgSize}px`);
+      workMaskInfoRef.current.style.setProperty("--size", `450px`);
     }
 
-    if (isWorksAnimOn) {
-      window.addEventListener("pointermove", handlePointerMove, false);
+    if (!isTouchDevices) {
+      if (isWorksAnimOn) {
+        window.addEventListener("pointermove", handlePointerMove, false);
+      } else {
+        window.removeEventListener("pointermove", handlePointerMove, false);
+      }
     } else {
       window.removeEventListener("pointermove", handlePointerMove, false);
     }
@@ -100,13 +81,11 @@ const useWorks = () => {
     return () => {
       window.removeEventListener("pointermove", handlePointerMove, false);
     };
-  }, [isWorksAnimOn]);
+  }, [isWorksAnimOn, isTouchDevices]);
 
   useEffect(() => {
-    let maskImgSize = window.isMediumDevice ? 400 : 450;
-
     // set horizontal scroll with gsap
-    gsap.to(workConRef.current, {
+    const tween = gsap.to(workConRef.current, {
       x: -(workConRef.current.offsetWidth - window.innerWidth),
       scrollTrigger: {
         trigger: workParentConRef.current,
@@ -116,36 +95,36 @@ const useWorks = () => {
         onToggle: (s) => {
           toggleAnim("star", !s.isActive);
           toggleAnim("work", s.isActive);
-          if (s.isActive) {
-            workMaskInfoRef.current.style.setProperty(
-              "--size",
-              `${maskImgSize}px`
-            );
-            workMovingLinkRef.current.style.opacity = "0";
-          } else {
-            workMaskInfoRef.current.style.setProperty("--size", `0px`);
-            workMovingLinkRef.current.style.opacity = "0";
+          if (!isTouchDevices) {
+            if (s.isActive) {
+              workMaskInfoRef.current.style.setProperty("--size", `450px`);
+              workMovingLinkRef.current.style.opacity = "0";
+            } else {
+              workMaskInfoRef.current.style.setProperty("--size", `0px`);
+              workMovingLinkRef.current.style.opacity = "0";
+            }
           }
         },
 
         onUpdate: (s) => {
           toggleAnim("work", s.isActive);
-
-          if (s.isActive) {
-            const x =
-              window.mouseXpos -
-              workMaskInfoRef.current.getBoundingClientRect().left;
-            const y =
-              window.mouseYpos -
-              workMaskInfoRef.current.getBoundingClientRect().top;
-            workMaskInfoRef.current.style.setProperty("--x", `${x}px`);
-            workMaskInfoRef.current.style.setProperty("--y", `${y}px`);
+          if (!isTouchDevices) {
+            if (s.isActive) {
+              const x =
+                window.mouseXpos -
+                workMaskInfoRef.current.getBoundingClientRect().left;
+              const y =
+                window.mouseYpos -
+                workMaskInfoRef.current.getBoundingClientRect().top;
+              workMaskInfoRef.current.style.setProperty("--x", `${x}px`);
+              workMaskInfoRef.current.style.setProperty("--y", `${y}px`);
+            }
           }
         },
       },
     });
 
-    gsap.to(workParentConRef.current, {
+    const tween2 = gsap.to(workParentConRef.current, {
       rotateX: 80,
       scale: 0.1,
       opacity: 0.1,
@@ -156,7 +135,12 @@ const useWorks = () => {
         scrub: true,
       },
     });
-  }, []);
+
+    return () => {
+      tween.kill();
+      tween2.kill();
+    };
+  }, [isTouchDevices]);
 
   return {
     workConRef,

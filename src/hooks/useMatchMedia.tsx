@@ -1,10 +1,11 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-
+import { useState } from "react";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 const useMatchMedia = (query: string) => {
   const [matches, setMatches] = useState(false);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    // if(typeof window !== 'undefined'){
     const mediaQuery = window.matchMedia(query);
 
     const handleChange = (event: MediaQueryListEvent) => {

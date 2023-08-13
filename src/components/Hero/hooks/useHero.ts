@@ -1,4 +1,5 @@
 import { useGlobalContext } from "@/contexts/useGlobalContext";
+import useMatchMedia from "@/hooks/useMatchMedia";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
@@ -30,6 +31,8 @@ const useHero = () => {
     }
   };
 
+  const isTouchDevices = useMatchMedia("(max-width: 992px)");
+
   const { isHeroAnimOn, toggleAnim } = useGlobalContext();
 
   useEffect(() => {
@@ -47,10 +50,8 @@ const useHero = () => {
     function handleMouseMove(event: PointerEvent) {
       event.stopPropagation();
 
-      console.clear();
       window.mouseXpos = event.clientX;
       window.mouseYpos = event.clientY;
-      console.log(window.mouseXpos);
 
       const { clientX } = event;
 
@@ -65,11 +66,18 @@ const useHero = () => {
         const avatarsEl = el as HTMLDivElement;
         avatarsEl.style.transform = `translate(${avatarX}px, ${avatarY}px)`;
       });
-      // )
     }
 
-    if (isHeroAnimOn) {
-      heroRef.current.addEventListener("pointermove", handleMouseMove, false);
+    if (!isTouchDevices) {
+      if (isHeroAnimOn) {
+        heroRef.current.addEventListener("pointermove", handleMouseMove, false);
+      } else {
+        heroRef.current.removeEventListener(
+          "pointermove",
+          handleMouseMove,
+          false
+        );
+      }
     } else {
       heroRef.current.removeEventListener(
         "pointermove",
@@ -85,7 +93,7 @@ const useHero = () => {
         false
       );
     };
-  }, [isHeroAnimOn]);
+  }, [isHeroAnimOn, isTouchDevices]);
 
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });

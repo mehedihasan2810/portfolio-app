@@ -234,6 +234,14 @@
   color: gray;
 }
 
+@media (max-width: 992px) {
+  .hero-mask-author-info-container{
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
+  }
+}
+
+
 @media (max-width: 576px) {
 
   :is(.hero-main-heading, .hero-mask-main-heading) span:first-child {

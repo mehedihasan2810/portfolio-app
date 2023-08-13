@@ -103,9 +103,6 @@ export default function Works() {
     const targetEl = event.currentTarget;
     setUrlIndex(targetEl.dataset.workImg as string);
   }
-  function handlePointerLeave(event: PointerEvent<HTMLDivElement>) {
-    // workMovingLinkRef.current.style.display = 'none'
-  }
 
   function handleClick() {
     let clickEvent = new MouseEvent("click");
@@ -166,10 +163,19 @@ export default function Works() {
                     <div>Technologies</div>
                     <div className="techs">
                       {work.technologies.map((tech, index) => (
-                        <div>{tech}</div>
+                        <div key={index}>{tech}</div>
                       ))}
                     </div>
                   </div>
+
+                    {/* todo */}
+                     <div className="work-demo-link-wrapper">
+                     
+                      <Link href={`${work.url}`}>Demo Website</Link>
+                      
+                     </div>
+
+
                 </div>
               ))}
             </div>
@@ -190,7 +196,6 @@ export default function Works() {
                   data-work-img={`${index + 1}`}
                   className="work-1-img-wrapper"
                   onPointerEnter={handlePointerEnter}
-                  onPointerLeave={handlePointerLeave}
                   onClick={handleClick}
                 >
                   <Image
