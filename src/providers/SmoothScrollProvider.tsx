@@ -1,18 +1,20 @@
 "use client";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect } from "react";
-let lenis: any;
+// let lenis: any;
 
-if (typeof window !== "undefined") {
-  lenis = new Lenis();
-}
+// if (typeof window !== "undefined") {
+ 
+// }
 
 const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    const lenis = new Lenis();
     /* The code `lenis.on("scroll", ScrollTrigger.update)` is setting up an event listener for the
    "scroll" event on the `lenis` object. When the "scroll" event is triggered, it will call the
    `ScrollTrigger.update` function. */

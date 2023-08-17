@@ -3,6 +3,8 @@ import { AppProvider } from "@/contexts/context";
 import { Work_Sans } from "next/font/google";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import StarBg from "@/components/ui/StarBg/StarBg";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import Loader from "@/components/Loader/Loader";
 
 const myFont = Work_Sans({
   subsets: ["latin"],
@@ -28,8 +30,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={myFont.className}>
         <AppProvider>
+          <SmoothScrollProvider>
+            <Loader/>
+          <Sidebar/>
           <StarBg />
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+            {children}
+            </SmoothScrollProvider>
         </AppProvider>
       </body>
     </html>

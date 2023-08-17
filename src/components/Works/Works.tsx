@@ -130,17 +130,71 @@ export default function Works() {
         View
       </Link>
 
-      <div ref={workParentConRef} className="works-parent-container">
-        <div ref={workConRef} className="works-container">
-          <div ref={workHrScrollConRef} className="works-wrapper">
-            {/* bottom info start */}
-            <div className="works-info-wrapper">
-              <div className="work-gradient-1"></div>
-              <div className="work-gradient-2"></div>
+      <div id="work" className="work-anchor-scroll">
+        <div ref={workParentConRef} className="works-parent-container">
+          <div ref={workConRef} className="works-container">
+            <div ref={workHrScrollConRef} className="works-wrapper">
+              {/* bottom info start */}
+              <div className="works-info-wrapper">
+                <div className="work-gradient-1"></div>
+                <div className="work-gradient-2"></div>
 
-              {worksInfo.map((work) => (
-                <div key={work.id} className="work-1-info-wrapper">
-                  <div className="work-info-img-wrapper">
+                {worksInfo.map((work) => (
+                  <div key={work.id} className="work-1-info-wrapper">
+                    <div className="work-info-img-wrapper">
+                      <Image
+                        src={work.img}
+                        alt={work.name + " image"}
+                        fill
+                        sizes="450px"
+                        style={{ objectFit: "cover", objectPosition: "top" }}
+                      />
+                    </div>
+                    <div>
+                      <h6>{work.name}</h6>
+                      <p>{work.title}</p>
+                    </div>
+
+                    <div>
+                      <div className="about">About</div>
+                      <p>{work.about}</p>
+                    </div>
+
+                    <div className="techs-wrapper">
+                      <div>Technologies</div>
+                      <div className="techs">
+                        {work.technologies.map((tech, index) => (
+                          <div key={index}>{tech}</div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* todo */}
+                    <div className="work-demo-link-wrapper">
+                      <Link href={`${work.url}`}>Demo Website</Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* bottom info end */}
+
+              {/* mask info start */}
+              <div
+                data-work-mask-info
+                ref={workMaskInfoRef}
+                className="works-mask-info-wrapper"
+              >
+                <div className="work-mask-gradient-1"></div>
+                <div className="work-mask-gradient-2"></div>
+
+                {worksInfo.map((work, index) => (
+                  <div
+                    key={work.id}
+                    data-work-img={`${index + 1}`}
+                    className="work-1-img-wrapper"
+                    onPointerEnter={handlePointerEnter}
+                    onClick={handleClick}
+                  >
                     <Image
                       src={work.img}
                       alt={work.name + " image"}
@@ -149,66 +203,10 @@ export default function Works() {
                       style={{ objectFit: "cover", objectPosition: "top" }}
                     />
                   </div>
-                  <div>
-                    <h6>{work.name}</h6>
-                    <p>{work.title}</p>
-                  </div>
-
-                  <div>
-                    <div className="about">About</div>
-                    <p>{work.about}</p>
-                  </div>
-
-                  <div className="techs-wrapper">
-                    <div>Technologies</div>
-                    <div className="techs">
-                      {work.technologies.map((tech, index) => (
-                        <div key={index}>{tech}</div>
-                      ))}
-                    </div>
-                  </div>
-
-                    {/* todo */}
-                     <div className="work-demo-link-wrapper">
-                     
-                      <Link href={`${work.url}`}>Demo Website</Link>
-                      
-                     </div>
-
-
-                </div>
-              ))}
+                ))}
+              </div>
+              {/* mask info end */}
             </div>
-            {/* bottom info end */}
-
-            {/* mask info start */}
-            <div
-              data-work-mask-info
-              ref={workMaskInfoRef}
-              className="works-mask-info-wrapper"
-            >
-              <div className="work-mask-gradient-1"></div>
-              <div className="work-mask-gradient-2"></div>
-
-              {worksInfo.map((work, index) => (
-                <div
-                  key={work.id}
-                  data-work-img={`${index + 1}`}
-                  className="work-1-img-wrapper"
-                  onPointerEnter={handlePointerEnter}
-                  onClick={handleClick}
-                >
-                  <Image
-                    src={work.img}
-                    alt={work.name + " image"}
-                    fill
-                    sizes="450px"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                  />
-                </div>
-              ))}
-            </div>
-            {/* mask info end */}
           </div>
         </div>
       </div>

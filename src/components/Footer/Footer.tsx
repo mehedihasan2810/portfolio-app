@@ -8,23 +8,26 @@ export default function Footer() {
   const { footerRef, colorElRef } = useFooter();
 
   return (
-    <footer ref={footerRef}>
+    <footer id="contact" className="footer-container" ref={footerRef}>
       <div className="footer-gray-container">
         <div className="footer-center-wrapper">
           <div className="section-top">
             <div className="footer-info">
-              <h6>
+              <h6 className="footer-scroll-anim">
                 Let's Work <br />
                 Together
               </h6>
-              <p>
-                Are you a brand or company in need of contagiously creative
-                stopping power? Or are you an agency in need of a kick-ass
-                creative production partner? Just hit us up!
+              <p className="footer-scroll-anim">
+                Are you a visionary brand or an unstoppable force in the
+                business world, relentlessly seeking contagious creativity that
+                commands attention? Perhaps you're an agency with an insatiable
+                appetite for a dynamic, kick-ass creative production partnership
+                that propels you to the forefront. Waste no time - reach out to
+                me now and let greatness unfold!
               </p>
             </div>
             {/* 3d cube starts */}
-            <div className="cube-wrapper">
+            <div className="cube-wrapper footer-scroll-anim">
               <div className="scene">
                 <div
                   // ref={cubeRef}
@@ -87,15 +90,17 @@ export default function Footer() {
             <div className="section-bottom-first">
               <div>
                 <div>Mail</div>
-                <div>mdmehedihasan2810@gmail.com</div>
+                <div className="footer-email-wrapper footer-scroll-anim">
+                  mdmehedihasan2810@gmail.com
+                </div>
               </div>
               <div>
                 <div>Phone</div>
-                <div>+880 1716 004998</div>
+                <div className="footer-number-wrapper footer-scroll-anim">+880 1716 004998</div>
               </div>
               <div>
                 <div>Connect</div>
-                <div className="footer-social-btns-wrapper">
+                <div className="footer-social-btns-wrapper footer-scroll-anim">
                   <Link
                     href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
                     target="_blank"
@@ -143,19 +148,22 @@ export default function Footer() {
       <div ref={colorElRef} className="footer-color-container">
         <div className="footer-center-wrapper">
           <div className="section-top">
-          <div className="footer-info">
-              <h6>
+            <div className="footer-info">
+              <h6 className="footer-scroll-anim">
                 Let's Work <br />
                 Together
               </h6>
-              <p>
-                Are you a brand or company in need of contagiously creative
-                stopping power? Or are you an agency in need of a kick-ass
-                creative production partner? Just hit us up!
+              <p className="footer-scroll-anim">
+                Are you a visionary brand or an unstoppable force in the
+                business world, relentlessly seeking contagious creativity that
+                commands attention? Perhaps you're an agency with an insatiable
+                appetite for a dynamic, kick-ass creative production partnership
+                that propels you to the forefront. Waste no time - reach out to
+                me now and let greatness unfold!
               </p>
             </div>
             {/* 3d cube starts */}
-            <div className="cube-wrapper">
+            <div className="cube-wrapper footer-scroll-anim">
               <div className="scene">
                 <div
                   // ref={cubeRef}
@@ -218,15 +226,17 @@ export default function Footer() {
             <div className="section-bottom-first">
               <div>
                 <div>Mail</div>
-                <div>mdmehedihasan2810@gmail.com</div>
+                <div className="footer-email-wrapper footer-scroll-anim">
+                  mdmehedihasan2810@gmail.com
+                </div>
               </div>
               <div>
                 <div>Phone</div>
-                <div>+880 1716 004998</div>
+                <div className="footer-number-wrapper footer-scroll-anim">+880 1716 004998</div>
               </div>
               <div>
                 <div>Connect</div>
-                <div className="footer-social-btns-wrapper">
+                <div className="footer-social-btns-wrapper footer-scroll-anim">
                   <Link
                     href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
                     target="_blank"

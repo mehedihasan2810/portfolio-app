@@ -1,5 +1,6 @@
 import { useGlobalContext } from "@/contexts/useGlobalContext";
 import useMatchMedia from "@/hooks/useMatchMedia";
+import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 
 const useStarBg = () => {
@@ -18,13 +19,15 @@ const useStarBg = () => {
       window.mouseXpos = event.clientX;
       window.mouseYpos = event.clientY;
 
-      // move avatars on pointermove
+      // move stars on pointermove
       const starX = (windowHalfWidth - event.clientX) / 20;
       const starY = (windowHalfHeight - event.clientY) / 20;
-
-      starBgRef.current.style.transform = `translate(${starX}px, ${starY}px)`;
+      gsap.to(starBgRef.current, { x: starX, y: starY });
+      // -------------------------
     }
 
+    // stop pointer move animation if device is touch
+    // or start the animation
     if (!isTouchDevices) {
       if (isStarBgAnimOn) {
         window.addEventListener("pointermove", handlePointerMove, false);
@@ -34,6 +37,7 @@ const useStarBg = () => {
     } else {
       window.removeEventListener("pointermove", handlePointerMove, false);
     }
+    // ---------------------------------
 
     return () => {
       window.removeEventListener("pointermove", handlePointerMove, false);
