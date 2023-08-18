@@ -1,11 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
 import "./hero.css";
-
 import useHero from "./hooks/useHero";
 import Image from "next/image";
 import Link from "next/link";
-import { gsap } from "gsap";
 
 export default function Hero() {
   const { heroMaskRef, heroImgRef, heroMaskImgRef, pushAvatarsRef, heroRef } =
@@ -31,7 +28,7 @@ export default function Hero() {
               />
               <h1 className="hero-main-heading">
                 <span> Hi There,</span>
-                <span> I'm Mehedi Hasan.</span>
+                <span> I&#39;m Mehedi Hasan.</span>
               </h1>
               <p>
                 A web developer who is passionate about creating websites that
@@ -441,7 +438,7 @@ export default function Hero() {
               />
               <h1 className="hero-mask-main-heading">
                 <span> Hi There,</span>
-                <span> I'm Mehedi Hasan.</span>
+                <span> I&#39;m Mehedi Hasan.</span>
               </h1>
               <p>
                 A web developer who is passionate about creating websites that

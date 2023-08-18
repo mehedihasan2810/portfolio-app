@@ -1,7 +1,7 @@
 "use client";
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 type ToggleAnimKey = "star" | "hero" | "work";
-type ToggleAnim = (toggleKey: ToggleAnimKey, isToggle: boolean) => void;
+type ToggleAnim = (toggleKey: ToggleAnimKey, isToggle: boolean) => void; // eslint-disable-line
 export type ProviderStates = {
   isStarBgAnimOn: boolean;
   isHeroAnimOn: boolean;

@@ -3,7 +3,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import useMatchMedia from "@/hooks/useMatchMedia";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef, useEffect, useInsertionEffect, useLayoutEffect } from "react";
+import { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 // let isAnimationOn = true;
@@ -13,7 +13,7 @@ case, it is adding two properties `mouseXpos` and `mouseYpos` to the `Window` in
 which are of type `number`. This allows the code to access and modify these properties on the
 `window` object. */
 declare global {
-  interface Window {
+  interface Window { // eslint-disable-line
     mouseXpos: number;
     mouseYpos: number;
   }
@@ -127,16 +127,6 @@ array `[]`. */
   }, [isHeroAnimOn, isTouchDevices]);
 
   useIsomorphicLayoutEffect(() => {
-    const aboutLinkEl = document.querySelector(
-      ".sidebar-about"
-    ) as HTMLAnchorElement;
-    const worksLinkEl = document.querySelector(
-      ".sidebar-works"
-    ) as HTMLAnchorElement;
-    const contactLinkEl = document.querySelector(
-      ".sidebar-contact"
-    ) as HTMLAnchorElement;
-
     // hero container 3d rotate animation
     heroRotateTween.current = gsap.to(heroRef.current, {
       rotateX: 60,

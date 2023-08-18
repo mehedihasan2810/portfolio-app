@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import StarBg from "@/components/ui/StarBg/StarBg";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Loader from "@/components/Loader/Loader";
+import React from "react";
 
 const myFont = Work_Sans({
   subsets: ["latin"],

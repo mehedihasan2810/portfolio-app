@@ -1,5 +1,5 @@
 "use client";
-import { HTMLAttributes, PointerEvent, ReactNode, useState } from "react";
+import {  PointerEvent,  useState } from "react";
 import "./works.css";
 import useWorks from "./useWorks";
 import Image from "next/image";

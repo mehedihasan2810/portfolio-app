@@ -1,5 +1,4 @@
 'use client'
-import React from 'react'
 import './StarBg.css';
 import useStarBg from './useStarBg';
 

@@ -14,13 +14,13 @@ export default function Footer() {
           <div className="section-top">
             <div className="footer-info">
               <h6 className="footer-scroll-anim">
-                Let's Work <br />
+                Let&#39;s Work <br />
                 Together
               </h6>
               <p className="footer-scroll-anim">
                 Are you a visionary brand or an unstoppable force in the
                 business world, relentlessly seeking contagious creativity that
-                commands attention? Perhaps you're an agency with an insatiable
+                commands attention? Perhaps you&#39;re an agency with an insatiable
                 appetite for a dynamic, kick-ass creative production partnership
                 that propels you to the forefront. Waste no time - reach out to
                 me now and let greatness unfold!

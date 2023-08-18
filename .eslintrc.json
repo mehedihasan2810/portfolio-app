@@ -1,5 +1,5 @@
 {
-  "env": { "browser": true, "es2020": true, "NodeJS": true },
+  "env": { "browser": true, "es2020": true, "node": true },
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",

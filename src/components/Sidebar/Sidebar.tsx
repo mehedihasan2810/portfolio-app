@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import "./Sidebar.css";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { gsap } from "gsap";
@@ -22,7 +22,7 @@ const Sidebar = () => {
   const sidebarWorksLinkRef = useRef<HTMLAnchorElement>(null!);
   const sidebarContactLinkRef = useRef<HTMLAnchorElement>(null!);
 
-  const { isWorksAnimOn, toggleAnim } = useGlobalContext();
+  const { toggleAnim } = useGlobalContext();
   useIsomorphicLayoutEffect(() => {
     const heroScrollEl = document.querySelector(
       ".hero-anchor-scroll"
