@@ -62,7 +62,6 @@ array `[]`. */
     const windowHeight = window.innerHeight;
     const windowHalfWidth = windowWidth / 2;
     const windowHalfHeight = windowHeight / 2;
-
     // pointer move handler starts
     function handlePointerMove(event: PointerEvent) {
       event.stopPropagation();
@@ -78,22 +77,23 @@ array `[]`. */
         clipPath: `inset(0 ${xPercentage}% 0 0 )`,
       });
 
-      const avatarX = (windowHalfWidth - event.clientX) / 40;
-      const avatarY = (windowHalfHeight - event.clientY) / 40;
+      const avatarX = (windowHalfWidth - event.clientX) / 50;
+      const avatarY = (windowHalfHeight - event.clientY) / 50;
 
       avatarsRef.current.forEach((el) => {
         const avatarsEl = el as HTMLDivElement;
         gsap.to(avatarsEl, {
           x: avatarX,
           y: avatarY,
-          duration: 0.1,
-          ease: "power4.out",
+          duration: 0.7,
+          ease: "power1.out",
         });
       });
     }
     // pointer move handler ends
 
     // if the device is touch device then stop the pointer move animation
+    // todo
     if (!isTouchDevices) {
       if (isHeroAnimOn) {
         heroRef.current.addEventListener(
@@ -171,7 +171,7 @@ array `[]`. */
         duration: 0.5,
       });
       // --------------------------------------
-   
+
       // blinking animaition for yellow avatars
       const colorYblinkTL = gsap.timeline({ repeat: -1, repeatDelay: 2 });
       colorYblinkTL.to(".color-y-avatar-blink", {

@@ -101,17 +101,13 @@ const Sidebar = () => {
         className="sidebar-about sidebar-active-link"
         href="#"
         onClick={() => {
-
-          toggleAnim('hero', true)
-
-
-          const footerMaskEl = document.querySelector(
-            ".footer-color-container"
+          toggleAnim("hero", true);
+          const heroMaskEl = document.querySelector(
+            ".hero-mask-author-info-container"
           ) as HTMLDivElement;
 
           // reset the clip style on anchor link click
-          footerMaskEl.style.clipPath = "inset(0 0 0 50% )";
-
+          heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
           lenis.scrollTo("#about", { duration: 1.5 });
         }}
       >
@@ -122,20 +118,13 @@ const Sidebar = () => {
         className="sidebar-works"
         href="#"
         onClick={() => {
-          toggleAnim('work', true)
-            
-
+          toggleAnim("work", true);
           const heroMaskEl = document.querySelector(
             ".hero-mask-author-info-container"
-          ) as HTMLDivElement;
-          const footerMaskEl = document.querySelector(
-            ".footer-color-container"
           ) as HTMLDivElement;
 
           // reset the clip style on anchor link click
           heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
-          footerMaskEl.style.clipPath = "inset(0 0 0 50% )";
-
           lenis.scrollTo("#work", { duration: 1.5 });
         }}
       >
@@ -150,8 +139,8 @@ const Sidebar = () => {
             ".hero-mask-author-info-container"
           ) as HTMLDivElement;
 
+          // reset the clip style on anchor link click
           heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
-
           lenis.scrollTo("#contact", { duration: 1.5 });
         }}
       >

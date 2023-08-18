@@ -36,7 +36,7 @@ export default function Hero() {
               <p>
                 A web developer who is passionate about creating websites that
                 not only have stunning visuals but also provide amazing user
-                experiences. I also like learning new technologies.
+                experiences and also likes learning new technologies.
               </p>
 
               <div className="hero-social-btns-wrapper">
@@ -111,8 +111,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                      className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="11"
                         y="14"
                         width="1.5"
@@ -121,8 +121,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="23"
                         y="14"
                         width="1.5"
@@ -167,8 +167,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(7 3) rotate(-1 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -177,8 +177,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#FFFFFF"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -228,8 +228,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -238,8 +238,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -284,8 +284,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(-5 1) rotate(-1 18 18)">
                       <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#fff"></path>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -294,8 +294,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -340,8 +340,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(-5 4.5) rotate(9 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#fff"></path>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -350,8 +350,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -401,8 +401,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -411,8 +411,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="bw-avatar-blink"
+                      <rect
+                        className="bw-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -425,16 +425,6 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-            </div>
-
-            {/* bg gradient */}
-            <div className="gradient-top-right-wrapper">
-              <div className="gradient-1"></div>
-              <div className="gradient-2"></div>
-            </div>
-            <div className="gradient-bottom-left-wrapper">
-              <div className="gradient-1"></div>
-              <div className="gradient-2"></div>
             </div>
           </div>
 
@@ -456,7 +446,7 @@ export default function Hero() {
               <p>
                 A web developer who is passionate about creating websites that
                 not only have stunning visuals but also provide amazing user
-                experiences. I also like learning new technologies.
+                experiences and also likes learning new technologies.
               </p>
 
               <div className="hero-mask-social-btns-wrapper">
@@ -492,7 +482,6 @@ export default function Hero() {
                 </Link>
               </div>
 
-              {/* todo mask */}
               <div ref={pushAvatarsRef} className="boring-avatars-1">
                 <svg
                   viewBox="0 0 36 36"
@@ -530,8 +519,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                      className="color-o-avatar-blink"
+                      <rect
+                        className="color-o-avatar-blink"
                         x="11"
                         y="14"
                         width="1.5"
@@ -540,8 +529,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#000"
                       ></rect>
-                      <rect 
-                       className="color-o-avatar-blink"
+                      <rect
+                        className="color-o-avatar-blink"
                         x="23"
                         y="14"
                         width="1.5"
@@ -587,8 +576,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(7 3) rotate(-1 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
-                      <rect 
-                       className="color-p-avatar-blink"
+                      <rect
+                        className="color-p-avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -597,7 +586,7 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
+                      <rect
                         className="color-p-avatar-blink"
                         x="21"
                         y="14"
@@ -649,8 +638,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -659,8 +648,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#000"
                       ></rect>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -706,8 +695,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(-5 1) rotate(-1 18 18)">
                       <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
-                      <rect 
-                       className="color-p-avatar-blink"
+                      <rect
+                        className="color-p-avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -716,8 +705,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#fff"
                       ></rect>
-                      <rect 
-                       className="color-p-avatar-blink"
+                      <rect
+                        className="color-p-avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -763,8 +752,8 @@ export default function Hero() {
                     ></rect>
                     <g transform="translate(-5 4.5) rotate(9 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#000000"></path>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -773,8 +762,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#000"
                       ></rect>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -825,8 +814,8 @@ export default function Hero() {
                         fill="none"
                         strokeLinecap="round"
                       ></path>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -835,8 +824,8 @@ export default function Hero() {
                         stroke="none"
                         fill="#000"
                       ></rect>
-                      <rect 
-                       className="color-y-avatar-blink"
+                      <rect
+                        className="color-y-avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -850,74 +839,8 @@ export default function Hero() {
                 </svg>
               </div>
             </div>
-
-            {/* bg mask gradient */}
-            <div className="mask-gradient-top-right-wrapper">
-              <div className="gradient-1"></div>
-              <div className="gradient-2"></div>
-            </div>
-            <div className="mask-gradient-bottom-left-wrapper">
-              <div className="gradient-1"></div>
-              <div className="gradient-2"></div>
-            </div>
           </div>
-
-          {/* <div className="hero-title-container">
-          <h1>
-            <div ref={webRef} className="creative">
-              <span className="creative-first">
-                {creativeLetters1.map((letter, index) => (
-                  <span key={index}>{letter}</span>
-                ))}
-
-                <span
-                  ref={creativeLetterBgRef1}
-                  className="creative-letter-bg-1"
-                ></span>
-              </span>
-
-              <span className="creative-second">
-                {creativeLetters2.map((letter, index) => (
-                  <span key={index}>{letter}</span>
-                ))}
-
-                <span
-                  ref={creativeLetterBgRef2}
-                  className="creative-letter-bg-2"
-                ></span>
-              </span>
-            </div>
-          </h1>
-
-          <h1>
-            <div className="developer">
-              <span className="developer-first">
-                {developerLetters1.map((letter, index) => (
-                  <span key={index}>{letter}</span>
-                ))}
-
-                <span
-                  ref={developerLetterBgRef1}
-                  className="developer-letter-bg-1"
-                ></span>
-              </span>
-
-              <span className="developer-second">
-                {developerLetters2.map((letter, index) => (
-                  <span key={index}>{letter}</span>
-                ))}
-
-                <span
-                  ref={developerLetterBgRef2}
-                  className="developer-letter-bg-2"
-                ></span>
-              </span>
-            </div>
-          </h1>
-        </div> */}
         </div>
-
-        {/* <MaskHero /> */}
       </div>
     </div>
   );

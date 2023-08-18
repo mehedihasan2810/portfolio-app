@@ -138,7 +138,6 @@ const useWorks = () => {
         const { isTouchDevice } = context.conditions as {
           isTouchDevice: boolean;
         };
-        console.log(isTouchDevice);
 
         // work section horizontal animation starts
         gsap.to(workConRef.current, {
@@ -148,14 +147,19 @@ const useWorks = () => {
             trigger: workParentConRef.current,
             pin: true,
             scrub: true,
-            // start: 'top top',
             end: () =>
               "+=" + (workConRef.current.offsetWidth - window.innerWidth),
             onToggle: (s) => {
               toggleAnim("star", !s.isActive);
               toggleAnim("work", s.isActive);
 
-              console.log("fooooooooo " + window.mouseXpos);
+              if (!s.isActive) {
+                gsap.to(workMovingLinkRef.current, {
+                  scale: 0,
+                  duration: 1,
+                  ease: "expo.out",
+                });
+              }
 
               if (s.isActive) {
                 worksLinkEl.classList.add("sidebar-active-link");
@@ -186,6 +190,7 @@ const useWorks = () => {
 
             onUpdate: (s) => {
               toggleAnim("work", s.isActive);
+
               if (!isTouchDevice) {
                 if (s.isActive) {
                   const x =

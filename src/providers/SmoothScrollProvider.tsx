@@ -3,12 +3,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect } from "react";
-// let lenis: any;
-
-// if (typeof window !== "undefined") {
- 
-// }
+import React from "react";
 
 const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -31,17 +26,19 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
      * @param {UIEvent} event - The event parameter is of type UIEvent, which represents a user
      * interface event, such as a click or a resize event.
      */
-    function handleWindowResize(event: UIEvent) {
-      location.reload();
-    }
-    window.addEventListener("resize", handleWindowResize, false);
+    // -----------------------------
+    // function handleWindowResize(event: UIEvent) {
+    //   location.reload();
+    // }
+    // window.addEventListener("resize", handleWindowResize, false);
+    // ----------------------------------------------
 
     /**
      * The function changes the document title based on the visibility of the tab.
      */
     function handleVisibilityChange() {
       if (document.hidden) {
-        document.title = "Press this tab";
+        document.title = "Hi There! 😀";
       } else {
         document.title = "Mehedi Hasan. A Web Developer";
       }
@@ -51,7 +48,7 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("resize", handleWindowResize, false);
+      // window.removeEventListener("resize", handleWindowResize, false);
     };
   }, []);
   return children;

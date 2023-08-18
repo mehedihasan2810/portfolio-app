@@ -12,7 +12,7 @@ const myFont = Work_Sans({
 });
 
 export const metadata = {
-  title: "Mehedi Hasan.A Web Developer",
+  title: "Mehedi Hasan | Web Developer",
   description: "Portfolio Website of Mehedi Hasan",
   authors: [{name: 'Mehedi', url: 'https://md-mehedi-hasan.vercel.app'}],
   creator: 'Mehedi Hasan',

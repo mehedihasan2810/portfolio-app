@@ -2,7 +2,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import useMatchMedia from "@/hooks/useMatchMedia";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const useFooter = () => {
@@ -20,27 +20,17 @@ const useFooter = () => {
     const contactLinkEl = document.querySelector(
       ".sidebar-contact"
     ) as HTMLAnchorElement;
-
-    /* These lines of code are calculating the window width and then calculating a percentage value
-   based on the window width. */
-    const windowWidth = window.innerWidth;
-    const windowWidthWhole = 100 / (windowWidth - 50);
+    const workMovingLinkEl = document.querySelector(
+      ".work-moving-link"
+    ) as HTMLAnchorElement;
 
     // pointer move handler starts
     function handlePointerMove(event: PointerEvent) {
       event.stopPropagation();
-      // console.clear();
       const { clientX, clientY } = event;
 
       window.mouseXpos = clientX;
       window.mouseYpos = clientY;
-
-      /* The code is calculating the percentage of the client's X position relative to the window width
-    and then using that percentage to update the `clipPath` property of the `colorElRef` element
-    using GSAP animation library. */
-      const xPercentage = 100 - Math.ceil(clientX * windowWidthWhole);
-      gsap.to(colorElRef.current, { clipPath: `inset(0 0 0 ${xPercentage}%)` });
-      // colorElRef.current.style.clipPath = `inset(0 0 0 ${xPercentage}%)`;
     }
     // pointer move handler ends
 
@@ -68,6 +58,11 @@ const useFooter = () => {
         trigger: footerRef.current,
         start: "top bottom",
         onToggle: (s) => {
+          gsap.to(workMovingLinkEl, {
+            scale: 0,
+            duration: 1,
+            ease: "expo.out",
+          });
           if (s.isActive) {
             contactLinkEl.classList.add("sidebar-active-link");
             worksLinkEl.classList.remove("sidebar-active-link");
@@ -90,27 +85,6 @@ const useFooter = () => {
       );
     };
   }, [isTouchDevices]);
-
-  useIsomorphicLayoutEffect(() => {
- 
-    const ctx = gsap.context(() => {
-      const footerScrollAnims = gsap.utils.toArray(".footer-scroll-anim");
-      footerScrollAnims.forEach((el) => {
-        const element = el as HTMLDivElement;
-        gsap.from(element, {
-          y: Math.min(element.offsetHeight, 100),
-          scrollTrigger: {
-            trigger: element,
-            start: "top bottom",
-            end: `top 100%-=${Math.min(element.offsetHeight, 100)}`,
-            scrub: 3,
-          },
-        });
-      });
-    }, footerRef.current);
-
-    return () => ctx.revert();
-  }, []);
 
   return { footerRef, colorElRef };
 };
