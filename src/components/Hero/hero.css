@@ -1,5 +1,6 @@
 .hero-anchor-scroll {
   position: relative;
+  isolation: isolate;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -7,6 +8,7 @@
 
 .hero-full-container {
   position: relative;
+  isolation: isolate;
   height: 100vh;
   width: 100vw;
   background-color: #131313;
@@ -20,6 +22,7 @@
 
 .hero-container {
   position: relative;
+  isolation: isolate;
 }
 
 .hero-container,
@@ -43,6 +46,7 @@
   margin-inline: auto;
   text-align: center;
   position: relative;
+  isolation: isolate;
 }
 
 .hero-author-info-wrapper {
@@ -107,6 +111,7 @@
 
 .hero-mask-author-info-container {
   position: absolute;
+  isolation: isolate;
   top: 0;
   left: 0;
   width: 100%;

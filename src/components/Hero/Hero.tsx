@@ -8,10 +8,6 @@ export default function Hero() {
   const { heroMaskRef, heroImgRef, heroMaskImgRef, pushAvatarsRef, heroRef } =
     useHero();
 
-  // useEffect(() => {
-  //   gsap
-  // }, [])
-
   return (
     <div id="about" className="hero-anchor-scroll">
       <div ref={heroRef} className="hero-full-container">

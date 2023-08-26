@@ -122,6 +122,10 @@ button {
   animation: clipPath 2s linear 1 forwards;
 }
 
+#root, #__next {
+  isolation: isolate;
+}
+
 @keyframes clipPath {
   from {
     clip-path: inset(0 0 0 0);

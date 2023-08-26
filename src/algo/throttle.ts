@@ -1,4 +1,4 @@
-function throttle(func: any, ms: any) {
+function throttle(func: any, ms: number) {
 
     let isThrottled = false,
       savedArgs: any,

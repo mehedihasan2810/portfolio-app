@@ -40,7 +40,7 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
       if (document.hidden) {
         document.title = "Hi There! 😀";
       } else {
-        document.title = "Mehedi Hasan. A Web Developer";
+        document.title = "Mehedi Hasan | Web Developer";
       }
     }
 
@@ -48,7 +48,6 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      // window.removeEventListener("resize", handleWindowResize, false);
     };
   }, []);
   return children;
