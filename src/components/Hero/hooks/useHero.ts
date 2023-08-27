@@ -56,7 +56,6 @@ array `[]`. */
     window.mouseXpos = window.innerWidth / 2;
     window.mouseYpos = window.innerHeight / 2;
   }, []);
-  let animationFrameId: any;
   useIsomorphicLayoutEffect(() => {
     /* These lines of code are calculating various dimensions of the window. */
     const windowWidth = window.innerWidth;
@@ -64,8 +63,6 @@ array `[]`. */
     const windowHeight = window.innerHeight;
     const windowHalfWidth = windowWidth / 2;
     const windowHalfHeight = windowHeight / 2;
-
-
 
     // pointer move handler starts
     function handlePointerMove(event: PointerEvent) {
@@ -75,38 +72,11 @@ array `[]`. */
       window.mouseYpos = event.clientY;
 
       const { clientX } = event;
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
 
-      animationFrameId = requestAnimationFrame(() => {
-        const xPercentage = Math.ceil(clientX * windowWidthWhole);
+      const xPercentage = Math.ceil(clientX * windowWidthWhole);
       gsap.to(heroMaskRef.current, {
         clipPath: `inset(0 ${xPercentage}% 0 0 )`,
       });
-
-
-      const avatarX = (windowHalfWidth - event.clientX) / 50;
-      const avatarY = (windowHalfHeight - event.clientY) / 50;
-
-      avatarsRef.current.forEach((el) => {
-        const avatarsEl = el as HTMLDivElement;
-        gsap.to(avatarsEl, {
-          x: avatarX,
-          y: avatarY,
-          duration: 0.7,
-          ease: "power1.out",
-        });
-      });
-
-
-      });
-
-
-      // const xPercentage = Math.ceil(clientX * windowWidthWhole);
-      // gsap.to(heroMaskRef.current, {
-      //   clipPath: `inset(0 ${xPercentage}% 0 0 )`,
-      // });
 
       // const avatarX = (windowHalfWidth - event.clientX) / 50;
       // const avatarY = (windowHalfHeight - event.clientY) / 50;
@@ -124,28 +94,28 @@ array `[]`. */
     // pointer move handler ends
 
     // if the device is touch device then stop the pointer move animation
-    // todo
+    console.log(isHeroAnimOn)
     if (!isTouchDevices) {
       if (isHeroAnimOn) {
         heroRef.current.addEventListener(
           "pointermove",
-          // handlePointerMove,
-          throttle(handlePointerMove, 16),
+          handlePointerMove,
+          // throttle(handlePointerMove, 60),
           false
         );
       } else {
         heroRef.current.removeEventListener(
           "pointermove",
-          // handlePointerMove,
-          throttle(handlePointerMove, 16),
+          handlePointerMove,
+          // throttle(handlePointerMove, 60),
           false
         );
       }
     } else {
       heroRef.current.removeEventListener(
         "pointermove",
-        // handlePointerMove,
-        throttle(handlePointerMove, 16),
+        handlePointerMove,
+        // throttle(handlePointerMove, 60),
         false
       );
     }
@@ -154,8 +124,8 @@ array `[]`. */
     return () => {
       heroRef.current.removeEventListener(
         "pointermove",
-        // handlePointerMove,
-        throttle(handlePointerMove, 16),
+        handlePointerMove,
+        // throttle(handlePointerMove, 60),
         false
       );
     };

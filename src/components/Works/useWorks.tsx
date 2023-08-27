@@ -153,13 +153,13 @@ const useWorks = () => {
               toggleAnim("star", !s.isActive);
               toggleAnim("work", s.isActive);
 
-              if (!s.isActive) {
-                gsap.to(workMovingLinkRef.current, {
-                  scale: 0,
-                  duration: 1,
-                  ease: "expo.out",
-                });
-              }
+              // if (!s.isActive) {
+              //   gsap.to(workMovingLinkRef.current, {
+              //     scale: 0,
+              //     duration: 1,
+              //     ease: "expo.out",
+              //   });
+              // }
 
               if (s.isActive) {
                 worksLinkEl.classList.add("sidebar-active-link");
@@ -172,25 +172,25 @@ const useWorks = () => {
                   gsap.to(workMaskInfoRef.current, {
                     "--size": `${window.mouseXpos === 960 ? 0 : 450}`,
                   });
-                  gsap.to(workMovingLinkRef.current, {
-                    scale: 0,
-                    duration: 1,
-                    ease: "expo.out",
-                  });
+                  // gsap.to(workMovingLinkRef.current, {
+                  //   scale: 0,
+                  //   duration: 1,
+                  //   ease: "expo.out",
+                  // });
                 } else {
                   gsap.to(workMaskInfoRef.current, { "--size": `0` });
-                  gsap.to(workMovingLinkRef.current, {
-                    scale: 0,
-                    duration: 1,
-                    ease: "expo.out",
-                  });
+                  // gsap.to(workMovingLinkRef.current, {
+                  //   scale: 0,
+                  //   duration: 1,
+                  //   ease: "expo.out",
+                  // });
                 }
               }
             },
 
             onUpdate: (s) => {
               toggleAnim("work", s.isActive);
-
+            
               if (!isTouchDevice) {
                 if (s.isActive) {
                   const x =
@@ -229,7 +229,62 @@ const useWorks = () => {
       },
     });
 
-    return () => mm.revert();
+
+
+
+    let xTo = gsap.quickTo(workMovingLinkRef.current, "x", {
+      duration: 0.3,
+    });
+    let yTo = gsap.quickTo(workMovingLinkRef.current, "y", {
+      duration: 0.3,
+    });
+
+
+
+    //  function handleScrollEnd() {
+    //   const elementUnderCursor = document.elementFromPoint(window.mouseXpos, window.mouseYpos);
+    //    const closestWorkImgEl = elementUnderCursor?.closest(
+    //     "[data-work-img]"
+    //   ) as HTMLDivElement | null;
+
+    //   console.log(closestWorkImgEl)
+
+    //   if(closestWorkImgEl){
+    //     xTo(window.mouseXpos);
+    //     yTo(window.mouseYpos);
+    //     gsap.to(workMovingLinkRef.current, {
+    //       scale: 1,
+    //       duration: 1,
+    //       ease: "expo.out",
+    //     });
+    //   }else{
+    //     // xTo(window.mouseXpos);
+    //     // yTo(window.mouseYpos);
+    //     gsap.to(workMovingLinkRef.current, {
+    //       scale: 0,
+    //       duration: 1,
+    //       ease: "expo.out",
+    //     });
+    //   }
+
+
+    //  }
+
+    // ScrollTrigger.addEventListener('scrollEnd', handleScrollEnd)
+   
+
+    function customCursor() {
+         console.log('heyyyyyyyyy')
+    }
+
+    gsap.ticker.add(customCursor)
+
+
+
+    return () =>{ 
+      mm.revert();
+      // ScrollTrigger.removeEventListener('scrollEnd', handleScrollEnd)
+    };
   }, []);
 
   return {
