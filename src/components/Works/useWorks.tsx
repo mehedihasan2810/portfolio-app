@@ -1,6 +1,4 @@
-import { useGlobalContext } from "@/contexts/useGlobalContext";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
-import useMatchMedia from "@/hooks/useMatchMedia";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
@@ -12,134 +10,112 @@ const useWorks = () => {
   const workConRef = useRef<HTMLDivElement>(null!);
   const workHrScrollConRef = useRef<HTMLDivElement>(null!);
   const workMaskInfoRef = useRef<HTMLDivElement>(null!);
-  const workMovingLinkRef = useRef<HTMLAnchorElement>(null!);
+  const workMovingLinkRef = useRef<HTMLDivElement>(null!);
   const workRotateTween = useRef<any>();
-  const workMovingLinkTween = useRef<any>();
-  const { isWorksAnimOn, toggleAnim } = useGlobalContext();
-
-  const isTouchDevices = useMatchMedia("(max-width: 992px)");
+  const workImgRef = useRef<HTMLAnchorElement[]>([]);
+  const pushWorkImgRef = (el: HTMLAnchorElement) => workImgRef.current.push(el!);
 
   useIsomorphicLayoutEffect(() => {
-    /* The code `workMovingLinkTween.current = gsap.set(workMovingLinkRef.current, {...});` is setting
-  the initial properties of the `workMovingLinkRef` element using GSAP (GreenSock Animation
-  Platform). */
-    workMovingLinkTween.current = gsap.set(workMovingLinkRef.current, {
+    // set custom cursor initial styles start
+    gsap.set(workMovingLinkRef.current, {
       xPercent: -50,
-      yPercent: -57,
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
+      yPercent: -58,
       scale: 0,
     });
-    // -----------------------------
+    // set custom cursor initial styles end
 
-    /* The code `let xTo = gsap.quickTo(workMovingLinkRef.current, "x", { duration: 0.3 });` and `let
-   yTo = gsap.quickTo(workMovingLinkRef.current, "y", { duration: 0.3 });` are creating GSAP
-   (GreenSock Animation Platform) tweens for animating the `x` and `y` properties of the
-   `workMovingLinkRef` element. */
-    let xTo = gsap.quickTo(workMovingLinkRef.current, "x", {
-      duration: 0.3,
+    // set quickTo client x and y to cursor moving elements start
+    const movingLinkXTo = gsap.quickTo(workMovingLinkRef.current, "x", {
+      duration: 0.4,
+      ease: "power3",
     });
-    let yTo = gsap.quickTo(workMovingLinkRef.current, "y", {
-      duration: 0.3,
+    const movingLinkYTo = gsap.quickTo(workMovingLinkRef.current, "y", {
+      duration: 0.4,
+      ease: "power3",
     });
-    // ------------------
 
-    // handlePointerMove
-    function handlePointerMove(event: PointerEvent): void {
-      event.stopPropagation();
+    const workMaskXTo = gsap.quickTo(workMaskInfoRef.current, "--x", {
+      duration: 0.4,
+      ease: "power3",
+    });
+    const workMaskYTo = gsap.quickTo(workMaskInfoRef.current, "--y", {
+      duration: 0.4,
+      ease: "power3",
+    });
+    // set quickTo client x and y to cursor moving elements end
 
-      const targetEl = event.target as Element;
-      const closestWorkImgEl = targetEl.closest(
-        "[data-work-img]"
-      ) as HTMLDivElement | null;
+    // gsap matchMedia starts
+    const matchMedia = gsap.matchMedia();
 
-      window.mouseXpos = event.clientX;
-      window.mouseYpos = event.clientY;
-
-      xTo(window.mouseXpos);
-      yTo(window.mouseYpos);
-
-      // calculate the mask img x and y position
-      const x =
-        window.mouseXpos - workMaskInfoRef.current.getBoundingClientRect().left;
-      const y =
-        window.mouseYpos - workMaskInfoRef.current.getBoundingClientRect().top;
-      // --------------------
-
-      /* The code `gsap.to(workMaskInfoRef.current, { "--x": ``, duration: 0.3 });` and
-     `gsap.to(workMaskInfoRef.current, { "--y": ``, duration: 0.3 });` are using the GSAP
-     library to animate the CSS custom properties `--x` and `--y` of the `workMaskInfoRef` element. */
-      gsap.to(workMaskInfoRef.current, { "--x": `${x}`, duration: 0.3 });
-      gsap.to(workMaskInfoRef.current, { "--y": `${y}`, duration: 0.3 });
-
-      //-------------------
-
-      /* The code block is checking if the `closestWorkImgEl` variable exists. If it does, it means that
-    the pointer is currently hovering over a work image element. In that case, it uses GSAP
-    (GreenSock Animation Platform) to animate the scale of the `workMovingLinkRef` element to 1,
-    making it visible. */
-      if (closestWorkImgEl) {
-        gsap.to(workMovingLinkRef.current, {
-          scale: 1,
-          duration: 1,
-          ease: "expo.out",
-        });
-      } else {
-        gsap.to(workMovingLinkRef.current, {
-          scale: 0,
-          duration: 1,
-          ease: "expo.out",
-        });
-      }
-      // ----------------
-
-      //  set mask image size
-      gsap.to(workMaskInfoRef.current, { "--size": `450` });
-    }
-    // mousemove handler ends
-
-    /* This code block is adding or removing an event listener for the "pointermove" event based on the
-  values of the `isTouchDevices` and `isWorksAnimOn` variables. */
-    if (!isTouchDevices) {
-      if (isWorksAnimOn) {
-        window.addEventListener("pointermove", handlePointerMove, false);
-      } else {
-        window.removeEventListener("pointermove", handlePointerMove, false);
-      }
-    } else {
-      window.removeEventListener("pointermove", handlePointerMove, false);
-    }
-    // --------------------------
-
-    return () => {
-      window.removeEventListener("pointermove", handlePointerMove, false);
-    };
-  }, [isWorksAnimOn, isTouchDevices]);
-
-  useIsomorphicLayoutEffect(() => {
-    const aboutLinkEl = document.querySelector(
-      ".sidebar-about"
-    ) as HTMLAnchorElement;
-    const worksLinkEl = document.querySelector(
-      ".sidebar-works"
-    ) as HTMLAnchorElement;
-    const contactLinkEl = document.querySelector(
-      ".sidebar-contact"
-    ) as HTMLAnchorElement;
-
-    let mm = gsap.matchMedia();
-
-    mm.add(
-      {
-        isTouchDevice: "(max-width: 992px)",
-        isNonTouchDevice: "(min-width: 993px)",
-      },
+    matchMedia.add(
+      "(min-width: 800px)",
       (context) => {
-        const { isTouchDevice } = context.conditions as {
-          isTouchDevice: boolean;
+        const pointerPos = {
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
         };
 
-        // work section horizontal animation starts
+        // oPointerMove handler
+        context.add("onPointerMove", (e: PointerEvent) => {
+          pointerPos.x = e.clientX;
+          pointerPos.y = e.clientY;
+
+          movingLinkXTo(pointerPos.x);
+          movingLinkYTo(pointerPos.y);
+
+          const x =
+            e.clientX - workMaskInfoRef.current.getBoundingClientRect().left;
+          const y =
+            e.clientY - workMaskInfoRef.current.getBoundingClientRect().top;
+
+          workMaskXTo(x);
+          workMaskYTo(y);
+        });
+        // ----------------------------
+
+        // onWorkImgPointerEnter handler
+        context.add("onWorkImgPointerEnter", () => {
+          gsap.to(workMovingLinkRef.current, {
+            scale: 1,
+            duration: 1,
+            ease: "expo.out",
+          });
+
+          gsap.to(workMaskInfoRef.current, {
+            "--size": "450px",
+            duration: 1,
+            ease: "expo.out",
+          });
+        });
+        // -------------------------------
+
+        // work container pointer leave starts
+        context.add("onWorksConPointerLeave", () => {
+          gsap.to(workMovingLinkRef.current, {
+            scale: 0,
+            duration: 1,
+            ease: "expo.out",
+          });
+        });
+        // work container pointer leave ends
+
+        // onWorkImgPointerLeave Handler
+        context.add("onWorkImgPointerLeave", () => {
+          gsap.to(workMovingLinkRef.current, {
+            scale: 0,
+            duration: 1,
+            ease: "expo.out",
+          });
+
+          gsap.to(workMaskInfoRef.current, {
+            "--size": "0px",
+            duration: 1,
+            ease: "expo.out",
+          });
+        });
+        // ----------------------------------
+
+        // horizontal scroll anim starts
         gsap.to(workConRef.current, {
           x: -(workConRef.current.offsetWidth - window.innerWidth),
           ease: "none",
@@ -149,74 +125,95 @@ const useWorks = () => {
             scrub: true,
             end: () =>
               "+=" + (workConRef.current.offsetWidth - window.innerWidth),
-            onToggle: (s) => {
-              toggleAnim("star", !s.isActive);
-              toggleAnim("work", s.isActive);
-
-              // if (!s.isActive) {
-              //   gsap.to(workMovingLinkRef.current, {
-              //     scale: 0,
-              //     duration: 1,
-              //     ease: "expo.out",
-              //   });
-              // }
-
-              if (s.isActive) {
-                worksLinkEl.classList.add("sidebar-active-link");
-                aboutLinkEl.classList.remove("sidebar-active-link");
-                contactLinkEl.classList.remove("sidebar-active-link");
-              }
-
-              if (!isTouchDevice) {
-                if (s.isActive) {
-                  gsap.to(workMaskInfoRef.current, {
-                    "--size": `${window.mouseXpos === 960 ? 0 : 450}`,
-                  });
-                  // gsap.to(workMovingLinkRef.current, {
-                  //   scale: 0,
-                  //   duration: 1,
-                  //   ease: "expo.out",
-                  // });
-                } else {
-                  gsap.to(workMaskInfoRef.current, { "--size": `0` });
-                  // gsap.to(workMovingLinkRef.current, {
-                  //   scale: 0,
-                  //   duration: 1,
-                  //   ease: "expo.out",
-                  // });
-                }
-              }
-            },
 
             onUpdate: (s) => {
-              toggleAnim("work", s.isActive);
-            
-              if (!isTouchDevice) {
-                if (s.isActive) {
-                  const x =
-                    window.mouseXpos -
-                    workMaskInfoRef.current.getBoundingClientRect().left;
-                  const y =
-                    window.mouseYpos -
-                    workMaskInfoRef.current.getBoundingClientRect().top;
+              if (s.isActive) {
+                gsap.to(workConRef.current, {
+                  pointerEvents: "auto",
+                });
 
-                  gsap.to(workMaskInfoRef.current, {
-                    "--x": `${x}`,
-                    duration: 0.3,
-                  });
-                  gsap.to(workMaskInfoRef.current, {
-                    "--y": `${y}`,
-                    duration: 0.3,
-                  });
-                }
+                // move mask image according to cursor when scrolling starts
+                const x =
+                  pointerPos.x -
+                  workMaskInfoRef.current.getBoundingClientRect().left;
+                const y =
+                  pointerPos.y -
+                  workMaskInfoRef.current.getBoundingClientRect().top;
+
+                workMaskXTo(x);
+                workMaskYTo(y);
+                // move mask image according to cursor when scrolling ends
+              } else {
+                // hide custom cursor when hr anim stops start
+                gsap.to(workConRef.current, {
+                  pointerEvents: "none",
+                });
+
+                gsap.to(workMovingLinkRef.current, {
+                  scale: 0,
+                  duration: 1,
+                  ease: "expo.out",
+                });
+
+                gsap.to(workMaskInfoRef.current, {
+                  "--size": "0px",
+                  duration: 1,
+                  ease: "expo.out",
+                });
+                // hide custom cursor when hr anim stops end
               }
             },
           },
         });
-        // work section horizontal animation ends
-      }
-    );
+        // horizontal scroll anim ends
 
+        // addEventListener
+        document.addEventListener("pointermove", context.onPointerMove);
+
+        workParentConRef.current.addEventListener(
+          "pointerleave",
+          context.onWorksConPointerLeave
+        );
+
+        workImgRef.current.forEach((el: HTMLAnchorElement) => {
+          el.addEventListener("pointerenter", context.onWorkImgPointerEnter);
+        });
+
+        workImgRef.current.forEach((el: HTMLAnchorElement) => {
+          el.addEventListener("pointerleave", context.onWorkImgPointerLeave);
+        });
+        // ---------------------------------------
+
+        // matchmedia cleanup starts
+        return () => {
+          document.removeEventListener("pointermove", context.onPointerMove);
+
+          workParentConRef.current.removeEventListener(
+            "pointerleave",
+            context.onWorksConPointerLeave
+          );
+
+          workImgRef.current.forEach((el: HTMLAnchorElement) => {
+            el.removeEventListener(
+              "pointerenter",
+              context.onWorkImgPointerEnter
+            );
+          });
+
+          workImgRef.current.forEach((el: HTMLAnchorElement) => {
+            el.removeEventListener(
+              "pointerleave",
+              context.onWorkImgPointerLeave
+            );
+          });
+        };
+        // matchmedia cleanup ends
+      },
+      document
+    );
+    // gsap matchMedia ends
+
+    // section rotate n scaling down animation on scroll starts
     workRotateTween.current = gsap.to(workParentConRef.current, {
       rotateX: 80,
       scale: 0.1,
@@ -228,62 +225,10 @@ const useWorks = () => {
         scrub: true,
       },
     });
+    // section rotate n scaling down animation on scroll ends
 
-
-
-
-    let xTo = gsap.quickTo(workMovingLinkRef.current, "x", {
-      duration: 0.3,
-    });
-    let yTo = gsap.quickTo(workMovingLinkRef.current, "y", {
-      duration: 0.3,
-    });
-
-
-
-    //  function handleScrollEnd() {
-    //   const elementUnderCursor = document.elementFromPoint(window.mouseXpos, window.mouseYpos);
-    //    const closestWorkImgEl = elementUnderCursor?.closest(
-    //     "[data-work-img]"
-    //   ) as HTMLDivElement | null;
-
-    //   console.log(closestWorkImgEl)
-
-    //   if(closestWorkImgEl){
-    //     xTo(window.mouseXpos);
-    //     yTo(window.mouseYpos);
-    //     gsap.to(workMovingLinkRef.current, {
-    //       scale: 1,
-    //       duration: 1,
-    //       ease: "expo.out",
-    //     });
-    //   }else{
-    //     // xTo(window.mouseXpos);
-    //     // yTo(window.mouseYpos);
-    //     gsap.to(workMovingLinkRef.current, {
-    //       scale: 0,
-    //       duration: 1,
-    //       ease: "expo.out",
-    //     });
-    //   }
-
-
-    //  }
-
-    // ScrollTrigger.addEventListener('scrollEnd', handleScrollEnd)
-   
-
-    function customCursor() {
-         console.log('heyyyyyyyyy')
-    }
-
-    gsap.ticker.add(customCursor)
-
-
-
-    return () =>{ 
-      mm.revert();
-      // ScrollTrigger.removeEventListener('scrollEnd', handleScrollEnd)
+    return () => {
+      matchMedia.revert();
     };
   }, []);
 
@@ -294,6 +239,7 @@ const useWorks = () => {
     workMovingLinkRef,
     workParentConRef,
     workTopParentConRef,
+    pushWorkImgRef,
   };
 };
 

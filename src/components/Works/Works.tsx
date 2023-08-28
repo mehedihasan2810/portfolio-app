@@ -1,5 +1,4 @@
 "use client";
-import {  PointerEvent,  useState } from "react";
 import "./works.css";
 import useWorks from "./useWorks";
 import Image from "next/image";
@@ -87,48 +86,24 @@ const worksInfo: WorksInfo[] = [
 ];
 
 export default function Works() {
-  const [urlIndex, setUrlIndex] = useState<string>("");
   const {
     workConRef,
     workHrScrollConRef,
     workMaskInfoRef,
     workMovingLinkRef,
     workParentConRef,
+    pushWorkImgRef,
   } = useWorks();
-
-  // const documentBody = typeof window !== 'undefined' ? document.body : null;
-
-  function handlePointerEnter(event: PointerEvent<HTMLDivElement>) {
-    // workMovingLinkRef.current.style.display = 'block'
-    const targetEl = event.currentTarget;
-    setUrlIndex(targetEl.dataset.workImg as string);
-  }
-
-  function handleClick() {
-    let clickEvent = new MouseEvent("click");
-    workMovingLinkRef.current.style.pointerEvents = "auto";
-
-    let timerId = setTimeout(() => {
-      workMovingLinkRef.current.dispatchEvent(clickEvent);
-      workMovingLinkRef.current.style.pointerEvents = "none";
-
-      clearTimeout(timerId);
-    }, 100);
-
-    //  workMovingLinkRef.current.style.pointerEvents = 'none';
-  }
 
   return (
     <>
-      <Link
+      <div
         ref={workMovingLinkRef}
-        href={`${worksInfo[Number(urlIndex) - 1]?.url}`}
         className="work-moving-link"
         data-work-moving-link
-        target="_blank"
       >
         View
-      </Link>
+      </div>
 
       <div id="work" className="work-anchor-scroll">
         <div ref={workParentConRef} className="works-parent-container">
@@ -169,7 +144,6 @@ export default function Works() {
                       </div>
                     </div>
 
-                    {/* todo */}
                     <div className="work-demo-link-wrapper">
                       <Link href={`${work.url}`}>Demo Website</Link>
                     </div>
@@ -188,12 +162,13 @@ export default function Works() {
                 <div className="work-mask-gradient-2"></div>
 
                 {worksInfo.map((work, index) => (
-                  <div
+                  <Link
+                    href={work.url}
+                    target="_blank"
+                    ref={pushWorkImgRef}
                     key={work.id}
                     data-work-img={`${index + 1}`}
                     className="work-1-img-wrapper"
-                    onPointerEnter={handlePointerEnter}
-                    onClick={handleClick}
                   >
                     <Image
                       src={work.img}
@@ -202,7 +177,7 @@ export default function Works() {
                       sizes="450px"
                       style={{ objectFit: "cover", objectPosition: "top" }}
                     />
-                  </div>
+                  </Link>
                 ))}
               </div>
               {/* mask info end */}
