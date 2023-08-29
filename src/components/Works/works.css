@@ -242,7 +242,7 @@
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 800px) {
   .work-moving-link {
     display: none;
   }
@@ -273,8 +273,6 @@
     height: 100%;
     position: relative;
   }
-
-  
 }
 
 @media (max-width: 576px) {

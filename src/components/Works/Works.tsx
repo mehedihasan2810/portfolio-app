@@ -122,7 +122,10 @@ export default function Works() {
                         alt={work.name + " image"}
                         fill
                         sizes="450px"
-                        style={{ objectFit: "cover", objectPosition: "top" }}
+                        style={{
+                          objectFit: "cover",
+                          objectPosition: "top",
+                        }}
                       />
                     </div>
                     <div>

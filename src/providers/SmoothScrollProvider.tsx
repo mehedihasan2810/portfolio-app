@@ -17,14 +17,9 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
-      // console.clear();
-      // console.log("scrolliiiiiinnggg " + lenis.isScrolling);
-      // console.log("ScrollTrigger " + ScrollTrigger.isScrolling());
     });
 
     gsap.ticker.lagSmoothing(0);
-
-    // console.log('scrollinggggggg ' + lenis.isScrolling)
 
     /**
      * The function `handleWindowResize` reloads the current page when the window is resized.
