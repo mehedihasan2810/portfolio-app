@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
-  const { heroMaskRef, heroImgRef, heroMaskImgRef, pushAvatarsRef, heroRef } =
+  const { heroMaskRef, heroImgRef, heroMaskImgRef, heroRef } =
     useHero();
 
   return (
@@ -67,7 +67,7 @@ export default function Hero() {
               </div>
 
               {/* black white avatars */}
-              <div ref={pushAvatarsRef} className="boring-avatars-1">
+              <div className="boring-avatars-1 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -128,7 +128,7 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-              <div ref={pushAvatarsRef} className="boring-avatars-2">
+              <div className="boring-avatars-2 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -184,7 +184,7 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-              <div ref={pushAvatarsRef} className="boring-avatars-3">
+              <div className="boring-avatars-3 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -245,7 +245,7 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-              <div ref={pushAvatarsRef} className="boring-avatars-4">
+              <div className="boring-avatars-4 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -301,7 +301,7 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-              <div ref={pushAvatarsRef} className="boring-avatars-5">
+              <div className="boring-avatars-5 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -357,7 +357,7 @@ export default function Hero() {
                   </g>
                 </svg>
               </div>
-              <div ref={pushAvatarsRef} className="boring-avatars-6">
+              <div className="boring-avatars-6 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -475,7 +475,7 @@ export default function Hero() {
                 </Link>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-1">
+              <div className="boring-avatars-1 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -537,7 +537,7 @@ export default function Hero() {
                 </svg>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-2">
+              <div className="boring-avatars-2 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -594,7 +594,7 @@ export default function Hero() {
                 </svg>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-3">
+              <div className="boring-avatars-3 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -656,7 +656,7 @@ export default function Hero() {
                 </svg>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-4">
+              <div className="boring-avatars-4 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -713,7 +713,7 @@ export default function Hero() {
                 </svg>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-5">
+              <div className="boring-avatars-5 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
@@ -770,7 +770,7 @@ export default function Hero() {
                 </svg>
               </div>
 
-              <div ref={pushAvatarsRef} className="boring-avatars-6">
+              <div className="boring-avatars-6 boring-avatars">
                 <svg
                   viewBox="0 0 36 36"
                   fill="none"
