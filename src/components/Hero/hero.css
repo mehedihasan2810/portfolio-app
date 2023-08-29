@@ -120,7 +120,6 @@
   will-change: clip-path;
   clip-path: inset(0 50% 0 0);
   transition: clip-path 1s cubic-bezier(0.33, 1, 0.68, 1);
-  isolation: isolate;
 }
 
 .hero-author-info-container {

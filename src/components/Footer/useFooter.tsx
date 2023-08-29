@@ -24,33 +24,6 @@ const useFooter = () => {
       ".work-moving-link"
     ) as HTMLAnchorElement;
 
-    // pointer move handler starts
-    function handlePointerMove(event: PointerEvent) {
-      event.stopPropagation();
-      const { clientX, clientY } = event;
-
-      window.mouseXpos = clientX;
-      window.mouseYpos = clientY;
-    }
-    // pointer move handler ends
-
-    // if device is touch device then stop the pointer move animation
-    // or if not then start the animation
-    if (!isTouchDevices) {
-      footerRef.current.addEventListener(
-        "pointermove",
-        handlePointerMove,
-        false
-      );
-    } else {
-      footerRef.current.removeEventListener(
-        "pointermove",
-        handlePointerMove,
-        false
-      );
-    }
-    // ----------------------------------
-
     /* The code `gsap.to(footerRef.current, {...})` is using the GSAP animation library to animate the
  `footerRef.current` element. */
     gsap.to(footerRef.current, {
@@ -77,13 +50,6 @@ const useFooter = () => {
     });
     // --------------------------------------
 
-    return () => {
-      footerRef.current.removeEventListener(
-        "pointermove",
-        handlePointerMove,
-        false
-      );
-    };
   }, [isTouchDevices]);
 
   return { footerRef, colorElRef };

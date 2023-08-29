@@ -169,7 +169,10 @@ const useWorks = () => {
         // horizontal scroll anim ends
 
         // addEventListener
-        document.addEventListener("pointermove", context.onPointerMove);
+        workConRef.current.addEventListener(
+          "pointermove",
+          context.onPointerMove
+        );
 
         // workParentConRef.current.addEventListener(
         //   "pointerleave",
@@ -187,7 +190,10 @@ const useWorks = () => {
 
         // matchmedia cleanup starts
         return () => {
-          document.removeEventListener("pointermove", context.onPointerMove);
+          workConRef.current.removeEventListener(
+            "pointermove",
+            context.onPointerMove
+          );
 
           // workParentConRef.current.removeEventListener(
           //   "pointerleave",
@@ -210,72 +216,60 @@ const useWorks = () => {
         };
         // matchmedia cleanup ends
       },
-      document
+      workConRef.current
     );
     // gsap matchMedia ends
 
+    // horizontal scroll anim starts
+    gsap.to(workConRef.current, {
+      x: -(workConRef.current.offsetWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: workParentConRef.current,
+        pin: true,
+        scrub: true,
+        end: () => "+=" + (workConRef.current.offsetWidth - window.innerWidth),
 
+        onUpdate: (s) => {
+          if (s.isActive) {
+            gsap.to(workConRef.current, {
+              pointerEvents: "auto",
+            });
 
+            // move mask image according to cursor when scrolling starts
+            const x =
+              pointerPos.x -
+              workMaskInfoRef.current.getBoundingClientRect().left;
+            const y =
+              pointerPos.y -
+              workMaskInfoRef.current.getBoundingClientRect().top;
 
+            workMaskXTo(x);
+            workMaskYTo(y);
+            // move mask image according to cursor when scrolling ends
+          } else {
+            // hide custom cursor when hr anim stops start
+            gsap.to(workConRef.current, {
+              pointerEvents: "none",
+            });
 
+            gsap.to(workMovingLinkRef.current, {
+              scale: 0,
+              duration: 1,
+              ease: "expo.out",
+            });
 
-      // horizontal scroll anim starts
-      gsap.to(workConRef.current, {
-        x: -(workConRef.current.offsetWidth - window.innerWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: workParentConRef.current,
-          pin: true,
-          scrub: true,
-          end: () =>
-            "+=" + (workConRef.current.offsetWidth - window.innerWidth),
-
-          onUpdate: (s) => {
-            if (s.isActive) {
-              gsap.to(workConRef.current, {
-                pointerEvents: "auto",
-              });
-
-              // move mask image according to cursor when scrolling starts
-              const x =
-                pointerPos.x -
-                workMaskInfoRef.current.getBoundingClientRect().left;
-              const y =
-                pointerPos.y -
-                workMaskInfoRef.current.getBoundingClientRect().top;
-
-              workMaskXTo(x);
-              workMaskYTo(y);
-              // move mask image according to cursor when scrolling ends
-            } else {
-              // hide custom cursor when hr anim stops start
-              gsap.to(workConRef.current, {
-                pointerEvents: "none",
-              });
-
-              gsap.to(workMovingLinkRef.current, {
-                scale: 0,
-                duration: 1,
-                ease: "expo.out",
-              });
-
-              gsap.to(workMaskInfoRef.current, {
-                "--size": "0px",
-                duration: 1,
-                ease: "expo.out",
-              });
-              // hide custom cursor when hr anim stops end
-            }
-          },
+            gsap.to(workMaskInfoRef.current, {
+              "--size": "0px",
+              duration: 1,
+              ease: "expo.out",
+            });
+            // hide custom cursor when hr anim stops end
+          }
         },
-      });
-      // horizontal scroll anim ends
-
-
-
-
-
-
+      },
+    });
+    // horizontal scroll anim ends
 
     // section rotate n scaling down animation on scroll starts
     workRotateTween.current = gsap.to(workParentConRef.current, {

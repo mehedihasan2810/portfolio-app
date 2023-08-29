@@ -28,15 +28,15 @@ const useStarBg = () => {
 
     // stop pointer move animation if device is touch
     // or start the animation
-    if (!isTouchDevices) {
-      if (isStarBgAnimOn) {
-        window.addEventListener("pointermove", handlePointerMove, false);
-      } else {
-        window.removeEventListener("pointermove", handlePointerMove, false);
-      }
-    } else {
-      window.removeEventListener("pointermove", handlePointerMove, false);
-    }
+    // if (!isTouchDevices) {
+    //   if (isStarBgAnimOn) {
+    //     window.addEventListener("pointermove", handlePointerMove, false);
+    //   } else {
+    //     window.removeEventListener("pointermove", handlePointerMove, false);
+    //   }
+    // } else {
+    //   window.removeEventListener("pointermove", handlePointerMove, false);
+    // }
     // ---------------------------------
 
     return () => {

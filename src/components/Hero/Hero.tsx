@@ -105,7 +105,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="11"
                         y="14"
                         width="1.5"
@@ -115,7 +115,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="23"
                         y="14"
                         width="1.5"
@@ -161,7 +161,7 @@ export default function Hero() {
                     <g transform="translate(7 3) rotate(-1 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -171,7 +171,7 @@ export default function Hero() {
                         fill="#FFFFFF"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -222,7 +222,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -232,7 +232,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -278,7 +278,7 @@ export default function Hero() {
                     <g transform="translate(-5 1) rotate(-1 18 18)">
                       <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#fff"></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -288,7 +288,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -334,7 +334,7 @@ export default function Hero() {
                     <g transform="translate(-5 4.5) rotate(9 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#fff"></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -344,7 +344,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -395,7 +395,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -405,7 +405,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="bw-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -513,7 +513,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="color-o-avatar-blink"
+                        className="avatar-blink"
                         x="11"
                         y="14"
                         width="1.5"
@@ -523,7 +523,7 @@ export default function Hero() {
                         fill="#000"
                       ></rect>
                       <rect
-                        className="color-o-avatar-blink"
+                        className="avatar-blink"
                         x="23"
                         y="14"
                         width="1.5"
@@ -570,7 +570,7 @@ export default function Hero() {
                     <g transform="translate(7 3) rotate(-1 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
                       <rect
-                        className="color-p-avatar-blink"
+                        className="avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -580,7 +580,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="color-p-avatar-blink"
+                        className="avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -632,7 +632,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -642,7 +642,7 @@ export default function Hero() {
                         fill="#000"
                       ></rect>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -689,7 +689,7 @@ export default function Hero() {
                     <g transform="translate(-5 1) rotate(-1 18 18)">
                       <path d="M13,21 a1,0.75 0 0,0 10,0" fill="#FFFFFF"></path>
                       <rect
-                        className="color-p-avatar-blink"
+                        className="avatar-blink"
                         x="13"
                         y="14"
                         width="1.5"
@@ -699,7 +699,7 @@ export default function Hero() {
                         fill="#fff"
                       ></rect>
                       <rect
-                        className="color-p-avatar-blink"
+                        className="avatar-blink"
                         x="21"
                         y="14"
                         width="1.5"
@@ -746,7 +746,7 @@ export default function Hero() {
                     <g transform="translate(-5 4.5) rotate(9 18 18)">
                       <path d="M13,19 a1,0.75 0 0,0 10,0" fill="#000000"></path>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -756,7 +756,7 @@ export default function Hero() {
                         fill="#000"
                       ></rect>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
@@ -808,7 +808,7 @@ export default function Hero() {
                         strokeLinecap="round"
                       ></path>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="10"
                         y="14"
                         width="1.5"
@@ -818,7 +818,7 @@ export default function Hero() {
                         fill="#000"
                       ></rect>
                       <rect
-                        className="color-y-avatar-blink"
+                        className="avatar-blink"
                         x="24"
                         y="14"
                         width="1.5"
