@@ -242,7 +242,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 799px) {
   .work-moving-link {
     display: none;
   }
@@ -250,9 +250,6 @@
   .work-demo-link-wrapper {
     display: block;
   }
-}
-
-@media (max-width: 768px) {
   .works-info-wrapper,
   .works-mask-info-wrapper {
     gap: 4rem;

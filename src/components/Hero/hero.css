@@ -236,7 +236,7 @@
   color: gray;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 799px) {
   .hero-mask-author-info-container {
     clip-path: inset(0 0 0 0);
     -webkit-clip-path: inset(0 0 0 0);

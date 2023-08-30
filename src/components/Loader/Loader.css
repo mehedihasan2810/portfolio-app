@@ -1,5 +1,6 @@
 .loader-container {
   position: fixed;
+  isolation: isolate;
   top: 0;
   left: 0;
   z-index: 999;
@@ -11,6 +12,7 @@
 .loader-color-wrapper,
 .loader-black-white-wrapper {
   position: absolute;
+  isolation: isolate;
   top: 0;
   left: 0;
   width: 100%;
@@ -33,11 +35,12 @@
 .loader-black-white-avatar,
 .loader-color-avatar {
   position: absolute;
+  isolation: isolate;
 }
 
 :is(.loader-black-white-avatar, .loader-color-avatar) svg {
-  width: clamp(5rem, 15vw, 15rem);
-  height: clamp(5rem, 15vw, 15rem);
+  width: clamp(5rem, 12vw, 12rem);
+  height: clamp(5rem, 12vw, 12rem);
 }
 
 /* gradient styles */
@@ -46,6 +49,7 @@
 .loader-gradient-top-right-wrapper,
 .layer-gradient-top-right-wrapper {
   position: absolute;
+  isolation: isolate;
   z-index: -1;
 }
 
@@ -87,4 +91,10 @@
 :is(.loader-gradient-top-right-wrapper, .loader-gradient-bottom-left-wrapper)
   :is(.loader-gradient-2) {
   background-color: #777;
+}
+
+@media (max-width: 799px) {
+  .loader-color-wrapper {
+    clip-path: inset(0 0 0 0);
+  }
 }

@@ -60,7 +60,7 @@ const useWorks = () => {
     };
 
     matchMedia.add(
-      "(min-width: 801px)",
+      "(min-width: 800px)",
       (context) => {
         // oPointerMove handler
         context.add("onPointerMove", (e: PointerEvent) => {

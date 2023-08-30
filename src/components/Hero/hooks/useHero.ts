@@ -38,19 +38,26 @@ const useHero = () => {
     // matchmedia starts
     const matchMedia = gsap.matchMedia();
     matchMedia.add(
-      "(min-width: 801px)",
+      {
+        isDesktop: "(min-width: 800px)",
+        reduceMotion: "(prefers-reduced-motion: reduce)",
+      },
       (context) => {
+        let { reduceMotion } = context.conditions as {
+          reduceMotion: boolean;
+        };
+
         // avatar blink starts
         avatarBlinkTL.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
         avatarBlinkTL.current.to(avatarsBlinkEl, {
           scaleY: 0,
           ease: "power1.out",
-          duration: 0.2,
+          duration: reduceMotion ? 0 : 0.2,
         });
         avatarBlinkTL.current.to(avatarsBlinkEl, {
           scaleY: 1,
           ease: "power1.in",
-          duration: 0.2,
+          duration: reduceMotion ? 0 : 0.2,
         });
         // avatar blink ends
 

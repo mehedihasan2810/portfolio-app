@@ -1,51 +1,62 @@
 "use client";
 import { useEffect, useRef } from "react";
 import "./Loader.css";
-
 import { gsap } from "gsap";
+
 const Loader = () => {
   const loaderRef = useRef<HTMLDivElement>(null!);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // eye blinking animation on black white avatars
-      const blackWhiteTL = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-      blackWhiteTL.to(".loader-bw-eye", {
-        fill: "#000",
-        ease: "power1.out",
-        duration: 0.3,
-      });
-      blackWhiteTL.to(".loader-bw-eye", {
-        fill: "#777",
-        ease: "power1.in",
-        duration: 0.3,
-      });
-      // -------------------------------
+    const loaderAvatarsBlinkEl = gsap.utils.toArray(".loader-avatar-blink");
 
-      // eye blinking anition on color avatars
-      const colorTL = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-      colorTL.to(".loader-color-eye", {
-        fill: "#ff7d10",
-        ease: "power1.out",
-        duration: 0.3,
-      });
-      colorTL.to(".loader-color-eye", {
-        fill: "#000",
-        ease: "power1.in",
-        duration: 0.3,
-      });
-      // -----------------------------------
+    gsap.set(loaderAvatarsBlinkEl, { transformOrigin: "center" });
 
-      // closing initial loader animation
-      const tl = gsap.timeline({ delay: 2 });
-      tl.to(loaderRef.current, {
-        clipPath: "inset(0 50% 0 50%)",
-        ease: "expo.out",
-      });
-      tl.to(loaderRef.current, { display: "none", zIndex: -999 });
-    }, loaderRef.current);
-    // ---------------------------------------
-    return () => ctx.revert();
+    // timeline
+    const loaderTL = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+    const loaderHideTL = gsap.timeline({ delay: 2 });
+
+    const matchMedia = gsap.matchMedia();
+
+    matchMedia.add(
+      {
+        isDesktop: "(min-width: 800px)",
+        isMobile: "(max-width: 799px)",
+        reduceMotion: "(prefers-reduced-motion: reduce)",
+      },
+      (context) => {
+        let { reduceMotion } = context.conditions as {
+          reduceMotion: boolean;
+        };
+
+        // avatar blink anim starts
+        loaderTL
+          .to(loaderAvatarsBlinkEl, {
+            scaleY: 0,
+            ease: "power1.out",
+            duration: reduceMotion ? 0 : 0.1,
+          })
+          .to(loaderAvatarsBlinkEl, {
+            scaleY: 1,
+            ease: "power1.in",
+            duration: reduceMotion ? 0 : 0.2,
+          });
+        // avatar blink anim ends
+
+        // hide initial loader starts
+
+        loaderHideTL
+          .to(loaderRef.current, {
+            clipPath: "inset(0 50% 0 50%)",
+            ease: "expo.out",
+            duration: reduceMotion ? 0 : 0.5,
+          })
+          .to(loaderRef.current, { display: "none", zIndex: -999 });
+        // hide initial loader ends
+      },
+      loaderRef.current
+    );
+
+    return () => matchMedia.revert();
   }, []);
 
   return (
@@ -89,7 +100,7 @@ const Loader = () => {
                   strokeLinecap="round"
                 ></path>
                 <rect
-                  className="loader-bw-eye"
+                  className="loader-avatar-blink"
                   x="11"
                   y="14"
                   width="1.5"
@@ -99,7 +110,7 @@ const Loader = () => {
                   fill="#777"
                 ></rect>
                 <rect
-                  className="loader-bw-eye"
+                  className="loader-avatar-blink"
                   x="23"
                   y="14"
                   width="1.5"
@@ -161,7 +172,7 @@ const Loader = () => {
                   strokeLinecap="round"
                 ></path>
                 <rect
-                  className="loader-color-eye"
+                  className="loader-avatar-blink"
                   x="11"
                   y="14"
                   width="1.5"
@@ -171,7 +182,7 @@ const Loader = () => {
                   fill="#000"
                 ></rect>
                 <rect
-                  className="loader-color-eye"
+                  className="loader-avatar-blink"
                   x="23"
                   y="14"
                   width="1.5"
