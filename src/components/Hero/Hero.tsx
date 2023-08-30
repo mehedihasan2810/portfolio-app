@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
-  const { heroMaskRef, heroImgRef, heroMaskImgRef, heroRef } =
-    useHero();
+  const { heroMaskRef, heroImgRef, heroMaskImgRef, heroRef } = useHero();
 
   return (
     <div id="about" className="hero-anchor-scroll">
@@ -28,8 +27,8 @@ export default function Hero() {
               </h1>
               <p>
                 A web developer who is passionate about creating websites that
-                not only have stunning visuals but also provide amazing user
-                experiences and also likes learning new technologies.
+                not only have stunning visuals but also provide fantastic user
+                experiences and I also enjoy learning new technologies.
               </p>
 
               <div className="hero-social-btns-wrapper">
@@ -438,8 +437,8 @@ export default function Hero() {
               </h1>
               <p>
                 A web developer who is passionate about creating websites that
-                not only have stunning visuals but also provide amazing user
-                experiences and also likes learning new technologies.
+                not only have stunning visuals but also provide fantastic user
+                experiences and I also enjoy learning new technologies.
               </p>
 
               <div className="hero-mask-social-btns-wrapper">
