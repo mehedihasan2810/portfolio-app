@@ -1,15 +1,11 @@
-"use client";
 import Image from "next/image";
 import "./footer.css";
 import Link from "next/link";
-import useFooter from "./useFooter";
 
 export default function Footer() {
-  const { footerRef, colorElRef } = useFooter();
-
   return (
-    <footer id="contact" className="footer-container" ref={footerRef}>
-      <div ref={colorElRef} className="footer-color-container">
+    <footer id="contact" className="footer-container">
+      <div className="footer-color-container">
         <div className="footer-center-wrapper">
           <div className="section-top">
             <div className="footer-info">
@@ -20,10 +16,10 @@ export default function Footer() {
               <p className="footer-scroll-anim">
                 Are you a visionary brand or an unstoppable force in the
                 business world, relentlessly seeking contagious creativity that
-                commands attention? Perhaps you&#39;re an agency with an insatiable
-                appetite for a dynamic, kick-ass creative production partnership
-                that propels you to the forefront. Waste no time - reach out to
-                me now and let greatness unfold!
+                commands attention? Perhaps you&#39;re an agency with an
+                insatiable appetite for a dynamic, kick-ass creative production
+                partnership that propels you to the forefront. Waste no time -
+                reach out to me now and let greatness unfold!
               </p>
             </div>
             <div className="cube-wrapper footer-scroll-anim">
