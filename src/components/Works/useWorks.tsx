@@ -22,6 +22,12 @@ const useWorks = () => {
       xPercent: -50,
       yPercent: -58,
       scale: 0,
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    });
+    gsap.set(workMaskInfoRef.current, {
+      "--x": window.innerWidth / 2,
+      "--y": window.innerHeight / 2,
     });
     // set custom cursor initial styles end
 
@@ -61,8 +67,8 @@ const useWorks = () => {
           pointerPos.x = e.clientX;
           pointerPos.y = e.clientY;
 
-          movingLinkXTo(pointerPos.x);
-          movingLinkYTo(pointerPos.y);
+          movingLinkXTo(e.clientX);
+          movingLinkYTo(e.clientY);
 
           const x =
             e.clientX - workMaskInfoRef.current.getBoundingClientRect().left;
