@@ -35,7 +35,7 @@ footer {
   max-inline-size: 1400px;
   height: 100%;
   margin-inline: auto;
-  padding: 4rem 0.5rem;
+  padding: 4rem 0.8rem;
 }
 
 .section-top {
@@ -197,7 +197,7 @@ footer {
 
   .footer-center-wrapper {
     gap: 1rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0.8rem;
   }
 
   .footer-info > p {
@@ -209,7 +209,7 @@ footer {
 @media (max-width: 768px) {
   .footer-center-wrapper {
     gap: 1rem;
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 0.8rem;
   }
 
   .section-top {

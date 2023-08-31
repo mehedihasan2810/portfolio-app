@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const useHero = () => {
   const heroMaskRef = useRef<HTMLDivElement>(null!);
+  const heroMaskLayerRef = useRef<HTMLDivElement>(null!);
   const heroImgRef = useRef<HTMLImageElement>(null!);
   const heroMaskImgRef = useRef<HTMLImageElement>(null!);
   const heroRef = useRef<HTMLDivElement>(null!);
@@ -22,6 +23,11 @@ const useHero = () => {
     const avatarsEl = gsap.utils.toArray(".boring-avatars");
     const avatarsBlinkEl = gsap.utils.toArray(".avatar-blink");
 
+    // initial styles
+    gsap.set(avatarsBlinkEl, { transformOrigin: "center" });
+    gsap.set(heroMaskLayerRef.current, { xPercent: -50 });
+    gsap.set(heroMaskRef.current, { xPercent: 50 });
+
     // avatar move quickto start
     const avatarXto = gsap.quickTo(avatarsEl, "x", {
       duration: 0.7,
@@ -33,7 +39,20 @@ const useHero = () => {
     });
     // avatar move quickto end
 
-    gsap.set(avatarsBlinkEl, { transformOrigin: "bottom" });
+    // hero mask quickto starts
+    const heroMaskLayerXto = gsap.quickTo(
+      heroMaskLayerRef.current,
+      "xPercent",
+      {
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+    const heroMaskXto = gsap.quickTo(heroMaskRef.current, "xPercent", {
+      duration: 1,
+      ease: "power2.out",
+    });
+    // hero mask quickto ends
 
     // matchmedia starts
     const matchMedia = gsap.matchMedia();
@@ -64,12 +83,12 @@ const useHero = () => {
         context.add("onPointerMove", (e: PointerEvent) => {
           const { clientX, clientY } = e;
 
-          // clip hero layer starts
+          // move hero layer starts
           const xPercentage = Math.ceil(clientX * windowWidthWhole);
-          gsap.to(heroMaskRef.current, {
-            clipPath: `inset(0 ${xPercentage}% 0 0 )`,
-          });
-          // clip hero layer ends
+
+          heroMaskLayerXto(-xPercentage);
+          heroMaskXto(xPercentage);
+          // move hero layer ends
 
           // avatar move starts
           const avatarX = (windowHalfWidth - clientX) / 50;
@@ -116,6 +135,7 @@ const useHero = () => {
     heroImgRef,
     heroMaskImgRef,
     heroRef,
+    heroMaskLayerRef,
   };
 };
 
