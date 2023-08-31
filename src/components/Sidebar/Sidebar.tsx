@@ -53,12 +53,6 @@ const Sidebar = () => {
         }`}
         href="#"
         onClick={() => {
-          const heroMaskEl = document.querySelector(
-            ".hero-mask-author-info-container"
-          ) as HTMLDivElement;
-
-          // reset the hero mask position starts
-          heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
           lenis.scrollTo("#about", { duration: 1.5 });
         }}
       >
@@ -70,12 +64,6 @@ const Sidebar = () => {
         }`}
         href="#"
         onClick={() => {
-          const heroMaskEl = document.querySelector(
-            ".hero-mask-author-info-container"
-          ) as HTMLDivElement;
-
-          // reset the hero mask position starts
-          heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
           lenis.scrollTo("#work", { duration: 1.5 });
         }}
       >
@@ -87,12 +75,6 @@ const Sidebar = () => {
         }`}
         href="#"
         onClick={() => {
-          const heroMaskEl = document.querySelector(
-            ".hero-mask-author-info-container"
-          ) as HTMLDivElement;
-
-          // reset the clip style on anchor link click
-          heroMaskEl.style.clipPath = "inset(0 50% 0 0 )";
           lenis.scrollTo("#contact", { duration: 1.5 });
         }}
       >
