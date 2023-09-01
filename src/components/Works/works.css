@@ -8,9 +8,9 @@
   overflow: hidden;
 }
 
-.work-proxy{
- position: absolute;
- visibility: hidden;
+.work-proxy {
+  position: absolute;
+  visibility: hidden;
 }
 
 .works-container {
@@ -248,13 +248,6 @@
 }
 
 @media (max-width: 799px) {
-  /* .work-moving-link {
-    display: none;
-  }
-
-  .work-demo-link-wrapper {
-    display: block;
-  } */
   .works-info-wrapper,
   .works-mask-info-wrapper {
     gap: 4rem;

@@ -55,60 +55,52 @@ const useHero = () => {
     // hero mask quickto ends
 
     // matchmedia starts
-    const matchMedia = gsap.matchMedia();
-    matchMedia.add(
-      {
-        isDesktop: "(min-width: 800px)",
-        reduceMotion: "(prefers-reduced-motion: reduce)",
-      },
-      (context) => {
-        let { reduceMotion } = context.conditions as {
-          reduceMotion: boolean;
-        };
+    // const matchMedia = gsap.matchMedia();
+    const ctx = gsap.context((context) => {
+      // avatar blink starts
+      avatarBlinkTL.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+      avatarBlinkTL.current.to(avatarsBlinkEl, {
+        scaleY: 0,
+        ease: "power1.out",
+        duration: 0.2,
+      });
+      avatarBlinkTL.current.to(avatarsBlinkEl, {
+        scaleY: 1,
+        ease: "power1.in",
+        duration: 0.2,
+      });
+      // avatar blink ends
 
-        // avatar blink starts
-        avatarBlinkTL.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
-        avatarBlinkTL.current.to(avatarsBlinkEl, {
-          scaleY: 0,
-          ease: "power1.out",
-          duration: reduceMotion ? 0 : 0.2,
-        });
-        avatarBlinkTL.current.to(avatarsBlinkEl, {
-          scaleY: 1,
-          ease: "power1.in",
-          duration: reduceMotion ? 0 : 0.2,
-        });
-        // avatar blink ends
+      context.add("onPointerMove", (e: PointerEvent) => {
+        const { clientX, clientY } = e;
 
-        context.add("onPointerMove", (e: PointerEvent) => {
-          const { clientX, clientY } = e;
+        // move hero layer starts
+        const xPercentage = Math.ceil(clientX * windowWidthWhole);
 
-          // move hero layer starts
-          const xPercentage = Math.ceil(clientX * windowWidthWhole);
+        heroMaskLayerXto(-xPercentage);
+        heroMaskXto(xPercentage);
+        // move hero layer ends
 
-          heroMaskLayerXto(-xPercentage);
-          heroMaskXto(xPercentage);
-          // move hero layer ends
+        // avatar move starts
+        const avatarX = (windowHalfWidth - clientX) / 50;
+        const avatarY = (windowHalfHeight - clientY) / 50;
+        avatarXto(avatarX);
+        avatarYto(avatarY);
+        // avatar move ends
+      });
 
-          // avatar move starts
-          const avatarX = (windowHalfWidth - clientX) / 50;
-          const avatarY = (windowHalfHeight - clientY) / 50;
-          avatarXto(avatarX);
-          avatarYto(avatarY);
-          // avatar move ends
-        });
-
+      // off animation on touch only device
+      if (ScrollTrigger.isTouch !== 1) {
         heroRef.current.addEventListener("pointermove", context.onPointerMove);
+      }
 
-        return () => {
-          heroRef.current.removeEventListener(
-            "pointermove",
-            context.onPointerMove
-          );
-        };
-      },
-      heroRef.current
-    );
+      return () => {
+        heroRef.current.removeEventListener(
+          "pointermove",
+          context.onPointerMove
+        );
+      };
+    }, heroRef.current);
     // matchmedia ends
 
     // hero container 3d rotate animation
@@ -126,7 +118,7 @@ const useHero = () => {
     // ----------------------------
 
     return () => {
-      matchMedia.revert();
+      ctx.revert();
     };
   }, []);
 

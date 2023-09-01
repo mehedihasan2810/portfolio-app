@@ -93,7 +93,7 @@ export default function Works() {
     workMovingLinkRef,
     workParentConRef,
     pushWorkImgRef,
-    workProxyRef
+    workProxyRef,
   } = useWorks();
 
   return (
