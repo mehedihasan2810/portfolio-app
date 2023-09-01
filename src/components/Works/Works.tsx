@@ -93,6 +93,7 @@ export default function Works() {
     workMovingLinkRef,
     workParentConRef,
     pushWorkImgRef,
+    workProxyRef
   } = useWorks();
 
   return (
@@ -107,6 +108,7 @@ export default function Works() {
 
       <div id="work" className="work-anchor-scroll">
         <div ref={workParentConRef} className="works-parent-container">
+          <div ref={workProxyRef} className="work-proxy"></div>
           <div ref={workConRef} className="works-container">
             <div ref={workHrScrollConRef} className="works-wrapper">
               {/* bottom info start */}

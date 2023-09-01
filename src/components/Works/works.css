@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+.work-proxy{
+ position: absolute;
+ visibility: hidden;
+}
+
 .works-container {
   height: 100vh;
   background-color: #131313;
@@ -243,13 +248,13 @@
 }
 
 @media (max-width: 799px) {
-  .work-moving-link {
+  /* .work-moving-link {
     display: none;
   }
 
   .work-demo-link-wrapper {
     display: block;
-  }
+  } */
   .works-info-wrapper,
   .works-mask-info-wrapper {
     gap: 4rem;
