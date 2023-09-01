@@ -1,8 +1,9 @@
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, Draggable);
 
 const useWorks = () => {
   const workParentConRef = useRef<HTMLDivElement>(null!);
@@ -163,7 +164,6 @@ const useWorks = () => {
         pin: true,
         scrub: true,
         end: () => "+=" + (workConRef.current.offsetWidth - window.innerWidth),
-
         onUpdate: (s) => {
           if (s.isActive) {
             gsap.to(workConRef.current, {
@@ -204,6 +204,23 @@ const useWorks = () => {
       },
     });
     // horizontal scroll anim ends
+
+    // todo: drag
+
+
+    if(ScrollTrigger.isTouch === 1){
+      Draggable.create(workConRef.current, {
+        type: "x",
+        bounds: {
+          minX: -(workConRef.current.offsetWidth - window.innerWidth),
+          maxX: 0,
+        },
+      });
+    }
+
+
+   
+    // todo: drag
 
     // section rotate n scaling down animation on scroll starts
     workRotateTween.current = gsap.to(workParentConRef.current, {

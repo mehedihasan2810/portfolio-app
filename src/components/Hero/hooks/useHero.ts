@@ -30,11 +30,11 @@ const useHero = () => {
 
     // avatar move quickto start
     const avatarXto = gsap.quickTo(avatarsEl, "x", {
-      duration: 0.7,
+      duration: 0.5,
       ease: "power1.out",
     });
     const avatarYto = gsap.quickTo(avatarsEl, "y", {
-      duration: 0.7,
+      duration: 0.5,
       ease: "power1.out",
     });
     // avatar move quickto end
