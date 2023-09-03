@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 
 const Loader = () => {
   const loaderRef = useRef<HTMLDivElement>(null!);
-
   useEffect(() => {
     const loaderAvatarsBlinkEl = gsap.utils.toArray(".loader-avatar-blink");
 

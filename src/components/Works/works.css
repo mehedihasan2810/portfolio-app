@@ -1,16 +1,12 @@
 .works-parent-container {
   width: 100vw;
   height: 100vh;
+  transform-style: preserve-3d;
   transform-origin: 50% 90%;
   will-change: transform, opacity;
   opacity: 1;
   transform: perspective(5000px) rotateX(0) scale(1);
   overflow: hidden;
-}
-
-.work-proxy {
-  position: absolute;
-  visibility: hidden;
 }
 
 .works-container {
@@ -24,6 +20,7 @@
   height: 100%;
   background-color: #0a2647;
   position: relative;
+  isolation: isolate;
 }
 
 .works-info-wrapper,
@@ -49,12 +46,19 @@
 
 .works-info-wrapper {
   position: relative;
+
+  /* todo */
+  width: 100%;
+  /*todo height: max-content; */
+
+  /* todo */
 }
 
 .work-1-info-wrapper,
 .work-1-img-wrapper {
   width: 450px;
   height: 100%;
+  /* background-color: red; */
   position: relative;
 }
 
@@ -65,6 +69,10 @@
   color: #fff;
   z-index: 2;
   border-block-end: 1px solid #ffffff16;
+
+  /* todo */
+  /* position: absolute;
+  top: 0; */
 }
 
 .work-1-info-wrapper:not(:last-child)::after {
@@ -247,7 +255,7 @@
   }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 768px) {
   .works-info-wrapper,
   .works-mask-info-wrapper {
     gap: 4rem;
@@ -270,7 +278,49 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 480px) {
+  .work-mask-gradient-1,
+  .work-mask-gradient-2,
+  .work-gradient-1,
+  .work-gradient-2 {
+    display: none;
+  }
+
+  .works-mask-info-wrapper {
+    display: none;
+  }
+
+  .work-demo-link-wrapper {
+    display: block;
+  }
+
+  .work-1-info-wrapper:not(:last-child)::after {
+    all: unset;
+    display: none;
+  }
+
+  .works-info-wrapper {
+    position: relative;
+    isolation: isolate;
+    width: 100vw;
+    height: 100vh;
+    gap: 0rem;
+    padding: 0rem 0rem;
+    overflow: hidden;
+  }
+
+  .work-1-info-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a2647;
+    /* background-color: red;
+    border: 2px solid; */
+    padding-inline: 0.8rem;
+  }
+
   .work-1-info-wrapper > * + * {
     margin-block-start: 0.6rem;
   }
