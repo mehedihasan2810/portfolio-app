@@ -46,7 +46,7 @@ export default function Footer() {
                   </div>
                   <div className="cube__face cube__face--right">
                     <Image
-                      src="/images/img5.jpg"
+                      src="/images/img7.webp"
                       alt=""
                       width={400}
                       height={400}
