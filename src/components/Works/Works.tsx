@@ -149,7 +149,7 @@ export default function Works() {
                     </div>
 
                     <div className="work-demo-link-wrapper">
-                      <Link href={`${work.url}`}>Demo Website</Link>
+                      <Link href={`${work.url}`}>Demo</Link>
                     </div>
                   </div>
                 ))}

@@ -11,8 +11,8 @@ const Loader = () => {
     gsap.set(loaderAvatarsBlinkEl, { transformOrigin: "center" });
 
     // timeline
-    const loaderTL = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-    const loaderHideTL = gsap.timeline({ delay: 2 });
+    const loaderTL = gsap.timeline({ repeat: -1, repeatDelay: 0.3 });
+    const loaderHideTL = gsap.timeline({ delay: 1 });
 
     const matchMedia = gsap.matchMedia();
 
@@ -49,7 +49,10 @@ const Loader = () => {
             ease: "expo.out",
             duration: reduceMotion ? 0 : 0.5,
           })
-          .to(loaderRef.current, { display: "none", zIndex: -999 });
+          .to(loaderRef.current, { display: "none", zIndex: -999 })
+          .call(() => {
+            loaderTL.kill();
+          });
         // hide initial loader ends
       },
       loaderRef.current
