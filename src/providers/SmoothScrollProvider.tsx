@@ -21,21 +21,14 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     gsap.ticker.lagSmoothing(0);
 
-    /**
-     * The function `handleWindowResize` reloads the current page when the window is resized.
-     * @param {UIEvent} event - The event parameter is of type UIEvent, which represents a user
-     * interface event, such as a click or a resize event.
-     */
-    // -----------------------------
-    // function handleWindowResize(event: UIEvent) {
-    //   location.reload();
-    // }
-    // window.addEventListener("resize", handleWindowResize, false);
-    // ----------------------------------------------
+    // reload on resize starts
+    function handleWindowResize() {
+      location.reload();
+    }
+    window.addEventListener("resize", handleWindowResize);
+    // reload on resize ends
 
-    /**
-     * The function changes the document title based on the visibility of the tab.
-     */
+    // change title on visibility change start
     function handleVisibilityChange() {
       if (document.hidden) {
         document.title = "Hi There! 😀";
@@ -43,11 +36,12 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
         document.title = "Mehedi Hasan | Web Developer";
       }
     }
-
     document.addEventListener("visibilitychange", handleVisibilityChange);
+    // change title on visibility change end
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
   return children;
