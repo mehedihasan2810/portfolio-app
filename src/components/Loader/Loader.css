@@ -92,9 +92,3 @@
   :is(.loader-gradient-2) {
   background-color: #777;
 }
-
-@media (max-width: 799px) {
-  .loader-color-wrapper {
-    clip-path: inset(0 0 0 0);
-  }
-}

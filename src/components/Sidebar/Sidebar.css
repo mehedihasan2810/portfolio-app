@@ -56,6 +56,6 @@
   }
 
   .sidebar-container > * + * {
-    margin-block-start: 0.4rem;
+    margin-block-start: 0.5rem;
   }
 }

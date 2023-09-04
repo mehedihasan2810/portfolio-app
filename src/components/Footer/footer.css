@@ -71,7 +71,7 @@ footer {
 }
 
 .section-bottom-first > div {
-  border-top: 1px solid;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-block-start: 2rem;
   padding-inline-end: 2rem;
 }
@@ -79,7 +79,7 @@ footer {
 .footer-email-wrapper,
 .footer-number-wrapper {
   font-size: 1.2rem;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.8rem 1rem;
   border-top-right-radius: 0.7rem;
   border-bottom-left-radius: 0.7rem;
