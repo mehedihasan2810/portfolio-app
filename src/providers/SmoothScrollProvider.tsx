@@ -29,10 +29,10 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
     gsap.ticker.lagSmoothing(0);
 
     // reload on resize starts
-    function handleWindowResize() {
-      location.reload();
-    }
-    window.addEventListener("resize", handleWindowResize);
+    // function handleWindowResize() {
+    //   location.reload();
+    // }
+    // window.addEventListener("resize", handleWindowResize);
     // reload on resize ends
 
     // change title on visibility change start
@@ -48,7 +48,7 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("resize", handleWindowResize);
+      // window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
   return children;
