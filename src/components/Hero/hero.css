@@ -6,14 +6,13 @@
   overflow: hidden;
 }
 
-.scroll-down{
+.scroll-down {
   color: rgba(255, 255, 255, 0.8);
   font-size: clamp(0.9rem, 1vw, 1.2rem);
   position: fixed;
   bottom: 3rem;
   left: 3rem;
   z-index: 998;
-
 }
 
 .hero-full-container {
@@ -252,4 +251,10 @@
 
 .hero-author-info-container > .boring-avatars-1 {
   color: gray;
+}
+
+@media (max-width: 480px) {
+  .scroll-down {
+    display: none;
+  }
 }
