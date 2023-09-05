@@ -14,8 +14,15 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
    "scroll" event on the `lenis` object. When the "scroll" event is triggered, it will call the
    `ScrollTrigger.update` function. */
     lenis.on("scroll", ScrollTrigger.update);
-
     gsap.ticker.add((time) => {
+      // hide scroll down start
+      if (lenis.isScrolling) {
+        gsap.to(".scroll-down", {
+          scale: 0,
+          duration: 0.2,
+        });
+      }
+      // hide scroll down start
       lenis.raf(time * 1000);
     });
 

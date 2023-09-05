@@ -9,6 +9,8 @@ export default function Hero() {
     useHero();
 
   return (
+    <>
+    <div className="scroll-down">Scroll Down</div>
     <div id="about" className="hero-anchor-scroll">
       <div ref={heroRef} className="hero-full-container">
         <div className="hero-container">
@@ -881,5 +883,6 @@ export default function Hero() {
         </div>
       </div>
     </div>
+    </>
   );
 }

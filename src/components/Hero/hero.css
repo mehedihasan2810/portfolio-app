@@ -6,6 +6,16 @@
   overflow: hidden;
 }
 
+.scroll-down{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(0.9rem, 1vw, 1.2rem);
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
+  z-index: 998;
+
+}
+
 .hero-full-container {
   position: relative;
   isolation: isolate;

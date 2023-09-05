@@ -122,6 +122,11 @@ const useHero = () => {
     };
   }, []);
 
+
+  // useIsomorphicLayoutEffect(() => {
+  //   console.log(ScrollTrigger.isScrolling())
+  // }, [])
+
   return {
     heroMaskRef,
     heroImgRef,
