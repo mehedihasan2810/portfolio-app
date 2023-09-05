@@ -121,6 +121,11 @@ footer {
   position: relative;
   transform-style: preserve-3d;
   transform: translateZ(-175px);
+  /* animation: spinCube 30s infinite linear; */
+ 
+}
+
+.cube-wrapper.play-cube .cube{
   animation: spinCube 30s infinite linear;
 }
 

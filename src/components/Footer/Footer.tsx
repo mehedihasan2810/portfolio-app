@@ -1,19 +1,30 @@
+"use client";
 import Image from "next/image";
 import "./footer.css";
 import Link from "next/link";
-
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function Footer() {
+  useIsomorphicLayoutEffect(() => {
+    ScrollTrigger.create({
+      trigger: ".cube-wrapper",
+      start: "top bottom",
+      end: "bottom top",
+      toggleClass: "play-cube",
+    });
+  }, []);
+
   return (
     <footer id="contact" className="footer-container">
       <div className="footer-color-container">
         <div className="footer-center-wrapper">
           <div className="section-top">
             <div className="footer-info">
-              <h6 className="footer-scroll-anim">
+              <h6>
                 Let&#39;s Work <br />
                 Together
               </h6>
-              <p className="footer-scroll-anim">
+              <p>
                 Are you a visionary brand or an unstoppable force in the
                 business world, relentlessly seeking contagious creativity that
                 commands attention? Perhaps you&#39;re an agency with an
@@ -22,7 +33,7 @@ export default function Footer() {
                 reach out to me now and let greatness unfold!
               </p>
             </div>
-            <div className="cube-wrapper footer-scroll-anim">
+            <div className="cube-wrapper">
               <div className="scene">
                 <div
                   // ref={cubeRef}
@@ -84,19 +95,17 @@ export default function Footer() {
             <div className="section-bottom-first">
               <div>
                 <div>Mail</div>
-                <div className="footer-email-wrapper footer-scroll-anim">
+                <div className="footer-email-wrapper">
                   mdmehedihasan2810@gmail.com
                 </div>
               </div>
               <div>
                 <div>Phone</div>
-                <div className="footer-number-wrapper footer-scroll-anim">
-                  +880 1716 004998
-                </div>
+                <div className="footer-number-wrapper">+880 1716 004998</div>
               </div>
               <div>
                 <div>Connect</div>
-                <div className="footer-social-btns-wrapper footer-scroll-anim">
+                <div className="footer-social-btns-wrapper">
                   <Link
                     href="https://www.linkedin.com/in/md-mehedi-hasan2810/"
                     target="_blank"
