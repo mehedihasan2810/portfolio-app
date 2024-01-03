@@ -1,5 +1,4 @@
 import "./globals.css";
-// import { AppProvider } from "@/contexts/context";
 import { Work_Sans } from "next/font/google";
 import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
 import StarBg from "@/components/ui/StarBg/StarBg";

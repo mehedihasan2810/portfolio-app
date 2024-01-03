@@ -122,10 +122,9 @@ footer {
   transform-style: preserve-3d;
   transform: translateZ(-175px);
   /* animation: spinCube 30s infinite linear; */
- 
 }
 
-.cube-wrapper.play-cube .cube{
+.cube-wrapper.play-cube .cube {
   animation: spinCube 30s infinite linear;
 }
 
@@ -160,13 +159,12 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   border-radius: 0.5rem;
 }
 
 .cube__face {
   position: absolute;
-
   width: 320px;
   height: 320px;
 }

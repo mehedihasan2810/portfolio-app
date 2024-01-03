@@ -4,6 +4,8 @@ import "./footer.css";
 import Link from "next/link";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { cubeImages } from "./data";
+
 export default function Footer() {
   useIsomorphicLayoutEffect(() => {
     ScrollTrigger.create({
@@ -35,58 +37,19 @@ export default function Footer() {
             </div>
             <div className="cube-wrapper">
               <div className="scene">
-                <div
-                  // ref={cubeRef}
-                  className="cube"
-                >
-                  <div className="cube__face cube__face--front">
-                    <Image
-                      src="/images/img3.jpg"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
-                  <div className="cube__face cube__face--back">
-                    <Image
-                      src="/images/img1.jpg"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
-                  <div className="cube__face cube__face--right">
-                    <Image
-                      src="/images/img7.webp"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
-                  <div className="cube__face cube__face--left">
-                    <Image
-                      src="/images/img6.jpg"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
-                  <div className="cube__face cube__face--top">
-                    <Image
-                      src="/images/img2.jpg"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
-                  <div className="cube__face cube__face--bottom">
-                    <Image
-                      src="/images/img4.jpg"
-                      alt=""
-                      width={400}
-                      height={400}
-                    />
-                  </div>
+                <div className="cube" aria-hidden>
+                  {cubeImages.map((item) => (
+                    <div key={item.id} className={item.className}>
+                      <Image
+                        src={item.url}
+                        alt=""
+                        width={400}
+                        height={400}
+                        placeholder="blur"
+                        blurDataURL={item.blurHash}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -100,7 +63,7 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <div>Phone</div>
+                <div>WhatsApp</div>
                 <div className="footer-number-wrapper">+880 1716 004998</div>
               </div>
               <div>

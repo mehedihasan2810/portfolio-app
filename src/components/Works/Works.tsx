@@ -42,6 +42,7 @@ export default function Works() {
                         src={work.img}
                         alt={work.name + " image"}
                         fill
+                        blurDataURL={work.blurHash}
                         sizes="450px"
                         style={{
                           objectFit: "cover",
@@ -98,6 +99,7 @@ export default function Works() {
                       src={work.img}
                       alt={work.name + " image"}
                       fill
+                      blurDataURL={work.blurHash}
                       sizes="450px"
                       style={{ objectFit: "cover", objectPosition: "top" }}
                     />
