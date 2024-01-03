@@ -70,19 +70,13 @@
   margin-block-start: 1rem;
 }
 
-:is(.hero-main-heading, .hero-mask-main-heading) span:first-child {
-  font-size: clamp(1.7rem, 1.5vw, 2.3rem);
-  font-weight: 400;
+:is(.hero-main-heading, .hero-mask-main-heading) > div:first-child {
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
 
-:is(.hero-main-heading, .hero-mask-main-heading) span:last-child {
-  font-size: clamp(2.3rem, 2.5vw, 3rem);
-  font-weight: 600;
-}
-
-.hero-main-heading span,
-.hero-mask-main-heading span {
-  display: block;
+:is(.hero-main-heading, .hero-mask-main-heading) > div:last-child {
+  font-size: 1.5rem;
 }
 
 .hero-author-info-wrapper > p,
@@ -109,6 +103,11 @@
 :is(.hero-social-btns-wrapper, .hero-mask-social-btns-wrapper) img {
   width: 35px;
   height: 35px;
+}
+:is(.hero-social-btns-wrapper, .hero-mask-social-btns-wrapper)
+  img[alt="Mail icon"] {
+  width: 39px;
+  height: 39px;
 }
 
 .hero-social-btns-wrapper,
@@ -183,7 +182,7 @@
 }
 /* background gradient styles ends */
 
-/* avatars style */
+/* avatar styles */
 .boring-avatars-1,
 .boring-avatars-2,
 .boring-avatars-3,
@@ -251,6 +250,13 @@
 
 .hero-author-info-container > .boring-avatars-1 {
   color: gray;
+}
+
+@media (max-width: 1280px) {
+  .hero-author-info-wrapper,
+  .hero-mask-author-info-wrapper {
+    max-width: 550px;
+  }
 }
 
 @media (max-width: 480px) {
