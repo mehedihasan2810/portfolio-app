@@ -4,7 +4,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
+// Custom hook for hero animations
 const useHero = () => {
+  // Refs for various elements in the hero section
   const heroMaskRef = useRef<HTMLDivElement>(null!);
   const heroMaskLayerRef = useRef<HTMLDivElement>(null!);
   const heroImgRef = useRef<HTMLImageElement>(null!);
@@ -13,13 +15,16 @@ const useHero = () => {
   const heroRotateTween = useRef<any>();
   const avatarBlinkTL = useRef<any>();
 
+  // Using custom layout effect for animations
   useIsomorphicLayoutEffect(() => {
+    // Calculating window dimensions and other variables
     const windowWidth = window.innerWidth;
     const windowWidthWhole = 100 / windowWidth;
     const windowHeight = window.innerHeight;
     const windowHalfWidth = windowWidth / 2;
     const windowHalfHeight = windowHeight / 2;
 
+    // Selecting avatar elements
     const avatarsEl = gsap.utils.toArray(".boring-avatars");
     const avatarsBlinkEl = gsap.utils.toArray(".avatar-blink");
 
@@ -28,7 +33,7 @@ const useHero = () => {
     gsap.set(heroMaskLayerRef.current, { xPercent: -50 });
     gsap.set(heroMaskRef.current, { xPercent: 50 });
 
-    // avatar move quickto start
+    // QuickTo animations for avatar movement
     const avatarXto = gsap.quickTo(avatarsEl, "x", {
       duration: 0.5,
       ease: "power1.out",
@@ -37,9 +42,8 @@ const useHero = () => {
       duration: 0.5,
       ease: "power1.out",
     });
-    // avatar move quickto end
 
-    // hero mask quickto starts
+    // QuickTo animations for hero mask movement
     const heroMaskLayerXto = gsap.quickTo(
       heroMaskLayerRef.current,
       "xPercent",
@@ -52,12 +56,10 @@ const useHero = () => {
       duration: 1,
       ease: "power2.out",
     });
-    // hero mask quickto ends
 
-    // matchmedia starts
-    // const matchMedia = gsap.matchMedia();
+    // Context for matchMedia and pointer events
     const ctx = gsap.context((context) => {
-      // avatar blink starts
+      // Avatar blink timeline
       avatarBlinkTL.current = gsap.timeline({ repeat: -1, repeatDelay: 2 });
       avatarBlinkTL.current.to(avatarsBlinkEl, {
         scaleY: 0,
@@ -74,12 +76,11 @@ const useHero = () => {
       context.add("onPointerMove", (e: PointerEvent) => {
         const { clientX, clientY } = e;
 
-        // move hero layer starts
+        // Hero mask and avatar movement based on pointer events
         const xPercentage = Math.ceil(clientX * windowWidthWhole);
 
         heroMaskLayerXto(-xPercentage);
         heroMaskXto(xPercentage);
-        // move hero layer ends
 
         // avatar move starts
         const avatarX = (windowHalfWidth - clientX) / 50;
@@ -89,11 +90,12 @@ const useHero = () => {
         // avatar move ends
       });
 
-      // off animation on touch only device
+      // Adding pointermove event listener if not on a touch-only device
       if (ScrollTrigger.isTouch !== 1) {
         heroRef.current.addEventListener("pointermove", context.onPointerMove);
       }
 
+      // Removing event listener on cleanup
       return () => {
         heroRef.current.removeEventListener(
           "pointermove",
@@ -103,7 +105,7 @@ const useHero = () => {
     }, heroRef.current);
     // matchmedia ends
 
-    // hero container 3d rotate animation
+    // Hero container 3D rotate animation with ScrollTrigger
     heroRotateTween.current = gsap.to(heroRef.current, {
       rotateX: 60,
       scale: 0.1,
@@ -121,7 +123,6 @@ const useHero = () => {
       ctx.revert();
     };
   }, []);
-
 
   // useIsomorphicLayoutEffect(() => {
   //   console.log(ScrollTrigger.isScrolling())
