@@ -33,14 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={myFont.className}>
-        {/* <AppProvider> */}
         <SmoothScrollProvider>
           <Loader />
           <Sidebar />
           <StarBg />
           {children}
         </SmoothScrollProvider>
-        {/* </AppProvider> */}
       </body>
     </html>
   );
