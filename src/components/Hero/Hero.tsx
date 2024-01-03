@@ -21,7 +21,7 @@ export default function Hero() {
               <div className="hero-author-info-wrapper">
                 <Image
                   ref={heroImgRef}
-                  src="/images/hero-img.JPG"
+                  src="/images/hero-img.webp"
                   alt="An Image of the owner of this site Mehedi Hasan"
                   width={200}
                   height={200}
@@ -75,7 +75,7 @@ export default function Hero() {
                 <div className="hero-mask-author-info-wrapper">
                   <Image
                     ref={heroMaskImgRef}
-                    src="/images/hero-img.JPG"
+                    src="/images/hero-img.webp"
                     alt="author image"
                     priority={true}
                     width={200}

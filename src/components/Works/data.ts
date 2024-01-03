@@ -13,7 +13,7 @@ export const worksInfo: WorksInfo[] = [
   {
     id: 1,
     name: "Talk Tide",
-    img: "/images/talk-tide.png",
+    img: "/images/talk-tide.webp",
     title: "A full-stack realtime messaging chat web application",
     about:
       "Talk Tide, a chat platform like Messenger and WhatsApp, allows chatting with anyone worldwide. Create one-on-one or group chats, send images, and use emojis for instant communication.",
@@ -34,7 +34,7 @@ export const worksInfo: WorksInfo[] = [
   {
     id: 2,
     name: "Learn In Summer",
-    img: "/images/learn-in-summer2.png",
+    img: "/images/learn-in-summer2.webp",
     title: "A full-stack Music Education Platform",
     about:
       "It is a website with user, admin, and instructor roles. Instructors can sell classes on various instruments, manage content, and view clear stats. Admins can manage users & classes added by instructors",
@@ -56,7 +56,7 @@ export const worksInfo: WorksInfo[] = [
   {
     id: 3,
     name: "Elite Mart",
-    img: "/images/elite-mart2.png",
+    img: "/images/elite-mart2.webp",
     title: "A full-stack ecommerce web application",
     about:
       "Some key features are a beautiful home, products, product details, a product cart, and a favorite products page. Sign in & sign up auth was implemented with next-auth",
@@ -79,7 +79,7 @@ export const worksInfo: WorksInfo[] = [
   {
     id: 4,
     name: "FunCarFactory",
-    img: "/images/fun-car-factory2.png",
+    img: "/images/fun-car-factory2.webp",
     title: "A full-stack toy web store",
     about:
       "Some key features are you can add, delete, update toy. Advanced sorting and searching features. Sign in & sign up auth was implemented with firebase",
@@ -101,7 +101,7 @@ export const worksInfo: WorksInfo[] = [
   {
     id: 5,
     name: "Chefs Kingdom",
-    img: "/images/chefs-kingdom2.png",
+    img: "/images/chefs-kingdom2.webp",
     title: "A full-stack recipe selling website",
     about:
       "It designed for chefs around the world who can come sell their recipes to customer via this website.",

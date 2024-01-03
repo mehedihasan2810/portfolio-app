@@ -38,7 +38,7 @@
   left: 0;
   z-index: 99;
 
-  background-image: url("../../../public/images/texture-dark.jpg");
+  background-image: url("../../../public/images/texture-dark.webp");
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
