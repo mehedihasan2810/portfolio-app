@@ -36,18 +36,18 @@ const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({
     // reload on resize ends
 
     // change title on visibility change start
-    function handleVisibilityChange() {
-      if (document.hidden) {
-        document.title = "Hi There! 😀";
-      } else {
-        document.title = "Mehedi Hasan | Web Developer";
-      }
-    }
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    // function handleVisibilityChange() {
+    //   if (document.hidden) {
+    //     document.title = "Hi There! 😀";
+    //   } else {
+    //     document.title = "Mehedi Hasan | Web Developer";
+    //   }
+    // }
+    // document.addEventListener("visibilitychange", handleVisibilityChange);
     // change title on visibility change end
 
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      // document.removeEventListener("visibilitychange", handleVisibilityChange);
       // window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
