@@ -59,7 +59,7 @@ export default function Footer() {
               <div>
                 <div>Mail</div>
                 <div className="footer-email-wrapper">
-                  mdmehedihasan2810@gmail.com
+                  mehedi.hasan.webcraft@gmail.com
                 </div>
               </div>
               <div>
@@ -91,7 +91,15 @@ export default function Footer() {
                       height={40}
                     />
                   </Link>
-                  <Link
+                  <Link href="https://wa.me/1716004998" target="_blank">
+                    <Image
+                      src="/social-icons/whatsapp.png"
+                      alt="whatsapp logo"
+                      width={40}
+                      height={40}
+                    />
+                  </Link>
+                  {/* <Link
                     href="https://www.facebook.com/mehedihasan.miraj.79"
                     target="_blank"
                   >
@@ -101,7 +109,7 @@ export default function Footer() {
                       width={40}
                       height={40}
                     />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

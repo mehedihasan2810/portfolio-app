@@ -17,7 +17,16 @@ export default function Hero() {
       <div id="about" className="hero-anchor-scroll">
         <div ref={heroRef} className="hero-full-container">
           <div className="hero-container">
-            <div className="hero-author-info-container">
+            <div className="hero-author-info-container" aria-hidden>
+              <Link
+                href="https://drive.google.com/file/d/1534Um3mN6hS5q6rbkHzkNWqZfPkgy-xC/view?usp=drive_link"
+                className="resume-link"
+                aria-label="Visit my resume"
+                target="_blank"
+              >
+                Resume
+              </Link>
+
               <div className="hero-author-info-wrapper">
                 <Image
                   ref={heroImgRef}
@@ -72,6 +81,15 @@ export default function Hero() {
                 ref={heroMaskRef}
                 className="hero-mask-author-info-container"
               >
+                <Link
+                  href="https://drive.google.com/file/d/1534Um3mN6hS5q6rbkHzkNWqZfPkgy-xC/view?usp=drive_link"
+                  className="resume-link"
+                  aria-label="Visit my resume"
+                  target="_blank"
+                >
+                  Resume
+                </Link>
+
                 <div className="hero-mask-author-info-wrapper">
                   <Image
                     ref={heroMaskImgRef}
@@ -115,6 +133,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+
             {/* mask end */}
           </div>
         </div>

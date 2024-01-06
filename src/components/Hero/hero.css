@@ -138,6 +138,33 @@
   will-change: transform;
 }
 
+:is(.hero-author-info-container, .hero-mask-author-info-container)
+  .resume-link {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: box-shadow 200ms;
+}
+
+.hero-author-info-container .resume-link {
+  color: #777;
+  box-shadow: 2px 2px 10px #777, -2px -2px 10px #777;
+}
+.hero-mask-author-info-container .resume-link {
+  color: #fff;
+  box-shadow: 2px 2px 10px #38bdf8, -2px -2px 10px #38bdf8;
+}
+
+.hero-author-info-container .resume-link:hover {
+  box-shadow: 2px 2px 15px #777, -2px -2px 15px #777;
+}
+.hero-mask-author-info-container .resume-link:hover {
+  box-shadow: 2px 2px 15px #38bdf8, -2px -2px 15px #38bdf8;
+}
+
 .hero-author-info-container {
   position: relative;
   isolation: isolate;

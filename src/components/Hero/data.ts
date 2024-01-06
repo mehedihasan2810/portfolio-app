@@ -2,7 +2,7 @@ export const socialMediaLinks = [
   {
     id: 1,
     iconSrc: "/social-icons/email-color.svg",
-    href: "mailto:mdmehedihasan2810@gmail.com",
+    href: "mailto:mehedi.hasan.webcraft@gmail.com",
     alt: "Mail icon",
     ariaLavel: "Email link",
   },
@@ -23,9 +23,16 @@ export const socialMediaLinks = [
   },
   {
     id: 4,
-    iconSrc: "/social-icons/facebook-color.svg",
-    href: "https://www.facebook.com/mehedihasan.miraj.79",
-    alt: "Facebook icon",
-    ariaLavel: "Visit my facebook profile.",
+    iconSrc: "/social-icons/whatsapp.png",
+    href: "https://wa.me/1716004998",
+    alt: "Whatsapp icon",
+    ariaLavel: "Chat with me through whatsapp",
   },
+  // {
+  //   id: 4,
+  //   iconSrc: "/social-icons/facebook-color.svg",
+  //   href: "https://www.facebook.com/mehedihasan.miraj.79",
+  //   alt: "Facebook icon",
+  //   ariaLavel: "Visit my facebook profile.",
+  // },
 ];
